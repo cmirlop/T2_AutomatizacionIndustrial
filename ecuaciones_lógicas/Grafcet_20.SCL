@@ -1,0 +1,43 @@
+
+// Temporizadores
+#T1 := 2s/x22;
+#T2 := 2s/x23;
+#T3 := 2s/x24;
+#T4 := 2s/x25;
+#T5 := 2s/x26;
+#T6 := 2s/x27;
+#T7 := 2s/x28;
+
+// Transiciones
+#S20 := (X30 AND NOT S_CAL_VAC) OR "FirstScan";
+#S21 := X20 AND ACT_MQ_CAL_VAC;
+#S22 := X21 AND S_CAL_VAC;
+#S23 := X22 AND T1;
+#S24 := X23 AND T2;
+#S25 := X24 AND T3;
+#S26 := X25 AND T4;
+#S27 := X26 AND T5;
+#S28 := X27 AND T6;
+#S29 := X28 AND T7;
+#S30 := X29 AND T7;
+
+// Etapas
+#X20 := S20 OR (X20 AND NOT S21);
+#X21 := S21 OR (X21 AND NOT S22);
+#X22 := S22 OR (X22 AND NOT S23);
+#X23 := S23 OR (X23 AND NOT S24);
+#X24 := S24 OR (X24 AND NOT S25);
+#X25 := S25 OR (X25 AND NOT S26);
+#X26 := S26 OR (X26 AND NOT S27);
+#X27 := S27 OR (X27 AND NOT S28);
+#X28 := S28 OR (X28 AND NOT S29);
+#X29 := S29 OR (X29 AND NOT S30);
+#X30 := S30 OR (X30 AND NOT S20);
+
+// Marcas
+#MAQ_CAL_VAC_LIBRE := X20;
+#QC3_VAC := X21 OR X30;
+#QBAJ_MAQ := X22 OR X23 OR X27 OR X28;
+#GRIPPER := X23 OR X24 OR X25 OR X26 OR X27;
+#ROT_GRIPPER := X25;
+#ACT_Transfer1 := X30;
