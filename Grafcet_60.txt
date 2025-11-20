@@ -1,0 +1,60 @@
+ecuaciones grafcet 60
+
+T1:= 2s/X63
+T2:= 2s/X64
+T3:= 2s/X65
+T4:= 2s/X66
+T5:= 2s/X67
+T6:= 2s/X68
+
+
+
+
+#S60:= "FIRST SCAN" OR #X71;
+#S61:= #X60 AND #Act_Cin_Empaquetado;
+#S62:= #X61 AND #S2_EMP;
+#S63:= #X62 AND #ESP_SOPORTE;
+#S64:= #X63 AND T1.Q;
+#S65:= #X64 AND T2.Q;
+#S66:= #X65 AND T3.Q;
+#S67:= #X66 AND T4.Q;
+#S68:= #X67 AND T5.Q;
+#S69:= #X68 AND T6.Q;
+#S70:= #X69 AND #Trans3_Libre;
+#S71:= #X70 AND NOT #S2_EMP;
+
+
+
+
+#X60:= #S60 OR #X60 AND NOT #X61;
+#X61:= #S61 OR #X61 AND NOT #X62;
+#X62:= #S62 OR #X62 AND NOT #X63;
+#X63:= #S63 OR #X63 AND NOT #X64;
+#X64:= #S64 OR #X64 AND NOT #X65;
+#X65:= #S65 OR #X65 AND NOT #X66;
+#X66:= #S66 OR #X66 AND NOT #X67;
+#X67:= #S67 OR #X67 AND NOT #X68;
+#X68:= #S68 OR #X68 AND NOT #X69;
+#X69:= #S69 OR #X69 AND NOT #X70;
+#X70:= #S70 OR #X70 AND NOT #X71;
+#X71:= #S71 OR #X71 AND NOT #X60;
+
+
+
+#CIN_Empaquetado_Libre:= #X60;
+#QC2_EMP:= #X61 OR #X70;
+#ESP_VACUNA:= #X62;
+#ACT_EMPAQUETADO:= #X63;
+#Q2_BAJ_MAQ:= #X63 OR #X64 OR #X67;
+#GRIPER2:= #X64 OR #X65 OR #X67 OR #X68;
+#QHOR_GRIPER:= #X66 OR #X67 OR #X68;
+#Act_Trans3:= #X70;
+#Pieza_Empaquetada:= #X71;
+
+
+
+
+
+
+
+
