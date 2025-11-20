@@ -1,0 +1,38 @@
+
+//Variables de entrada
+#Act_Transfer2;
+#S4_VAC;
+#CIN_EMPAQUETADO_Libre;
+
+
+
+
+//variables de salida
+#Transfer2_Libre;
+#QC5_VAC;
+#QTRANS_VAC;
+#Act_Cin_Empaquetado;
+#P_ENV_Empaquetado;
+
+
+T1 = 3s/(X43 AND NOT #S4_VAC)
+
+
+#S40 := "FIRST SCAN" OR (#X44) ;
+#S41 := #X40 AND #Act_Transfer2;
+#S42 := #X41 AND #S4_VAC;
+#S43 := #X42 AND #CIN_EMPAQUETADO_Libre;
+#S44 := #X43 AND #T1.Q;
+
+#X40 := #S40 OR #X40 AND (NOT #S41);
+#X41 := #S41 OR #X41 AND (NOT #S42);
+#X42 := #S42 OR #X42 AND (NOT #S43);
+#X43 := #S43 OR #X43 AND (NOT #S44);
+#X44 := #S44 OR #X44 AND (NOT #S40);
+
+
+#Transfer2_Libre := #X40;
+#QC5_VAC := #X41;
+#QTRANS_VAC := #X43;
+#Act_Cin_Empaquetado := #X43;
+#P_ENV_Empaquetado := #X44;

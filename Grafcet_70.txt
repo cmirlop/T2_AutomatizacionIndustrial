@@ -1,0 +1,23 @@
+
+//Variables de entrada
+#Act_Mantenimiento;
+
+
+//variables de salida
+#Mantenimiento_Fin;
+#QC2_VAC;
+
+//Temporizadores
+T1 = 5s/X71
+
+
+#S70 := "FIRST SCAN" OR #X72;
+#S71 := #X70 AND #Act_Mantenimiento;
+#S72 := #X71 AND #T1.Q;
+
+#X70 := #S70 OR #X70 AND (NOT #S71);
+#X71 := #S71 OR #X71 AND (NOT #S72);
+#X72 := #S72 OR #X72 AND (NOT #S70);
+
+#QC2_VAC := #X71;
+#Mantenimiento_Fin := #X72;

@@ -1,0 +1,21 @@
+
+//Variables de entrada
+#Paro;
+#Marcha;
+#Mantenimiento_Fin;
+
+//variables de salida
+#Act_Mantenimiento;
+#Proceso_Activo;
+
+
+#S0 := "FIRST SCAN" OR (#X2 AND #PARO);
+#S1 := #X0 AND #MARCHA;
+#S2 := #X1 AND #Mantenimiento_Fin;
+
+#X0 := #S0 OR #X0 AND (NOT #S1);
+#X1 := #S1 OR #X1 AND (NOT #S2);
+#X2 := #S2 OR #X2 AND (NOT #S0);
+
+#Act_Mantenimiento := #X1;
+#Proceso_Activo := #X2;
