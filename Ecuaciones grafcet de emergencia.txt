@@ -1,0 +1,16 @@
+Ecuaciones grafcet de emergencia
+
+#S1000 := "FirstScan" OR (#X1003 AND #Fin_Mantenimiento);
+#S1001 := #X1000 AND #E;
+#S1002 := #X1001 AND (NOT #E AND REARME);
+#S1003 := #X1002 AND #Fin_Vaciado;
+
+#X1000 := #S1000 OR (#X1000 AND NOT #X1001);
+#X1001 := #S1001 OR (#X1001 AND NOT #X1002);
+#X1002 := #S1002 OR (#X1002 AND NOT #X1003);
+#X1003 := #S1003 OR (#X1003 AND NOT #X1000);
+
+
+#EMERGENCIA := #X1001;
+#Vaciado := #X1002;
+#Mantenimiento := #X1003;
