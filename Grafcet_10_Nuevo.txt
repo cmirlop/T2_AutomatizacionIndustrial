@@ -1,0 +1,46 @@
+
+#S10 := "FirstScan" OR (#X13b AND NOT #S_PRES) OR (#X14b AND NOT #S_PRES);
+#S11 := #X10 AND #Act_Proceso;
+#S12 := #X11 AND #S_Press;
+#S13 := #X12 AND #S_A AND #S_B;
+#S13b := #X13 AND #Sig_Maq_Libre;
+#S14: #X12 AND NOT #S_A AND #S_B;
+#S14b := #X14 AND #Sig_Maq_Libre;
+
+#X10 := #S10 OR #X10 AND (NOT #S11);
+#X11 := #S11 OR #X11 AND (NOT #S12);
+#X12 := #S12 OR #X12 AND (NOT #S13 OR NOT #S14);
+#X13 := #S13 OR #X13 AND (NOT #S13b);
+#X13b := #S13b OR #X13b AND (NOT #S10);
+#X14 := #S14 OR #X14 AND (NOT #S14b);
+#X14b := #S14b OR #X14b AND (NOT #S10);
+
+#Maq_Libre := #X10;
+#Emisor := #X11;
+#QC1 := #X12 OR #X13b OR #X14b;
+#Pieza_A := #X13b;
+#Pieza_B := #X14b;
+
+
+//Otra Maquina
+#S10 := "FirstScan" OR (#X13b AND NOT #S_PRES) OR (#X14b AND NOT #S_PRES);
+#S11 := #X10 AND #Act_Proceso;
+#S12 := #X11 AND #S_Press;
+#S13 := #X12 AND #S_A AND NOT #S_B;
+#S13b := #X13 AND #Sig_Maq_Libre;
+#S14: #X12 AND NOT #S_A AND #S_B;
+#S14b := #X14 AND #Sig_Maq_Libre;
+
+#X10 := #S10 OR #X10 AND (NOT #S11);
+#X11 := #S11 OR #X11 AND (NOT #S12);
+#X12 := #S12 OR #X12 AND (NOT #S13 OR NOT #S14);
+#X13 := #S13 OR #X13 AND (NOT #S13b);
+#X13b := #S13b OR #X13b AND (NOT #S10);
+#X14 := #S14 OR #X14 AND (NOT #S14b);
+#X14b := #S14b OR #X14b AND (NOT #S10);
+
+#Maq_Libre := #X10;
+#Emisor := #X11;
+#QC1 := #X12 OR #X13b OR #X14b;
+#Pieza_A := #X13b;
+#Pieza_B := #X14b;
