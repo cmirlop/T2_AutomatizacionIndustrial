@@ -1,46 +1,19 @@
 
-#S10 := "FirstScan" OR (#X13b AND NOT #S_PRES) OR (#X14b AND NOT #S_PRES);
-#S11 := #X10 AND #Act_Proceso;
-#S12 := #X11 AND #S_Press;
-#S13 := #X12 AND #S_A AND #S_B;
-#S13b := #X13 AND #Sig_Maq_Libre;
-#S14: #X12 AND NOT #S_A AND #S_B;
-#S14b := #X14 AND #Sig_Maq_Libre;
+#S15 := "FirstScan" OR (#X16c AND NOT #S_GIR) OR (#17b AND NOT #S_GIR);
+#S16 := #X15 AND #Soporte_A;
+#S16b := #X16 AND #S_GIR;
+#S16c := #X16b AND #Sig_Maq_Libre;
+#S17 :=  #X15 AND #Soporte_B;
+#S17b := #X17 AND #S_GIR;
 
-#X10 := #S10 OR #X10 AND (NOT #S11);
-#X11 := #S11 OR #X11 AND (NOT #S12);
-#X12 := #S12 OR #X12 AND (NOT #S13 OR NOT #S14);
-#X13 := #S13 OR #X13 AND (NOT #S13b);
-#X13b := #S13b OR #X13b AND (NOT #S10);
-#X14 := #S14 OR #X14 AND (NOT #S14b);
-#X14b := #S14b OR #X14b AND (NOT #S10);
+#X15 := #S15 OR #X15 AND (NOT #S16 OR NOT #S17);
+#X16 := #S16 OR #X16 AND (NOT #S16b);
+#X16b := #S16b OR #X16b AND (NOT #S16c);
+#X16c := #S16c OR #X16c AND (NOT #S15);
+#X17 := #S17 OR #X17 AND (NOT #S17b);
+#X17b := #S17b OR #X17b AND (NOT #S15);
 
-#Maq_Libre := #X10;
-#Emisor := #X11;
-#QC1 := #X12 OR #X13b OR #X14b;
-#Pieza_A := #X13b;
-#Pieza_B := #X14b;
-
-
-//Otra Maquina
-#S10 := "FirstScan" OR (#X13b AND NOT #S_PRES) OR (#X14b AND NOT #S_PRES);
-#S11 := #X10 AND #Act_Proceso;
-#S12 := #X11 AND #S_Press;
-#S13 := #X12 AND #S_A AND NOT #S_B;
-#S13b := #X13 AND #Sig_Maq_Libre;
-#S14: #X12 AND NOT #S_A AND #S_B;
-#S14b := #X14 AND #Sig_Maq_Libre;
-
-#X10 := #S10 OR #X10 AND (NOT #S11);
-#X11 := #S11 OR #X11 AND (NOT #S12);
-#X12 := #S12 OR #X12 AND (NOT #S13 OR NOT #S14);
-#X13 := #S13 OR #X13 AND (NOT #S13b);
-#X13b := #S13b OR #X13b AND (NOT #S10);
-#X14 := #S14 OR #X14 AND (NOT #S14b);
-#X14b := #S14b OR #X14b AND (NOT #S10);
-
-#Maq_Libre := #X10;
-#Emisor := #X11;
-#QC1 := #X12 OR #X13b OR #X14b;
-#Pieza_A := #X13b;
-#Pieza_B := #X14b;
+#Maq_Libre := #X15;
+#QC2 := #X16 OR #X16b OR #X17;
+#QGIR := #X17b;
+#Act_Sig_Maq := #X16c;

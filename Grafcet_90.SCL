@@ -1,0 +1,18 @@
+
+// Transiciones
+#S50 := (X53 AND Pieza_Empaquetada) OR "FirstScan";
+#S51 := X50 AND Act_Cin_Empaquetado;
+#S52 := X51 AND S1_EMP;
+#S53 := X52 AND Act_Empaquetado;
+
+// Etapas
+#X50 := S50 OR (X50 AND NOT S51);
+#X51 := S51 OR (X51 AND NOT S52);
+#X52 := S52 OR (X52 AND NOT S53);
+#X53 := S53 OR (X53 AND NOT S54);
+
+
+// Marcas
+#CIN_Empaquetado_Libre := X50;
+#QC1_EMP := X51;
+#ESP_SOPORTE := X52;
