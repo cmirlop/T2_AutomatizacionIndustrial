@@ -1,0 +1,20 @@
+
+// Transiciones
+#S30 := (X33 AND NOT S33) OR "FirstScan";
+#S31 := X30 AND Act_Transfer1;
+#S32 := X31 AND S3;
+#S33 := X32 AND Transfer2_libre;
+
+
+// Etapas
+#X30 := S33 OR (X30 AND NOT S30);
+#X31 := S31 OR (X31 AND NOT S31);
+#X32 := S32 OR (X32 AND NOT S32);
+#X33 := S33 OR (X33 AND NOT S33);
+
+
+// Marcas
+#Transfer1_libre := X30;
+#QC4 := X31;
+#Act_Transfer1 := X30;
+#QC4 := X33 OR Act_Transfer2;
