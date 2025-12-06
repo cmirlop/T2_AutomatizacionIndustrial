@@ -1,0 +1,62 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+% --------------------------------------------
+	\etapaInicial{30}
+	\primeraAccion{30}{X30-A1}{Descartador\_Libre}
+	%---
+
+	\bifurcacion[100]{30}{31}{Act\_Maq\_A\_Buena}{32}{Act\_Maq\_A\_Mala}
+
+	\primeraAccion{31}{X31-A1}{QC3\_VAC}
+	\primeraAccion{32}{X32-A1}{QC3\_VAC}
+	
+	%---
+	
+	%---
+	\etapa[1.25\nodeDist]{31b}{31}{S3};
+	\comentari[3]{X31b}{Esperamos máquina de calidad libre}
+
+	\etapa[1.25\nodeDist]{31c}{31b}{MAQ\_CAL\_VAC\_LIBRE};
+	\primeraAccion{31c}{X31c-A1}{QC3}
+	\otraAccion{X31c-A1}{X31c-A2}{SigMaqBuena}
+
+
+	\etapa[1.25\nodeDist]{32b}{32}{S3};
+	\comentari[3]{X32b}{Esperamos máquina de calidad libre}
+
+	\etapa[1.25\nodeDist]{32c}{32b}{MAQ\_CAL\_VAC\_LIBRE};
+	\primeraAccion{32c}{X32c-A1}{QC3}
+	\otraAccion{X32c-A1}{X32c-A2}{SigMaqMala}
+	
+	\retornoInicio[6em]{31c}{0}{\NOT{S3}}
+	\retornoInicio[-16em]{32c}{0}{\NOT{S3}}
+
+	
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+            
+\end{tikzpicture}

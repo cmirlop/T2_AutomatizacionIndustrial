@@ -1,0 +1,56 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{15}
+	\primeraAccion{15}{X15-A1}{Descartador\_Libre}
+
+	\bifurcacion[20ex]{15}{16}{SOPORTE\_A}{17}{SOPORTE\_B}
+	%-----
+	\primeraAccion{16}{X16-A1}{QC2\_VAC}
+	\primeraAccion{17}{X17-A1}{QC2\_VAC}
+	
+
+	%---
+	\etapa[1.25\nodeDist]{16b}{16}{S1GIR\_VAC};
+	\comentari[3]{X16b}{Esperamos máquina de calidad libre}
+
+	%---
+	\etapa[1.25\nodeDist]{16c}{16b}{MAQ\_CAL\_VAC\_LIBRE};
+	\primeraAccion{16c}{X16c-A1}{QC2\_VAC}
+	\otraAccion{X16c-A1}{X16c-A2}{ACT\_MAQ\_CAL\_VAC}
+
+	%---
+	
+	\etapa[1.25\nodeDist]{17b}{17}{S1GIR\_VAC};
+	\primeraAccion{17b}{X17b-A1}{QC2\_VAC}
+
+	
+
+
+
+	\retornoInicio[6em]{16c}{0}{\NOT {S1GIR\_VAC}}
+	\retornoInicio[-9em]{17b}{0}{\NOT {S1GIR\_VAC}}
+
+
+
+
+		
+
+
+
+
+	
+
+            
+\end{tikzpicture}

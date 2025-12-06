@@ -1,0 +1,55 @@
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\setlength{\nodeDist}{1.2\nodeDist}
+		
+	% --------------------------------------------
+	
+	\etapaInicial{0}
+    \primeraAccion{0}{X0-A1}{LB\_INI}
+    \otraAccion{X0-A1}{X0-A2}{Remover EME Almacén}
+
+    % --------------------------------------------
+	\etapa{1}{0}{B\_INI$\,\cdot\,$B\_STP$\,\cdot\,$B\_EME$\,\cdot\,$P\_SEG1$\,\cdot\,$P\_SEG2}
+	\primeraAccion{1}{X1-A1}{LB\_STP}
+    \otraAccion{X1-A1}{X1-A2}{LM\_NORM}
+    \otraAccion{X1-A2}{X1-A3}{SEM\_G}
+
+    % --------------------------------------------
+	% Bifurcación
+
+	\bifurcacion[35ex]{1}
+    {2}{\NOT{B\_STP}$\,\cdot\,$B\_EME$\,\cdot\,$P\_SEG1$\,\cdot\,$P\_SEG2}
+    {3}{\NOT{B\_EME}$\,+\,$\NOT{P\_SEG1}$\,+\,$\NOT{P\_SEG2}}
+ 	
+    \primeraAccion{2}{X2-A1}{LB\_RST}
+    \otraAccion{X2-A1}{X2-A2}{LM\_SG}
+    \otraAccion{X2-A2}{X2-A3}{SEM\_Y}
+
+    \primeraAccion{3}{X3-A1}{LB\_RST}
+    \otraAccion{X3-A1}{X3-A2}{LM\_EME}
+    
+    
+    %\etapa[3cm]{31}{3}
+    
+    % --------------------------------------------
+    % Bifurcación
+
+	\bifurcacionRetorno[27ex]{2}{4}{5}
+    \retornoInicio[10ex]{4}{0}{B\_RST$\,\cdot\,$B\_STP$\,\cdot\,$\NOT{B\_INI}$\,\cdot\,$B\_EME$\,\cdot\,$P\_SEG1$\,\cdot\,$P\_SEG2}
+    
+	{
+	\setlength{\enlaceRetornoDist}{0.1\nodeDist}
+	\retorno[35ex]{5}{3}{\NOT{B\_EME}$\,+\,$\NOT{P\_SEG1}$\,+\,$\NOT{P\_SEG2}}
+	}
+
+    % --------------------------------------------
+
+	{
+	\setlength{\retornoDist}{3.25cm}
+	\retornoInicioNF[16.2cm]{3}{0}{B\_RST$\,\cdot\,$B\_STP$\,\cdot\,$\NOT{B\_INI}$\,\cdot\,$B\_EME}
+	}
+            
+\end{tikzpicture}
+

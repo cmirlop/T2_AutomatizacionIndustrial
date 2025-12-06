@@ -1,0 +1,38 @@
+\begin{tikzpicture}
+  \ttfamily
+
+  %---------------------------
+  % Columna izquierda
+  %---------------------------
+  \etapaInicial{60a}
+  \etapa[1.5\nodeDist]{61a}{60a}{Alarma};
+  \forzado{61a}{X61a-A1}{G60\{$*$\}}
+  \otraAccion{X61a-A1}{X61a-A2}{Stop\_Act}
+  
+  {
+    \renewcommand{\transitionPos}{0.65}
+    \etapa[1.6\nodeDist]{62a}{61a}{Reset$\,\cdot\,$\NOT{Resume}};
+  }
+  
+  
+  \etapa[1.5\nodeDist]{63a}{62a}{\underline{1}};
+ 	
+  \forzado{62a}{X62a-A1}{G60\{$INIT$\}}
+  {
+	\setlength{\retornoDist}{0.75cm}
+	\setlength{\enlaceRetornoDist}{0.35\nodeDist}	
+	\saltoHorizontal[5.5cm]{61a}{63a}{Resume$\,\cdot\,$\NOT{Reset}}
+	}
+  
+
+  \retornoInicio[4.2cm]{63a}{60a}{\underline{1}}
+
+
+
+
+
+
+  
+
+
+\end{tikzpicture}

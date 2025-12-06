@@ -1,0 +1,82 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\etapaInicial{70}
+	\etapa[1.25\nodeDist]{70b}{70}{Act\_Mantenimiento};
+	%---
+	\sincronizacion[3cm]{70b}{\NOT{CINAI}$\,\cdot\,$\NOT{CINAF}$\,\cdot\,$\NOT{FRESA}$\,\cdot\,$\NOT{TALAD}$\,\cdot\,$\NOT{CINF}}{71a}{72a}
+	%--71a
+	\primeraAccion{71a}{X71a-A1}{QE1FW}
+	\condicionada{X71a-A1}{\NOT{EMP1F}}
+	\otraAccion{X71a-A1}{X71a-A2}{QE2FW}
+	\condicionada{X71a-A2}{\NOT{EMP2F}}
+
+	%---72a
+	\primeraAccion{72a}{X72a-A1}{QCINA}
+	\condicionada{X72a-A1}{\NOT{CINAI}$\,\cdot\,$\NOT{CINAF}}
+	\otraAccion{X72a-A1}{X72a-A2}{QCINF}
+	\condicionada{X72a-A2}{\NOT{FRESA}}
+	\otraAccion{X72a-A2}{X72a-A3}{QCINT}
+	\condicionada{X72a-A3}{\NOT{TALAD}}
+	\otraAccion{X72a-A3}{X72a-A4}{QCINS}
+	\condicionada{X72a-A4}{\NOT{CINF}}
+
+
+	%---
+	\etapa[1.25\nodeDist]{71b}{71a}{EMP1F$\,\cdot\,$EMP2F};
+	\primeraAccion{71b}{X71b-A1}{QE1BW}
+	\condicionada{X71b-A1}{\NOT{EMP1I}}
+	\otraAccion{X71b-A1}{X71b-A2}{QE2BW}
+	\condicionada{X71b-A2}{\NOT{EMP2I}}
+
+
+	
+	\etapa[1.25\nodeDist]{71c}{71b}{EMP1L$\,\cdot\,$EMP2L};
+
+	%---
+	\etapa[1.25\nodeDist]{72b}{72a}{5s/x72a};
+	\primeraAccion{72b}{X72b-A1}{QFresadora}
+	\condicionada{X72b-A1}{\NOT{FRESA}}
+	\otraAccion{X72b-A1}{X72b-A2}{QTalad}
+	\condicionada{X72b-A2}{\NOT{TALAD}}
+
+	\etapa[1.25\nodeDist]{72c}{72b}{5s/x72b};
+
+	%----
+	\concurrencia{71c}{72c}{\underline{1}}{73}
+	%\etapa[1.25\nodeDist]{63}{62}{\NOT{CINF}};
+	\primeraAccion{73}{X73-A1}{Mantenimiento\_FIN}
+	\retornoInicio[13em]{73}{0}{\underline{1}}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+            
+\end{tikzpicture}

@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+	scale = 1,
+	auto, 
+	node distance = \nodeDist, 
+	>=latex, 
+	line width = \lineWidth
+	]
+	
+	\ttfamily
+	
+	\etapaInicial{10}	
+
+	\etapa{11}{10}{A}
+	\primeraAccion{11}{X11-A1}{Q1}
+
+	\etapa{11b}{11}{B}
+
+	\etapa{12}{11b}{4s/X11b};
+	\primeraAccion{12}{X12-A1}{Q2}
+	\otraAccion{X12-A1}{X12-A2}{Q3}
+	
+	\retornoInicio[8em]{12}{10}{C}
+		
+            
+\end{tikzpicture}

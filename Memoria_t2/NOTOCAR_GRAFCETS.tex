@@ -1,0 +1,230 @@
+\documentclass[a4,10pt]{article}
+
+% -------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage{caption}
+
+\usepackage[
+	vmargin={1cm,1cm},
+	includefoot,includehead,
+	]{geometry}
+
+\input{./configuracions/preambul_GRAFCET}
+\input{./configuracions/configura_listings_SCL}
+
+% -------------------------------------------------------------------------
+
+\parindent = 0cm
+\parskip = 2ex
+
+% -------------------------------------------------------------------------
+
+\begin{document}
+
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+% -------------------------------------------------------------------------
+
+\begin{figure}[htbp]
+	\centering
+	\scalebox{0.75}{\input{grafcet_01}}
+	\medskip
+	\caption{Grafcet de ejemplo}
+\end{figure}
+
+
+\bigskip
+
+% -------------------------------------------------------------------------
+
+Un ejemplo de \textbf{ecuaciones lógicas}:
+
+\newlength{\sepsGrups}
+\setlength{\sepsGrups}{2ex}
+
+$S_{20} = X_{22} \cdot \Not{\mathtt{B3}} + \mathtt{FirstScan}$\\
+$S_{21} = X_{20} \cdot \mathtt{ACTIVA\_REACTOR}$\\
+$S_{22} = X_{21} \cdot (1800\;\mathrm{s}/X_{21})$\\[\sepsGrups]
+%
+$X_{20} = S_{20} + X_{20}\cdot\Not{S_{21}}$\\
+$X_{21} = S_{21} + X_{21}\cdot\Not{S_{22}}$\\
+$X_{22} = S_{22} + X_{22}\cdot\Not{S_{20}}$\\[\sepsGrups]
+%
+$\mathtt{REACTOR\_VACIO} = X_{20}$\\
+
+
+% -------------------------------------------------------------------------
+
+\begin{figure}[htbp]
+	\centering
+	\scalebox{0.75}{\input{grafcet_02}}
+	\medskip
+	\caption{Grafcet de ejemplo general. Se ha modificado la posición de la transición y la posición del retorno para que quede equilibrado}
+\end{figure}
+
+% -------------------------------------------------------------------------
+
+\begin{figure}[htbp]
+	\centering
+	\scalebox{0.75}{\input{grafcet_03}}
+	\medskip
+	\caption{Grafcet de ejemplo}
+\end{figure}
+
+
+% -------------------------------------------------------------------------
+
+\begin{figure}[htbp]
+	\centering
+	\scalebox{0.75}{\input{grafcet_Q3_solucio}}
+	\medskip
+	\caption{Grafcet de ejemplo en el que se han modificado las distancias para que quede equilibrado}
+\end{figure}
+
+% -------------------------------------------------------------------------
+
+\clearpage
+
+\begin{figure}[htbp]
+	\centering
+	\scalebox{0.7}{\input{grafcet_Control}}
+	\medskip
+	\caption{Grafcet de ejemplo en el que se ha utilizado un retorno sin flecha y se ha modificado la distancia vertical de ese retorno}
+\end{figure}
+
+% -------------------------------------------------------------------------
+
+\clearpage
+
+\section*{Código SCL (IF -- THEN -- ELSE)}
+
+\begin{lstlisting}
+"T1".TON(IN := "X23" AND NOT #Alarma,
+	PT := T#3s);
+
+IF "T1".Q THEN // Disparo de la alarma
+	#Alarma := TRUE;
+END_IF;
+
+// ---------------------------------------------------
+
+IF EMERGENCIA OR (#Alarma AND #Reset) THEN
+ 
+	#X20 := TRUE;
+	#X21 := FALSE;
+	#X22 := FALSE;
+	...
+ 
+	#Alarma := FALSE;
+ 
+ELSIF (#Alarma AND #Resume) THEN
+ 
+	#Alarma := FALSE;
+ 
+END_IF;					
+
+// ---------------------------------------------------
+
+IF (NOT #Alarma AND NOT #EMERGENCIA) THEN
+ 
+	#S20 := #X27 OR "FirstScan"
+	#S21 := #X20 AND "F1";
+	...
+	
+	#X20 := #S20 OR (#X20 AND NOT #S21);
+	#X21 := #S21 OR (#X21 AND NOT #S22);
+	...
+	
+	#QCIN_ADELA := #X22 OR #X23;
+	#QCIN_ATRAS := #X25;
+	#ACT_EST := #X24;
+	#PIEZA_ESTAMPADA := #X27;
+		 
+ELSE // Alarma o emergencia
+
+	#QCIN_ADELA := FALSE;
+	#QCIN_ATRAS := FALSE;
+	#ACT_EST := FALSE;
+	#PIEZA_ESTAMPADA := FALSE;
+ 
+END_IF;
+
+// ---------------------------------------------------
+// Fin
+\end{lstlisting}
+
+
+\clearpage
+
+\section*{Código SCL (GRAFCET)}
+
+\begin{lstlisting}
+"T1".TON(IN := "X23" AND NOT #Alarma,
+	PT := T#3s);
+
+// ---------------------------------------------------
+
+#S20e := (#X22e AND #CI) OR "FirstScan"
+#S21e := #X20e AND "EMERGENCIA";
+#S22e := #X21e;
+
+#X20e := #S20e OR (#X20e AND NOT #S21e);
+#X21e := #S21e OR (#X21e AND NOT #S22e);
+#X22e := #S22e OR (#X22e AND NOT #S20e);
+
+#FORCE_INIT_E := #X21e;
+#FORCE_CURRENT_E := #X22e;
+
+// ---------------------------------------------------
+
+#S20a := (#X23a AND NOT #FORCE_CURRENT_E) OR "FirstScan"
+#S21a := #X20a AND #Alarma AND NOT #FORCE_CURRENT_E;
+#S22a := #X21a AND #Reset AND NOT #FORCE_CURRENT_E;
+#S23a := #X22a OR #X21a AND #Resume AND NOT #FORCE_CURRENT_E;
+
+#X20a := #S20a OR (#X20a AND NOT #S21a) OR #FORCE_INIT_E;
+#X21a := #S20a OR (#X21a AND NOT #S22a AND NOT #S23a) AND NOT #FORCE_INIT_E;
+#X22a := #S22a OR (#X22a AND NOT #S22a) AND NOT #FORCE_INIT_E;
+#X23a := #S23a OR (#X23a AND NOT #S20a) AND NOT #FORCE_INIT_E;
+
+#STOP_ACT := #X21a;
+#FORCE_INIT := #FORCE_INIT_E OR #X23a;
+#FORCE_CURRENT := #FORCE_CURRENT_E OR #X22a;
+
+// ---------------------------------------------------
+// Grafcet de produccion
+
+#S20 := (#X27 AND NOT #FORCE_CURRENT) OR "FirstScan";
+#S21 := (#X20 AND #F1) AND NOT #FORCE_CURRENT;
+#S22 := (#X21 AND #INICIO AND #CIN_INICIO) AND NOT #FORCE_CURRENT;
+...
+
+// ---------------------------------------------------
+
+#X20 := (#S20 OR (#X20 AND NOT #S21)) OR #FORCE_INIT:
+#X21 := (#S21 OR (#X21 AND NOT #S22)) AND NOT #FORCE_INIT;
+#X22 := (#S22 OR (#X22 AND NOT #S23)) AND NOT #FORCE_INIT;
+...
+
+// ---------------------------------------------------
+
+#QCIN_ADELA := (#X22 OR #X23) AND NOT #STOP_ACT;
+#QCIN_ATRAS := #X25 AND NOT #STOP_ACT;
+#ACT_EST := #X24 AND NOT #STOP_ACT;
+#PIEZA_ESTAMPADA := #X27 AND NOT #STOP_ACT;
+
+#Alarma := "T1".Q AND NOT #FORCE_INIT;
+
+// ---------------------------------------------------
+// Fin
+\end{lstlisting}
+
+\end{document}
+

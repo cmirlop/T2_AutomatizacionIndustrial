@@ -1,0 +1,48 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+% --------------------------------------------
+	\etapaInicial{30}
+	\primeraAccion{30}{X30-A1}{Fresadora\_Libre}
+	%---
+	\etapa[1.25\nodeDist]{31}{30}{Act\_Fresadora};
+	\primeraAccion{31}{X31-A1}{QCINF}
+	\otraAccion{X31-A1}{X31-A2}{Alarma\_Fresadora\_1}
+	\condicionada{X31-A2}{3s/x31}
+	
+
+	%---
+	\etapa[1.25\nodeDist]{32}{31}{FRESA};
+	\primeraAccion{32}{X32-A1}{QFresadora}
+	
+	
+	%---
+	\etapa[1.25\nodeDist]{33}{32}{3s/x32};
+	\comentari[3]{X33}{Esperando taladro libre}
+	
+	
+	%---
+	\etapa[1.25\nodeDist]{34}{33}{Taladro\_Libre};
+	\primeraAccion{34}{X34-A1}{QCINF}
+	\otraAccion{X34-A1}{X34-A2}{Act\_CIN\_Taladro}
+	\otraAccion{X34-A2}{X34-A3}{Alarma\_Fresadora\_2}
+	\condicionada{X34-A3}{3s/x34}
+	\retornoInicio[6em]{34}{0}{Pieza\_REC\_Taladro}
+
+
+
+
+	
+
+            
+\end{tikzpicture}

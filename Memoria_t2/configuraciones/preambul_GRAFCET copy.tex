@@ -1,0 +1,360 @@
+
+\usepackage{ifthen}
+
+\usepackage{tikz}
+%\usepackage{pgf}
+\usepackage{pgfplots,xcolor}
+%\usepgfmodule{plot}
+\usetikzlibrary{
+	shapes,
+	arrows.meta,
+	calc,
+	patterns,
+	decorations.pathmorphing,
+	decorations.markings,
+	decorations.shapes,
+	backgrounds,	
+	fit
+	}
+
+
+% -------------------------------------------------------------------------------------
+% Longintuds
+
+\newlength{\nodeDist}
+\nodeDist = 2.5cm
+
+\newlength{\retornoDist} % Distància vertical dels retorns
+\retornoDist = 0.5\nodeDist
+
+\newlength{\enlaceRetornoDist} % Distància vertical de la tornada (per dalt)
+\enlaceRetornoDist = 0.125\nodeDist
+
+\newcommand{\transitionPos}{0.5}
+\newcommand{\transitionPosRetorno}{0.25}
+\newcommand{\ArrowPos}{0.5}
+
+\newlength{\bifDistX}
+\bifDistX = 10ex
+
+\newlength{\bifDistY}
+\bifDistY = 1.1\nodeDist
+
+\newlength{\sincDistYabove}
+\sincDistYabove = 0.85\nodeDist
+
+\newlength{\sincDistYbelow}
+\sincDistYbelow = 0.6\sincDistYabove
+
+\newlength{\sincDistYBlockbelow}
+\sincDistYBlockbelow = 0.5\nodeDist
+
+\newlength{\actionMinimumWidth}
+\actionMinimumWidth = 5em
+
+
+% --------------------------
+
+\newdimen\lineWidth
+\lineWidth = 1.15pt
+
+\newlength{\blockLineWidth}
+\blockLineWidth = 1pt
+
+\newlength{\transitionsLineWidth}
+\transitionsLineWidth = 1pt
+
+% --------------------------
+
+\newlength{\yTa} 
+\yTa = 1.75em
+
+\newlength{\yTb}
+\yTb = 0.35em
+
+
+% -------------------------------------------------------------------------------------
+% Estils
+
+\tikzset{
+	big arrow/.style={
+		decoration={markings,mark=at position 1 with {\arrow[scale=2.0,#1]{>}}},
+		postaction={decorate},
+		shorten >=0.4pt},
+	big arrow/.default=black
+	}
+
+\tikzstyle{block} = [
+	draw, 
+	fill = white, %black!5, 
+	rectangle, 
+    minimum height = 3em, 
+    minimum width = 3em,
+    line width = \blockLineWidth,
+    %thin
+    ]
+
+\tikzstyle{action} = [
+	draw, 
+	fill = white, %black!5, 
+	rectangle, 
+    minimum height = 3em, 
+    minimum width = \actionMinimumWidth,
+    line width = \blockLineWidth,
+    %thin
+    ]
+
+\tikzstyle{signal} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={<-, line width = 1.15pt, >=latex, black}]
+
+
+% -------------------------------------------------------------------------------------
+% La vida moderna
+
+\newcommand{\RTrigg}{$\uparrow$}
+\newcommand{\FTrigg}{$\downarrow$}
+
+\newcommand{\NOT}[1]{$\overline{\mathtt{#1}}$}
+\newcommand{\NOTs}[1]{$\overline{\mathsf{#1}}$}
+\newcommand{\Not}[1]{\overline{#1}}
+
+% -------------------------------------------------------------------------------------
+% Comandaments
+
+\newcommand{\dibujaTransicion}[1]{%
+	\draw[line width = \transitionsLineWidth, -] ($(#1.west)-(\yTa,0cm)$) -- ($(#1.west)-(\yTb,0cm)$);
+	}
+
+\newcommand{\dibujaTransicionVertical}[1]{%
+	\draw[line width = \transitionsLineWidth, -] ($(#1.north)+(0cm,0.9\yTa)$) -- ($(#1.north)+(0cm,0.5\yTb)$);
+	}
+
+\newcommand{\transicion}[3]{%
+	\draw[line width = \transitionsLineWidth, -] (X#1) -- node[pos=\transitionPos, xshift=1em] (T#2) {#3} (X#2);
+	\dibujaTransicion{T#2}
+	}
+
+\newcommand{\sinTransicion}[3]{%
+	\draw[line width = \transitionsLineWidth, -] (X#1) -- (X#2);
+	}
+
+\newcommand{\etapaInicial}[1]{%
+	\node[block] (X#1) {};
+	\draw[line width = \blockLineWidth] ($(X#1.north west)+(0.3em,-0.3em)$) rectangle 
+		($(X#1.south east)-(0.3em,-0.3em)$);
+	\node[below=0.25ex,anchor=south] at (X#1) {#1};
+	}
+	
+\newcommand{\etapa}[4][\nodeDist]{%
+   	\node[block, node distance = #1, below of = X#3] (X#2) {};
+	\node[below=0.25ex,anchor=south] at (X#2) {#2};
+   	\transicion{#3}{#2}{#4}
+	}
+
+\newcommand{\etapaFantasma}[2]{%
+   	\node[signal, below of = X#2, node distance = \nodeDist] (X#1) {#1};
+   	\sinTransicion{#2}{#1}
+	}
+		
+\newcommand{\primeraAccion}[3]{%
+   	\node[action, right of = X#1, node distance = 3em, right] (#2) {#3};
+   	\draw[line width = \transitionsLineWidth, -] (X#1) -- (#2);
+}
+
+\newcommand{\otraAccion}[3]{%
+   	\node[action, right, xshift=-\blockLineWidth] (#2) at (#1.east) {#3};
+}
+
+\newcommand{\condicionada}[2]{%
+   	\node[above right, xshift=1em] at (#1.north west) {#2};
+   	\draw[line width = \transitionsLineWidth] ([xshift=1em]#1.north west) -- ([xshift=1em,yshift=1.25em]#1.north west);
+}
+
+\newcommand{\primeraAccionSobreDesactivacion}[3]{% OBSOLETA
+   	\node[action, right of = X#1, node distance = 3em, right] (#2) {#3};
+   	\draw[line width=\blockLineWidth = ->, arrows={-Triangle[angle=45:10pt]}] 
+   		([xshift=0.5\blockLineWidth]#2.south west) -- ([yshift=-3ex]#2.south west);
+   	\draw[line width = \transitionsLineWidth, -] (X#1) -- (#2);
+}
+
+\newcommand{\sobreDesactivacion}[1]{%
+   	\draw[line width=\blockLineWidth = ->, arrows={-Triangle[angle=45:10pt]}] 
+   		([xshift=0.5\blockLineWidth]#1.south west) -- ([yshift=-3ex]#1.south west);
+}
+
+\newcommand{\sobreActivacion}[1]{%
+   	\draw[line width=\blockLineWidth = ->, arrows={-Triangle[angle=45:10pt]}] 
+   		([xshift=0.5\blockLineWidth]#1.north west) -- ([yshift=+3ex]#1.north west);
+}
+	
+%\bifurcacion[7ex]{14}{15}{Tansicion_15}{16}{Tansicion_16}	
+\newcommand{\bifurcacion}[6][\bifDistX]{%
+   	\node[block, below of = X#2, xshift=-#1, yshift=-\bifDistY] (X#3) {};
+	\node[below=0.25ex, anchor=south] at (X#3) {#3};
+   	\node[signal, yshift=4em] at (X#3.north) (cantoX#3) {};
+	\draw[line width = \transitionsLineWidth, -] (X#2) |- (cantoX#3) -- node[xshift=1em] (T#3) {#4} (X#3);
+	\dibujaTransicion{T#3};
+
+   	\node[block, below of = X#2, xshift=#1, yshift=-\bifDistY] (X#5) {};
+	\node[below=0.25ex, anchor=south] at (X#5) {#5};
+   	\node[signal, yshift=4em] at (X#5.north) (cantoX#5) {};
+	\draw[line width = \transitionsLineWidth, -] (X#2) |- (cantoX#5) -- node[xshift=1em] (T#5) {#6} (X#5);
+	\dibujaTransicion{T#5};
+	}
+
+%\bifurcacionRetorno[7ex]{14}{15}{16}
+\newcommand{\bifurcacionRetorno}[4][\bifDist]{%
+   	\node[signal, below of = X#2, xshift=-#1, yshift=-0.15\bifDistY] (X#3) {};
+   	\node[signal,yshift=0em] at (X#3.north) (cantoX#3) {};
+	\draw[line width = \transitionsLineWidth, -] (X#2) |- (cantoX#3) -- (X#3);
+
+   	\node[signal, below of = X#2, xshift=#1, yshift=-0.15\bifDistY] (X#4) {};
+   	\node[signal,yshift=0em] at (X#4.north) (cantoX#4) {};
+	\draw[line width = \transitionsLineWidth, -] (X#2) |- (cantoX#4) -- (X#4);
+	}
+
+%\sincronizacion[7ex]{14}{TRANSICION}{15}{16}
+\newcommand{\sincronizacion}[5][\bifDist]{%
+   	\node[signal, yshift=-\sincDistYabove] at (X#2) (SyncX#2) {}; % Punt central de la sincronització   		
+	\draw[line width = \transitionsLineWidth, -] (X#2) -- node[xshift=1em] (T#2) {#3} (SyncX#2);
+	\dibujaTransicion{T#2};
+   	\node[signal, xshift=-#1] at (SyncX#2) (SyncEsq) {};
+   	\node[signal, xshift=+#1] at (SyncX#2) (SyncDer) {};
+   	\node[block, below of = SyncX#2, xshift=-#1, yshift=-0.1\nodeDist] (X#4) {};
+	\node[below=0.25ex, anchor=south] at (X#4) {#4};
+   	\node[block, below of = SyncX#2, xshift=#1, yshift=-0.1\nodeDist] (X#5) {};
+	\node[below=0.25ex, anchor=south] at (X#5) {#5};
+	\draw[line width = \transitionsLineWidth, -] (SyncEsq) -- (X#4);
+	\draw[line width = \transitionsLineWidth, -] (SyncDer) -- (X#5);
+	\draw[line width = \transitionsLineWidth, -, double, double distance = 0.2em] ($(SyncEsq)-(3em,0em)$) -- ($(SyncDer)-(-3em,0em)$);
+	}
+
+%\concurrencia{15}{16}{TRANSICION}{17}
+\newcommand{\concurrencia}[4]{%
+   	\node[signal,yshift=-\sincDistYbelow] at ($(X#1) !0.5! (X#2)$) (SyncX#4) {}; % Punt central de la sincronització
+	\draw[line width = \transitionsLineWidth, -] (X#1) -- ($(X#1)-(0em,\sincDistYbelow)$);
+	\draw[line width = \transitionsLineWidth, -] (X#2) -- ($(X#2)-(0em,\sincDistYbelow)$);
+	\node[block, below of = SyncX#4, yshift=-\sincDistYBlockbelow] (X#4) {};
+	\node[below=0.25ex,anchor=south] at (X#4) {#4};
+	\draw[line width = \transitionsLineWidth, -] (SyncX#4) -- node[xshift=1em] (T#4) {#3} (X#4);
+	\dibujaTransicion{T#4};
+	\draw[line width = \transitionsLineWidth, -, double, double distance = 0.2em] ($(X#1)-(3em,\sincDistYbelow)$) -- ($(X#2)-(-3em,\sincDistYbelow)$);
+}
+
+%\concuSinco{15}{16}{TRANSICION}{17}{18}
+\newcommand{\concuSinco}[5]{%
+   	\node[signal,yshift=-\sincDistYbelow] at ($(X#1) !0.5! (X#2)$) (SyncA) {}; % Punt central de la sincronització
+	\draw[line width = \transitionsLineWidth, -] (X#1) -- ($(X#1)-(0em,\sincDistYbelow)$);
+	\draw[line width = \transitionsLineWidth, -] (X#2) -- ($(X#2)-(0em,\sincDistYbelow)$);
+	
+	\node[signal, below of = SyncA, yshift=-\sincDistYBlockbelow] (SyncB) {};
+	\draw[line width = \transitionsLineWidth, -] (SyncA) -- node[xshift=1em] (T#4#5) {#3} (SyncB);
+	\draw[line width = \transitionsLineWidth, -, double, double distance = 0.2em] ($(X#1)-(3em,\sincDistYbelow)$) -- ($(X#2)-(-3em,\sincDistYbelow)$);
+
+	\dibujaTransicion{T#4#5};
+   	\node[signal, xshift=-3cm] at (SyncB) (SyncEsq) {};
+   	\node[signal, xshift=+3cm] at (SyncB) (SyncDer) {};
+   	\node[block, below of = SyncB, xshift=-3cm, yshift=-0.1\nodeDist] (X#4) {};
+	\node[below=0.25ex, anchor=south] at (X#4) {#4};
+   	\node[block, below of = SyncB, xshift=3cm, yshift=-0.1\nodeDist] (X#5) {};
+	\node[below=0.25ex, anchor=south] at (X#5) {#5};
+	\draw[line width = \transitionsLineWidth, -] (SyncEsq) -- (X#4);
+	\draw[line width = \transitionsLineWidth, -] (SyncDer) -- (X#5);
+	\draw[line width = \transitionsLineWidth, -, double, double distance = 0.2em] ($(SyncEsq)-(3em,0em)$) -- ($(SyncDer)-(-3em,0em)$);
+}
+
+%\retornoInicio{13}{10}{JUAN}
+\newcommand{\retornoInicio}[4][4em]{% Només per l'esquerra...
+	\node[signal] at ($(X#2) !\ArrowPos! (X#3)$) (dif) {};
+	\node[signal] at ($(X#2 |- dif)-(#1,0em)$) (flech) {};
+	\draw[line width = \transitionsLineWidth, ->, arrows={-Triangle[angle=45:10pt]}] 
+		(X#2.south) |- node[pos=\transitionPosRetorno, xshift=1em] (T#3) {#4}
+		($(X#2.south -| flech)-(0em,\retornoDist)$) --
+		(flech);
+	\draw[line width = \transitionsLineWidth, -] 
+		([yshift=-5pt]flech) --
+		($(X#3.north -| flech)+(0em,2em)$) -|
+		(X#3.north);
+	\dibujaTransicion{T#3};
+	}
+
+%\Flecha{Etapa}{DistanciaHorizonal}{DistanciaVertical}
+\newcommand{\Flecha}[3]{
+	\node[signal] at ($(X#1) + (#2,#3)$) (flech) {};
+	\draw[line width = \transitionsLineWidth, ->, arrows={-Triangle[angle=45:10pt]}] 
+		([yshift=-0.25cm]flech) -- ([yshift=+0.25cm]flech);
+	}
+
+
+\newcommand{\retornoInicioNF}[4][4em]{% Només per l'esquerra NO FLETXA
+	\node[signal] at ($(X#2) !0.5! (X#3)$) (dif) {};
+	\node[signal] at ($(X#2 |- dif)-(#1,0em)$) (flech){};
+	\draw[line width = \transitionsLineWidth, -] 
+		(X#2.south) |- node[pos=0.25, xshift=1em] (T#3) {#4}
+		($(X#2.south -| flech)-(0em,\retornoDist)$) --
+		(flech);
+	\draw[line width = \transitionsLineWidth, -] 
+		([yshift=-5pt]flech) --
+		($(X#3.north -| flech)+(0em,2em)$) -|
+		(X#3.north);
+	\dibujaTransicion{T#3};
+	}
+
+%\retorno[12ex]{17}{11}{ANTONIO}
+\newcommand{\retorno}[4][12em]{% Només per la dreta...
+	\node[signal] at ($(X#2) !0.5! (X#3)$) (dif) {};
+	\node[signal] at ($(X#2 |- dif)-(-#1,0em)$) (flech) {};
+	\draw[line width = \transitionsLineWidth, ->, arrows={-Triangle[angle=45:10pt]}] 
+		(X#2.south) |- node[pos=0.25, xshift=1em] (T#3) {#4}
+		($(X#2.south -| flech)-(0em,\retornoDist)$) --
+		(flech);
+	\draw[line width = \transitionsLineWidth, -] 
+		([yshift=-6pt]flech) |-
+		($(X#3.north)-(0em,-\enlaceRetornoDist)$);
+	\dibujaTransicion{T#3};
+	}
+
+%\retornoHorizontal[12ex]{17}{11}{CondicioDeTransicio}
+\newcommand{\retornoHorizontal}[4][12em]{% Només per la dreta...
+	\node[signal] at ($(X#2) !0.5! (X#3)$) (dif) {};
+	\node[signal] at ($(X#2 |- dif)-(-#1,0em)$) (flech) {};
+	\draw[line width = \transitionsLineWidth, ->, arrows={-Triangle[angle=45:10pt]}] 
+		(X#2.south) |-
+		($(X#2.south -| flech)-(0em,\retornoDist)$) --
+		node[below, pos=0, xshift=-0.5*#1, yshift=-2ex] (T#3) {#4} (flech);
+	\draw[line width = \transitionsLineWidth, -] 
+		([yshift=-6pt]flech) |-
+		($(X#3.north)-(0em,-\enlaceRetornoDist)$);
+	\dibujaTransicionVertical{T#3};
+	}
+
+%\retornoHorizontalX[12ex]{X17}{X11}{CondicioDeTransicio} 
+\newcommand{\retornoHorizontalX}[4][12em]{% Només per la dreta...
+	\node[signal] at ($(#2) !0.5! (#3)$) (dif) {};
+	\node[signal] at ($(#2 |- dif)-(-#1,0em)$) (flech) {};
+	\draw[line width = \transitionsLineWidth, ->, arrows={-Triangle[angle=45:10pt]}] 
+		(#2.south) |-
+		($(#2.south -| flech)-(0em,\retornoDist)$) --
+		node[below, pos=0, xshift=-0.5*#1, yshift=-2ex] (T#3) {#4} (flech);
+	\draw[line width = \transitionsLineWidth, -] 
+		([yshift=-6pt]flech) |-
+		($(#3.north)-(0em,-\enlaceRetornoDist)$);
+	\dibujaTransicionVertical{T#3};
+	}
+
+%\retornoHorizontalXIzqZ[12ex]{X17}{CondicioDeTransicio} 
+\newcommand{\retornoHorizontalXIzqZ}[3][12em]{% Només per l'esquerra. Va fins a una de pujada ja existent.
+	\node[signal] at ($(#2) - (#1,\retornoDist)$) (fin) {};
+	\draw[line width = \transitionsLineWidth] 
+		(#2.south) |- node[below, pos=0.75, yshift=-2ex] (T#2) {#3} (fin);
+	\dibujaTransicionVertical{T#2};
+	}
+
+
+%\comentari[1]{12}{Máquina fresadora en marcha}
+\newcommand{\comentari}[3][0]{%
+	\node [right] (C#2) at ([xshift=0.5em,yshift=#1]#2.east) {\sffamily\scriptsize``#3''};
+}
+
+% -------------------------------------------------------------------------------------
+% Fi

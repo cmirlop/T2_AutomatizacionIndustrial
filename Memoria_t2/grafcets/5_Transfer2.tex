@@ -1,0 +1,60 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\etapaInicial{40}
+	\primeraAccion{40}{X40-A1}{Descartador\_Libre}
+	%---
+
+	\bifurcacion[100]{40}{41}{Act\_Descartador}{42}{SigMaqMala}
+
+	\primeraAccion{41}{X41-A1}{QC4}
+	\primeraAccion{42}{X42-A1}{QC4}
+	
+	%---
+	
+	%---
+	\etapa[1.25\nodeDist]{41b}{41}{S4};
+	\comentari[3]{X31b}{Esperamos máquina de calidad libre}
+
+	\etapa[1.25\nodeDist]{41c}{41b}{SIG\_MAQ\_LIBRE};
+	\primeraAccion{41c}{X41c-A1}{QC4}
+	\otraAccion{X41c-A1}{X41c-A2}{ACT\_SIG\_MAQ}
+
+
+	\etapa[1.25\nodeDist]{42b}{42}{S4};
+	\primeraAccion{42b}{X42b-A1}{QTRANS}
+
+	
+	
+	\retornoInicio[6em]{41c}{0}{\NOT{S4}}
+	\retornoInicio[-16em]{42b}{0}{\NOT{S4}}
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+            
+\end{tikzpicture}

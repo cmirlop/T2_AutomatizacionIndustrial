@@ -1,0 +1,47 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\etapaInicial{60}
+	\primeraAccion{60}{X60-A1}{Cinta\_FIN\_Libre}
+	%---
+	\etapa[1.25\nodeDist]{61}{60}{Act\_Cinta\_Fin};
+	\primeraAccion{61}{X61-A1}{QCINS}
+	\otraAccion{X61-A1}{X61-A2}{Alarma\_CIN\_FIN\_1}
+	\condicionada{X61-A2}{5s/x61}
+	%--
+	\etapa[1.25\nodeDist]{62}{61}{CINF};
+	\comentari[3]{X62}{Esperando a recoger pieza}
+	%---
+	\etapa[1.25\nodeDist]{63}{62}{\NOT{CINF}};
+	\primeraAccion{63}{X63-A1}{Pieza\_Entregada}
+	\retornoInicio[6em]{63}{0}{\underline{1}}
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+            
+\end{tikzpicture}

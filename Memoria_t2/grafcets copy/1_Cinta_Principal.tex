@@ -1,0 +1,69 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{10}
+	\primeraAccion{10}{X10-A1}{Cinta\_Libre}	
+
+	%-----
+	\renewcommand{\transitionPos}{0.35}
+   	\etapa[1.25\nodeDist]{11}{10}{Proceso\_Activo};
+	\comentari[3]{X11}{Esperando a que pongan una pieza}
+	
+
+	%---
+	\etapa[1.25\nodeDist]{12}{11}{CINAI$\,\cdot\,$\NOT{CINAF}};
+	\primeraAccion{12}{X12-A1}{QCINA}
+	\otraAccion{X12-A1}{X12-A2}{Alarma\_Cinta\_1}
+	\condicionada{X12-A2}{3s/x12}
+
+	%---
+	\etapa[1.25\nodeDist]{12b}{12}{\NOT{CINAI}};
+	\primeraAccion{12b}{X12b-A1}{QCINA}
+	\condicionada{X12b-A1}{\NOT{CINAI}}
+	\otraAccion{X12b-A1}{X12b-A2}{Alarma\_Cinta\_2}
+	\condicionada{X12b-A2}{3s/x12b}
+
+	%---
+	\etapa[1.25\nodeDist]{13}{12b}{CINAF};
+	\comentari[3]{X13}{Esperando a Empujadora 1 Libre}
+
+
+	%---
+	\etapa[1.25\nodeDist]{14}{13}{Empujadora1\_Libre$\,\cdot\,$\NOT{CINAI}};
+	\primeraAccion{14}{X14-A1}{QCINA}
+	\condicionada{X14-A1}{\NOT{CINAI}}
+	\otraAccion{X14-A1}{X14-A2}{Alarma\_Cinta\_3}
+	\condicionada{X14-A2}{3s/x14}
+
+
+	%----
+	\etapa[1.25\nodeDist]{14b}{14}{\NOT{CINAF}};
+	\primeraAccion{14b}{X14b-A1}{QCINA}
+	\condicionada{X14b-A1}{\NOT{CINAI}}
+	\otraAccion{X14b-A1}{X14b-A2}{Alarma\_Cinta\_4}
+	\condicionada{X14b-A2}{3s/x14b}
+	\otraAccion{X14b-A2}{X14b-A3}{Act\_EMP}
+
+
+	%----
+	\etapa[1.25\nodeDist]{15}{14b}{Pieza\_REC\_EMP};
+	\primeraAccion{15}{X15-A1}{Pieza\_Entregada\_Empujadora\_1}
+	\retornoInicio[6em]{15}{0}{\underline{1}}
+
+
+
+	
+
+            
+\end{tikzpicture}

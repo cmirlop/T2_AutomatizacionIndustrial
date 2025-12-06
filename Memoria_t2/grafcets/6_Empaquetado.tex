@@ -1,0 +1,97 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\etapaInicial{50}
+	\primeraAccion{50}{X50-A1}{MAQ\_CAL\_VAC\_LIBRE}
+
+	\etapa[1\nodeDist]{51}{50}{Act\_Maq};
+	\primeraAccion{51}{X51-A1}{QC5\_VAC}
+	\otraAccion{X51-A1}{X51-A2}{QC6\_VAC}
+	\otraAccion{X51-A1}{X51-A2}{X51-A3}{QC7\_VAC}
+
+	%---
+
+	%---
+	\etapa[1\nodeDist]{52}{51}{S5};
+	\primeraAccion{52}{X52-A1}{QC5\_VAC}
+	\otraAccion{X52-A1}{X52-A2}{QC6\_VAC}
+	\otraAccion{X52-A1}{X52-A2}{X52-A3}{QC7\_VAC}
+	
+
+	%---
+	\etapa[1\nodeDist]{53}{52}{1s/X52};
+	\primeraAccion{53}{X53-A1}{QCLAMP}
+
+	\etapa[1\nodeDist]{54}{53}{1s/X53};
+	\primeraAccion{54}{X54-A1}{HAYVacuna}
+	\otraAccion{X54-A1}{X54-A2}{QCLAMP}
+
+	\etapa[1\nodeDist]{55}{54}{Hay\_Soporte};
+	\primeraAccion{55}{X55-A1}{GRIPPER2}
+	\otraAccion{X55-A1}{X55-A2}{QCLAMP}
+
+	\etapa[1\nodeDist]{56}{55}{2s/X55};
+	\primeraAccion{56}{X56-A1}{QBAJ}
+	\otraAccion{X56-A1}{X56-A2}{GRIPPER}
+	\otraAccion{X56-A1}{X56-A2}{X56-A3}{QCLAMP}
+
+	\etapa[1\nodeDist]{57}{56}{2s/X56};
+	\primeraAccion{57}{X57-A1}{GRIPPER}
+	\otraAccion{X57-A1}{X57-A2}{QCLAMP}
+
+	\etapa[1\nodeDist]{58}{57}{2s/X57};
+	\primeraAccion{58}{X58-A1}{GRIPPER}
+	\otraAccion{X58-A1}{X58-A2}{QHOR}
+
+	\etapa[1\nodeDist]{59}{58}{2s/X58};
+	\primeraAccion{59}{X59-A1}{GRIPPER}
+	\otraAccion{X59-A1}{X59-A2}{QBAJ\_MAQ}
+	\otraAccion{X59-A1}{X59-A2}{X56-A3}{QHOR}
+
+	\etapa[1\nodeDist]{60}{59}{2s/X59};
+	\primeraAccion{60}{X60-A1}{QHOR}
+	\otraAccion{X60-A1}{X60-A2}{QBAJ\_MAQ}
+
+	\etapa[1\nodeDist]{61}{60}{2s/X60};
+	\primeraAccion{61}{X61-A1}{QHOR}
+
+	\etapa[1\nodeDist]{62}{61}{2s/X61};
+	\primeraAccion{62}{X62-A1}{Pieza\_Empaquetada}
+
+	
+	
+
+	\retornoInicio[13em]{62}{0}{\underline{1}}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+            
+\end{tikzpicture}

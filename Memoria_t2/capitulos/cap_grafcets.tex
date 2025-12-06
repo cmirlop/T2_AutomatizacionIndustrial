@@ -1,0 +1,430 @@
+
+\section{Grafcets}\label{sec:grafcets}
+
+\subsection{Grafcet Principal}
+
+
+
+\subsection{Grafcet de la cinta de entrada}\label{sec:graf_cin_ini}
+
+
+
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/1_Cinta_Principal.tex}}
+	\medskip
+	\caption{Grafcet de la cinta de entrada}
+\end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+% Transiciones
+$S_{10} = \mathtt{FirstScan} + X_{15}$\\
+$S_{11} = X_{10}\cdot \mathtt{Proceso\_Activo}$\\
+$S_{12} = X_{11}\cdot \mathtt{CINAI\_M}$\\
+$S_{12b} = X_{12}\cdot \Not{\mathtt{CINAI\_M}}$\\
+$S_{13} = X_{12b}\cdot \mathtt{CINAF\_M}$\\
+$S_{14} = X_{13}\cdot \mathtt{Empujadora\_Libre}\cdot \Not{\mathtt{CINAI\_M}}$\\
+$S_{14b} = X_{14}\cdot \Not{\mathtt{CINAF\_M}}$\\
+$S_{15} = X_{14b}\cdot \mathtt{Pieza\_rec\_emp}$\\[\sepsGrups]
+%
+% Etapas
+$X_{10} = S_{10} + X_{10}\cdot \Not{S_{11}}$\\
+$X_{11} = S_{11} + X_{11}\cdot \Not{S_{12}}$\\
+$X_{12} = S_{12} + X_{12}\cdot \Not{S_{12b}}$\\
+$X_{12b} = S_{12b} + X_{12b}\cdot \Not{S_{13}}$\\
+$X_{13} = S_{13} + X_{13}\cdot \Not{S_{14}}$\\
+$X_{14} = S_{14} + X_{14}\cdot \Not{S_{14b}}$\\
+$X_{14b} = S_{14b} + X_{14b}\cdot \Not{S_{15}}$\\
+$X_{15} = S_{15} + X_{15}\cdot \Not{S_{10}}$\\
+$\mathtt{CINAI\_M} = S_{15} + \mathtt{CINAI\_M}\cdot \Not{X_{10}}$\\
+$\mathtt{CINAF\_M} = X_{10} + \mathtt{CINAF\_M}\cdot \Not{S_{10}}$\\[\sepsGrups]
+%
+% Marcas
+$\mathtt{CINTA\_LIBRE} = X_{10}$\\
+$\mathtt{QCINA} = X_{12} + \big(X_{12b} + X_{14b} + X_{14}\cdot \Not{\mathtt{CINAI\_M}}\big) + \mathtt{Man\_Act\_QCIN}$\\
+$\mathtt{Act\_EMP} = X_{14}$\\
+$\mathtt{Pieza\_Entregada\_Empujadora} = X_{15}$\\
+
+
+\subsection{Grafcet de Empujadores 1 y 2}
+Este grafcet es el mismo tanto para el empujador 1 como el 2, ya que su función es la misma, el unico cambio es
+que en el empujador 2, las varibables contienen un 2 en el nombre.
+El funcionamiento es el siguiente:
+\begin{itemize}
+	\item Avisamos que estamos libres, y como hemos visto en el grafcet anterior(\ref{sec:graf_cin_ini}) 
+	nos activan este grafcet,donde esperamos a que llegue la pieza durante 1 segundo, para una 
+	vez tengamos la pieza, esperar a que la fresadora este disponible y poder enviarle la pieza
+	\item Una vez nos avisa la fresadora que esta libre, moveremos el empujador hacia adelante hasta 
+	alcanzar el final de carrera, que volveremos a la posicion de reposo
+	\item Siempre tenemos en cuenta que si el empujador tarda más de 3 segundos en alcanzar cualquiera
+	de los finales de carrera, saltará una alarma.
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/2_EMP.tex}}
+	\medskip
+	\caption{Grafcet del Empujador 1 y 2}
+	\label{graf:EMP}
+\end{figure}
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+% Transiciones
+$S_{20} = \mathtt{FirstScan} + X_{25}\cdot \mathtt{EMPi}$\\
+$S_{21} = X_{20}\cdot \mathtt{Act\_EMP}$\\
+$S_{22} = X_{21}\cdot \mathtt{T1.Q}$\\
+$S_{23} = X_{22}$\\
+$S_{24} = X_{23}\cdot \mathtt{Fresadora\_Libre}$\\
+$S_{25} = X_{24}\cdot \mathtt{EMPf}$\\[\sepsGrups]
+%
+% Etapas
+$X_{20} = S_{20} + X_{20}\cdot \Not{S_{21}}$\\
+$X_{21} = S_{21} + X_{21}\cdot \Not{S_{22}}$\\
+$X_{22} = S_{22} + X_{22}\cdot \Not{S_{23}}$\\
+$X_{23} = S_{23} + X_{23}\cdot \Not{S_{24}}$\\
+$X_{24} = S_{24} + X_{24}\cdot \Not{S_{25}}$\\
+$X_{25} = S_{25} + X_{25}\cdot \Not{S_{20}}$\\[\sepsGrups]
+%
+% Marcas
+$\mathtt{EMP\_Libre} = X_{20}$\\
+$\mathtt{Act\_Fresadora} = X_{24}$\\
+$\mathtt{Pieza\_REC\_EMP} = X_{22}$\\[\sepsGrups]
+%
+% Salidas
+$\mathtt{QEBW} = X_{25} + \mathtt{Man\_act\_BW}$\\
+$\mathtt{QEFW} = X_{24} + \mathtt{Man\_act\_FW}$\\
+
+\subsection{Grafcet de la fresadora}\label
+Este grafcet realiza el control de la parte de la fresa del proyecto, donde siguie los siguientes pasos:
+
+\begin{itemize}
+	\item Avisamos que estamos libres para el empujador y poder recibir la pieza
+	\item Una vez el empujador activa la fresadora porque esta le ha dicho que esta libre, activamos la cinta 
+	de la fresadora, hasta que la pieza llegue al sensor ''FRESA'', si tarda más de 4 segundos salta una alarma que para la máquina
+	\item Una vez llega la pieza al sensor, durante 3 segundos activamos la fresa, y pasamos a una etapa de espera, hasta que el taladro se encuentre libre
+	\item Si el taladro nos indica que esta libre, activamos nuestra cinta, y la del taladro hasta que la pieza llegue al sensor del taladro,
+	si tarda más de 5 segundos salará una alarma
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/3_Fresadora.tex}}
+	\medskip
+	\label{graf:fresadora}
+	\caption{Grafcet de la fresadora}
+\end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+% Transiciones
+$S_{30} = \mathtt{FirstScan} + X_{34}\cdot \mathtt{Pieza\_REC\_Taladro}$\\
+$S_{31} = X_{30}\cdot \mathtt{Act\_Fresadora}$\\
+$S_{32} = X_{31}\cdot \mathtt{FRESA\_M}$\\
+$S_{33} = X_{32}\cdot \mathtt{T1.Q}$\\
+$S_{34} = X_{33}\cdot \mathtt{Taladro\_Libre}$\\
+%
+% Etapas
+$X_{30} = S_{30} + X_{30}\cdot \Not{S_{31}}$\\
+$X_{31} = S_{31} + X_{31}\cdot \Not{S_{32}}$\\
+$X_{32} = S_{32} + X_{32}\cdot \Not{S_{33}}$\\
+$X_{33} = S_{33} + X_{33}\cdot \Not{S_{34}}$\\
+$X_{34} = S_{34} + X_{34}\cdot \Not{S_{30}}$\\
+%
+% Marcas
+$\mathtt{Fresadora\_Libre} = X_{30}$\\
+$\mathtt{QCINF} = X_{31} + X_{34} + \mathtt{man\_act\_cin\_fres}$\\
+$\mathtt{Act\_CIN\_Taladro} = X_{34}$\\
+$\mathtt{QFresadora} = X_{32} + \mathtt{man\_Act\_fres}$\\
+
+
+
+\subsection{Grafcet del taladro} \label{sec:graf_talad}
+
+El siguiente grafcet controla la parte del proyecto del taladro, siguiendo los siguientes pasos:
+\begin{itemize}
+	\item Avismos que estamos libres, y esperamos a que nos active la fresadora como hemos dicho antes (\ref{sec:graf:fresa})
+	\item Una vez nos activa la fresadora, activamos la cinta del taladro hasta que se alcance el sensor ''TALAD'', donde
+	activamos el taladro, y avisamos a la fresadora que ya tenemos la cinta.
+	\item Durante 2 segundos taladraremos la pieza, y nos quedaremos a la espera de que el empujador 2 se encuentre libre
+	para poder enviarle la pieza
+	\item Si nos indica que se encuentra libre, activaremos nuestra cinta, hasta que el taladro
+	nos indique que se encuentra libre
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/4_Taladro.tex}}
+	\medskip
+	\label{graf:taladro}
+	\caption{Grafcet del taladro}
+\end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+% Transiciones
+$S_{40} = \mathtt{FirstScan} + X_{45}$\\
+$S_{41} = X_{40}\cdot \mathtt{Act\_CIN\_Taladro}$\\
+$S_{42} = X_{41}\cdot \mathtt{TALAD\_M}$\\
+$S_{42b} = X_{42}\cdot \mathtt{T1.Q}$\\
+$S_{43} = X_{42b}\cdot \mathtt{EMP\_LIBRE}$\\
+$S_{44} = X_{43}\cdot \Not{\mathtt{TALAD\_M}}$\\
+$S_{45} = X_{44}\cdot \mathtt{Pieza\_Rec\_emp}$\\
+%
+% Etapas
+$X_{40} = S_{40} + X_{40}\cdot \Not{S_{41}}$\\
+$X_{41} = S_{41} + X_{41}\cdot \Not{S_{42}}$\\
+$X_{42} = S_{42} + X_{42}\cdot \Not{S_{42b}}$\\
+$X_{42b} = S_{42b} + X_{42b}\cdot \Not{S_{43}}$\\
+$X_{43} = S_{43} + X_{43}\cdot \Not{S_{44}}$\\
+$X_{44} = S_{44} + X_{44}\cdot \Not{S_{45}}$\\
+$X_{45} = S_{45} + X_{45}\cdot \Not{S_{40}}$\\
+%
+% Marcas
+$\mathtt{Taladro\_Libre} = X_{40}$\\
+$\mathtt{Pieza\_rec\_taladro\_1} = X_{42}$\\
+$\mathtt{QCINT} = X_{41} + X_{43} + X_{44} + \mathtt{Man\_Act\_cin}$\\
+$\mathtt{QTALAD} = X_{42} + \mathtt{Man\_Act\_tal}$\\
+$\mathtt{Act\_EMP} = X_{44}$\\
+$\mathtt{P\_Entregada\_EMP} = X_{45}$\\
+
+\subsection{Grafcet de la cinta final} \label{sec:graf_cin_fin}
+
+El siguiente grafcet tiene la funcion de controlar la cinta del final, esta cinta esta compuesta solo 
+por un sensor que nos indica que la pieza ha llegado al final de la cinta, y la salia de mover la cinta.
+Los pasos que realiza este grafcet son los siguientes:
+\begin{itemize}
+	\item Avisamos que estamos libres, y esperamos a que el empujador 2 nos avise para activar la cinta hasta
+	alcanzar el sensor ''CINF'', donde nos quedamos esperando hasta que nos retiren la pieza, donde avisaremos
+	al grafcet principal  para que la cuente en el contador que hemos iniciado
+	\item Si tardan más de 5 segundos en retirar la pieza saltará una alarma.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/6_Cinta_Fin.tex}}
+	\medskip
+	\caption{Grafcet de la cinta final}
+	\label{graf:cin_fin}
+\end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+% Transiciones
+$S_{60} = \mathtt{FirstScan} + X_{63}$\\
+$S_{61} = X_{60}\cdot \mathtt{Activar\_Cinta\_FIN}$\\
+$S_{62} = X_{61}\cdot \mathtt{CINF\_M}$\\
+$S_{63} = X_{62}\cdot \Not{\mathtt{CINF\_M}}$\\
+%
+% Etapas
+$X_{60} = S_{60} + X_{60}\cdot \Not{S_{61}}$\\
+$X_{61} = S_{61} + X_{61}\cdot \Not{S_{62}}$\\
+$X_{62} = S_{62} + X_{62}\cdot \Not{S_{63}}$\\
+$X_{63} = S_{63} + X_{63}\cdot \Not{S_{60}}$\\
+%
+% Marcas
+$\mathtt{Cinta\_FIN\_Libre} = X_{60}$\\
+$\mathtt{Pieza\_Entregada} = X_{63}$\\
+$\mathtt{salida\_Alarma\_Cinta\_fin} = \mathtt{Alarmas\_Cinta\_Fin\_1}$\\
+%
+% Salidas físicas
+$\mathtt{QCINS} = X_{61} + \mathtt{man\_Act\_cinf}$\\
+
+
+
+
+\subsection{Grafcet de mantenimiento}\label{sec:graf_mant}
+
+Este grafcet se encarga de mover todos los componentes que componen el proyecto, 
+dividido en dos ramas. Antes de inciar el mantenimiento se comprueba que no hayan piezas en cualquiera de los sensores.
+
+\begin{itemize}
+	\item Una rama mueve los empujadores hasta los dos finales de carrera 
+	\item La otra rama, lo que hace primero es mover las 4 cintas que componen el proyecto durante 5 segundos, y despues activa el taladro y la 
+	fresadora durante 5 segundos, para una vez finalizadas las dos ramas indicar que se ha acabado
+\end{itemize} 
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/7_Mantenimiento.tex}}
+	\medskip
+	\caption{Grafcet de Mantenimiento}
+	\label{graf:mantenimiento}
+\end{figure}
+
+
+
+
+\subsection{Grafcet de emergencia}\label{sec:graf_emerg}
+
+\subsubsection{Grafcet de emergencia general}
+Este grafcet lo tenemos implementado en el PLC para las 6 máquinas que componen el proyecto en FBs dentro del código,
+como hemos visto, cada grafcet activa unas alarmas, lo que hacemos en este grafcet es gestionarlas,
+lo primero que hacemos es pausar la máquina, una vez pausada, y con los actuadores desactivados, esperamos
+a que el operario nos aprete ''RESUME'' si queremos que siga el proceso, o ''RESET'' si queremos que
+empieze de nuevo esa máquina.
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/12_Alarma_Cinta_fin.tex}}
+	\medskip
+	\caption{Grafcet de emergencia en guia GEMMA}
+	\label{graf:emerg2}
+\end{figure}
+
+
+Este grafcet se ha implementado de tres maneras en nuestra solucion, los empujadores utilizan un bloque 
+a parte donde siguen el grafcet de arriba mediante etapas, mientras que en el resto de máquinas se ha implementado el uso 
+de IF-THEN-ELSE que implementa SCL.\\
+En el Anexo del código de alarmas podemos ver las etapas implementadas 
+con sus transiciones, y como activan las marcas que se comunican con el bloque de los empujadores para bloquear la máquina 
+con el siguiente fragmento\\
+Podemos ver en el siguiente fragmento como cuando recibimos un flanco de 
+la variable Alarma que es la variable que leemos del bloque de alarma guardamos el estado actual
+de la máquina en unas variables específicas, y que cuando hay un flanco de subida del botón ''RESUMEN'' se devuelven ese valor
+, mientras que si hay un  ''RESET'' se inicializa la etapa principal solamente, las salidas no hace falta ponerlas a ''FALSE'' ya 
+que no están realimentadas, solo se activan si la etapa esta activa, pero como las ponemos a ''FALSE'' se detiene todo.
+\lstinputlisting[
+	label=frag:1,
+  firstline=89,
+  lastline=122,
+  caption={Tratamiento de la alarma en empujadores}
+]
+
+En las otras máquinas se ha implementado en el mismo bloque, pero siguiendo la estructura anterior de bloques ''IF-THEN'' como vemos en el
+código de la cinta de inicio por ejemplo
+\lstinputlisting[
+	label=frag:2,
+  firstline=155,
+  lastline=199,
+  caption={Tratamiento de la alarma en la cinta inicial}
+]
+
+La tercera solucion se ha implementado unicamene en el subapartado de la cinta final, y la diferencia respecto a 
+las anteriores es que se eliminan los bloques ''IF-THEN-ELSE'' para el tratamiento de las alarmas,
+y lo que se bloquea es la activacion de las etapas y actuadores como vemos en el siguiente fragmento de texto(\ref{frag:3}), en 
+la cinta final solo se trata una alarma que como vemos en el grafcet (\ref{graf:cin_fin}) es que después del empujador la pieza
+no alcance el sensor del final de la cinta
+\lstinputlisting[
+	label=frag:3,
+  firstline=147,
+  lastline=162,
+  caption={Tratamiento de las alarmas en la cinta final}
+] 
+Como vemos, cuando surge una alarma, se bloquean los actuadores en la primera etapa como vemos en el fragmento (\ref{frag:4}), y tambien se activa la variable ''FORCE\_CURRENT'' 
+la cual bloquea las transiciones de las etapas para que estas no se puedan activar, pero manteniendo el valor de las etapas a no ser que apretemos ''RESET'' que 
+se activará la variable ''FORCE\_INIT'' que desactiva todas las etapas y activa solo la primera.
+\lstinputlisting[
+label=frag:4,
+  firstline=100,
+  lastline=110,
+  caption={Bloqueo y reseteo de las etapas cuando hay una alarma}
+]
+
+
+%\subsubsection{Grafcet de emergencia guia GEMMA}
+
+%En este grafcet nos hemos basado en la guia gemma para tratar las Alarmas
+%de la cinta final, lo que hacemos es que cuando detectamos 
+%una alarma, detenemos los actuadores,y bloqueamos el grafcet
+%, y nos quedamos en espera de que pulsen el botón de ''Reset'' o ''Resume'',
+% para empezar de nuevo el proceso de esa máquina, seguir el funcionamiento normal.
+
+
+
+
+
+\subsection{Grafcet de la seta de emergencia}
+
+\begin{comment}
+	
+
+\subsubsection{Tratamiento de la seta}
+Cuando se apreta la ''SETA'' el primer grafcet que entra en ejecución es el siguiente(\ref(graf:seta2)), en el cual después de 
+activar la ''SETA'' activamos una variable, que es compartida con todos los grafcets de seta de cada máquina(\ref{graf:seta1}), y 
+se quedará activada hasta que la desactiven, una vez desactivada avisara que se ha desactivado, pero esta señal no la recibe nadie se
+deja porque en un SCADA se podria visualizar, y esperamos a que apreten ''RESET'' donde activamos el grafcet de mantenimiento, para poder
+comprobar que las máquinas vuelven a funcionar, y una vez se haya finalizado, avisamos al grafcet(\ref{graf:seta1}) que tiene a todos parados, para que devuelva el 
+funcionamiento desde el inicio.
+
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/10_Seta.tex}}
+	\medskip
+	\caption{Grafcet de tratamiento de la seta}
+	\label{graf:seta2}
+\end{figure}
+
+\subsubsection{Tratamiento de la seta en cada máquina}
+Como hemos dicho antes, cuando nos pulsan la ''SETA'' nos avisan a través de una variable que tenemos que detener el proceso, lo que hacemos es devolver todos los 
+grafcets a su etapa inicial y después los congelamos, hasta que nos vuelvan a avisar de que se ha desactivado la ''SETA'' y se ha acabado el mantenimiento
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/9_Seta.tex}}
+	\medskip
+	\caption{Grafcet de la seta de emergencia}
+	\label{graf:seta1}
+\end{figure}
+\end{comment}
+
+
+En nuestra solución el tratamiento de la seta se ha realizado a través del siguiente grafcet(\ref{graf:seta3}) diseñado
+a partir de la guia GEMMA, en el que al apretar la ''SETA'' hacemos que el proceso se vaya a la etapa inicial
+seguidamente se bloque en esa etapa a la espera de que acabe mantenimiento, indicando que se ha acabado de tratar la alarma,
+pero el mantenimiento solo sera activado con el botón ''Reset'' que con pulsarlo una unica vez sirve para que 
+entre en funcionamiento el grafcet como hemos indiado anteriormente(\ref{sec:graf_mant}).
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.75}{\input{./grafcets/11_SETA_Cinta_fin.tex}}
+	\medskip
+	\caption{Grafcet de la seta de emergencia en guia GEMMA}
+	\label{graf:seta3}
+\end{figure}
+
+Este grafcet se ha implementado de tres maneras distinas en nuestra solución, una
+para los empujadores, otra para la fresadora, el taladro y la cinta inical, y una ultima 
+para la cinta final sin el uso del bloque ''IF-THEN-ELSE'' similar al de las alarmas explicado anteriormente (\ref{sec:graf_emerg})
+
+\subsubsection{Tratamiento de la seta en los empujadores}
+En los empujadores lo hemos implementado en el bloque de las alarmas, y aprovechando
+que ya tienen una variable donde se le avisa al empujador que detenga todo, lo que hacemos
+es activarla cuando pulsamos la ''SETA'', por lo que bloqueamos el grafcet de los empujadores, y
+dentro del bloque de las alarmas, bloqueamos las etapas de las alarmas, para solo poder 
+trabajar con el botón ''RESET'' después de activar la ''SETA''.
+
+\lstinputlisting[
+label=frag:5,
+  firstline=75,
+  lastline=113,
+  caption={Tratamiento de la SETA para los empujadores}
+] 
+
+\subsubsection{Tratamiento de la seta con bloque ''IF-THEN''}
+En la cinta de inicio, el taladro y la fresadora se ha implementado dentro del 
+propio bloque de control, como vemos en el fragmento de codigo , cuando se produce 
+un flanco de subida de la ''SETA'', congelamos todo, ponemos todas las etapas a ''FALSE'', y activamos
+una variable que nos indica que tenemos la seta activa, y bloquea todas las transiciones y etapas del proceso, y
+hasta que no se active el botón de ''RESET'' no de deuvelve al estado normal de funcionamiento
+\lstinputlisting[
+label=frag:6,
+  firstline=202,
+  lastline=259,
+  caption={Tratamiento de la SETA para la cinta inicial, fresadora y taladro}
+] 
+
+\subsubsection{Tratamiento de la seta en la cinta final}
+En la cinta final hemos optado por tratar la seta de emergencia sin bloques ''IF-THEN'', similiar a como
+lo hemos implementado en las alaramas , gestionamos la ''SETA'' con 3 etapas, donde en el codigo que vemos 
+abajo , con dos variables forzamos seguir y el reinicio de la máquina, también activamos la variable
+de mantenimiento, porque una vez se ha reiniciado la ''SETA'' activamos el mantenimiento para revisar que todo vuelve
+a funcionar normal antes de empezar.
+\lstinputlisting[
+label=frag:7,
+  firstline=134,
+  lastline=145,
+  caption={Tratamiento de la SETA para la cinta final}
+]
+
+

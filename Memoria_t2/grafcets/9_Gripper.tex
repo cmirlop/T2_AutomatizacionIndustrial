@@ -1,0 +1,44 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+% --------------------------------------------
+	\ttfamily
+	
+	\etapaInicial{90}
+	\primeraAccion{90}{X90-A1}{MAQ\_CAL\_VAC\_LIBRE}
+	\otraAccion{X83-A1}{X83-A2}{Act\_SIG\_MAQ}
+	
+	%---
+	\etapa[1.25\nodeDist]{91}{90}{Act\_Descartador};
+	\primeraAccion{91}{X91-A1}{QCINTA}
+	
+	%--
+	\etapa[1.25\nodeDist]{92}{91}{SENSOR};
+	\comentari[3]{X92}{Esperamos máquina de calidad libre}
+
+	%---
+	\etapa[1.25\nodeDist]{93}{92}{SIG\_MAQ\_LIBRE};
+	\primeraAccion{93}{X93-A1}{QTRANS}
+
+	\etapa[1.25\nodeDist]{94}{93}{\NOT{SENSOR}};
+	\primeraAccion{94}{X94-A1}{Act\_SIG\_MAQ}
+	
+	
+
+
+
+
+	\retornoInicio[6em]{94}{0}{\underline{1}}
+	
+       
+\end{tikzpicture}

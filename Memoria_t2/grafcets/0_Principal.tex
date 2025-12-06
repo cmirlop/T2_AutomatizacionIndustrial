@@ -1,0 +1,50 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{0}
+	\primeraAccion{0}{X0-A1}{$\mathtt{C:=0}$}
+	\sobreActivacion{X0-A1}{X0-A2}{}	
+
+	% --------------------------------------------
+  	{
+   	\renewcommand{\transitionPos}{0.35}
+   	\etapa[1.25\nodeDist]{1}{0}{MARCHA};
+	\primeraAccion{1}{X1-A1}{Act\_Mantenimiento}
+	%\otraAccion{X1-A1}{X1-A2}{QCINALIM}
+	}
+	
+	% --------------------------------------------
+   	\etapa[1.25\nodeDist]{2}{1}{Mantenimiento\_Fin};
+	\primeraAccion{2}{X2-A1}{Proceso\_Activo}
+	%\condicionada{X2-A2}{CONDICION}
+	%\comentari[1]{X2-A1}{Máquina fresadora en marcha}
+
+	\etapa[1.25\nodeDist]{3}{2}{Pieza\_Empaquetada};
+	\primeraAccion{3}{X3-A1}{Proceso\_Activo}
+	\otraAccion{X3-A1}{X3-A2}{$\mathtt{C:=C+1}$}
+	\sobreActivacion{X3-A2}{X3-A3}{}
+
+	\bifurcacionRetorno[15ex]{3}{4}{5}
+	\retornoInicio[6em]{4}{0}{Paro\_Ciclo}
+	{
+	\setlength{\enlaceRetornoDist}{0.30\nodeDist}
+	\retorno[18em]{5}{2}{\NOT{Paro\_Ciclo}}
+	}
+	%\retornoInicio[7em]{4}{0}{\NOT{INICIO}}
+	%\retorno[18em]{4}{3}{INICIO}
+
+
+            
+\end{tikzpicture}
+

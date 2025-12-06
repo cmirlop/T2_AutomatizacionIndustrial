@@ -1,0 +1,38 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+\begin{tikzpicture}[auto]
+
+	\ttfamily
+		
+	% --------------------------------------------
+	\etapaInicial{10}	
+
+   	{
+   	\renewcommand{\transitionPos}{0.35}
+   	\etapa[1.35\nodeDist]{11}{10}{CINALIM2};
+	\primeraAccion{11}{X11-A1}{POWER}
+	\otraAccion{X11-A1}{X11-A2}{QCINALIM}
+	}
+	
+   	\etapa{12}{11}{CINALIM2};
+	\primeraAccion{12}{X12-A1}{FRESA}
+	\comentari[1]{X12-A1}{Máquina fresadora en marcha}
+
+	% --------------------------------------------
+	% Bifurcación
+
+	\bifurcacionRetorno[15ex]{12}{13}{14}
+	\retornoInicio[6em]{13}{10}{A}
+	
+	{
+	\setlength{\enlaceRetornoDist}{0.30\nodeDist}
+	\retorno[14em]{14}{11}{B}
+	}
+            
+\end{tikzpicture}

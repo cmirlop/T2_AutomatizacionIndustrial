@@ -1,0 +1,67 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+% --------------------------------------------
+	\etapaInicial{40}
+	\primeraAccion{40}{X40-A1}{Taladro\_Libre}
+	%---
+	\etapa[1.25\nodeDist]{41}{40}{Act\_CIN\_Fresadora};
+	\primeraAccion{41}{X41-A1}{QCINT}
+	\otraAccion{X41-A1}{X41-A2}{Alarma\_Taladro\_1}
+	\condicionada{X41-A2}{3s/x41}
+	%---
+	\etapa[1.25\nodeDist]{42}{41}{TALAD};
+	\primeraAccion{42}{X42-A1}{QTALAD}
+	\otraAccion{X42-A1}{X42-A2}{P\_en\_Talad}
+	%---
+	\etapa[1.25\nodeDist]{43}{42}{2s/x42};
+	\comentari[2]{X43}{Esperando a empujador 2 libre}
+
+
+	\etapa[1.25\nodeDist]{43b}{43}{EMP2\_Libre};
+	\primeraAccion{43b}{X43b-A1}{QCINT}
+	\otraAccion{X43b-A1}{X43b-A2}{Alarma\_Taladro\_2}
+	\condicionada{X43b-A2}{3s/x43b}
+
+	\etapa[1.25\nodeDist]{44}{43b}{\NOT{TALAD}};
+	{%
+  	\setlength{\actionMinimumWidth}{4.5cm}% <- tu ancho
+  	\primeraAccion{44}{X44-A1}{QCINT}%
+	}
+	\condicionada{X44-A1}{\NOT{Alarma\_EMP2}$\,\cdot\,$\NOT{TALAD}}
+	\otraAccion{X44-A1}{X44-A2}{Alarma\_Taladro\_3}
+	\condicionada{X44-A2}{3s/x44}
+	\otraAccion{X44-A2}{X44-A3}{Act\_EMP2}
+
+	%---
+	\etapa[1.25\nodeDist]{45}{44}{Pieza\_REC\_EMP2};
+	\primeraAccion{45}{X45-A1}{P\_Entregada\_EMP2}
+	\retornoInicio[6em]{45}{0}{\underline{1}}
+	
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+            
+\end{tikzpicture}

@@ -1,0 +1,110 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc} % si usas pdfLaTeX
+\usepackage[T1]{fontenc}    % si usas pdfLaTeX
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+\usepackage{comment}
+\lstset{inputencoding=utf8}
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+% Informació de l'informe
+
+\newcommand{\titol}{
+	 Trabajo 2 - Linea Indexada
+	 }
+
+\newcommand{\titolcap}{Memoria linea indexada}
+
+\newcommand{\AlumnoA}{Carlos Mira López}
+\newcommand{\AlumnoB}{Nicolas Miró Mira}
+\newcommand{\AlumnoC}{Vittorio Alessandro Esposito}
+
+\newcommand{\AlumnosPie}{\AlumnoA\ -- \AlumnoB\ -- \AlumnoC}
+\newcommand{\Asignatura}{Automatización Industrial}
+\newcommand{\CursoTitulacion}{4$.\!^\circ$ curso - Grado en Informática Industrial y Robótica ...}
+%https://www.rae.es/dpd/ordinales
+
+\newcommand{\Data}{Noviembre del 2025}
+
+%------------------------------------------------------------------
+% Configuració de formats i bibliografia
+
+\input{./configuraciones/preambulo}
+\input{./configuraciones/preambulo_listings}
+\input{./configuraciones/preambul_GRAFCET}
+\input{./configuraciones/configura_listings_SCL}
+
+% Si vols utilitzar un tipus de lletra semblant a Arial, descomenta les dos línies següents:
+% \usepackage{cmbright}
+% \usepackage[OT1]{fontenc}
+
+\bibliography{./configuraciones/referencias}
+
+%------------------------------------------------------------------
+% Logo:
+
+\setboolean{LogoUPV}{false}
+\setboolean{LogoAlcoi}{true}
+
+
+\parindent = 0cm
+\parskip = 2ex
+
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+
+\begin{document}
+
+% -------------------------------------
+% -------------------------------------
+
+\input{./configuraciones/post_begin_document} % No eliminar!!!
+
+% -------------------------------------
+% -------------------------------------
+
+
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+% Resumen
+
+\phantomsection
+\addcontentsline{toc}{section}{Resumen}
+%\section*{Resumen}
+
+%Este documento es un pequeño manual para la realización de informes científico-técnicos y trabajos académicos. Se describe la estructura que debe tener un documento de este tipo y se describen las directrices estándar mínimas parar la redacción del contenido. También se incluyen recomendaciones para incluir figuras, tablas y ecuaciones, así como sobre la forma de hacer referencia a estos elementos en el documento. Por último, se incluyen ejemplos de figuras, tablas, ecuaciones y referencias bibliográficas.
+
+%Este documento también se puede utilizar como plantilla ya que los formatos son los adecuados para un documento científico-técnico.
+
+%\textbf{Palabras clave}: informe científico-técnico; plantilla; \LaTeX, Overleaf.
+
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+
+%---- VAMOS A INTENTAR QUE SEAN CAPITULOS SEPARADOS
+
+%\input{./capitulos/cap_resume}
+\input{./capitulos/cap_introducion}
+%\input{./capitulos/cap_metodologia}
+%\input{./capitulos/cap_grafcets.tex}
+%\input{./capitulos/cap_estructura_tia.tex}
+%\input{./capitulos/cap_errores.tex}
+%\input{./capitulos/cap_Conclusiones.tex}
+%\input{./capitulos/cap_anexos.tex}
+
+
+
+
+
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+
+\end{document}
+
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+

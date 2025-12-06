@@ -1,0 +1,93 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.1)  28 OCT 2025 20:50
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/carlo/OneDrive/Escritorio/uni/4A/Automatizacion Industrial/T1/T1-CDPI/Plantilla_LaTeX_informes/NOTOCAR_GRAFCETS.tex"
+(c:/Users/carlo/OneDrive/Escritorio/uni/4A/Automatizacion Industrial/T1/T1-CDPI/Plantilla_LaTeX_informes/NOTOCAR_GRAFCETS.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
+(C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count196
+\c@section=\count197
+\c@subsection=\count198
+\c@subsubsection=\count199
+\c@paragraph=\count266
+\c@subparagraph=\count267
+\c@figure=\count268
+\c@table=\count269
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+) (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+) (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+ (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+\caption@tempdima=\dimen142
+\captionmargin=\dimen143
+\caption@leftmargin=\dimen144
+\caption@rightmargin=\dimen145
+\caption@width=\dimen146
+\caption@indent=\dimen147
+\caption@parindent=\dimen148
+\caption@hangindent=\dimen149
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count270
+\c@continuedfloat=\count271
+) (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count272
+\Gm@cntv=\count273
+\c@Gm@tempcnt=\count274
+\Gm@bindingoffset=\dimen150
+\Gm@wd@mp=\dimen151
+\Gm@odd@mp=\dimen152
+\Gm@even@mp=\dimen153
+\Gm@layoutwidth=\dimen154
+\Gm@layoutheight=\dimen155
+\Gm@layouthoffset=\dimen156
+\Gm@layoutvoffset=\dimen157
+\Gm@dimlist=\toks20
+ (C:\Users\carlo\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+! LaTeX Error: File `./configuracions/preambul_GRAFCET.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+c:/Users/carlo/OneDrive/Escritorio/uni/4A/Automatizacion Industrial/T1/T1-CDPI/Plantilla_LaTeX_informes/NOTOCAR_GRAFCETS.tex:13: Emergency stop.
+<read *> 
+         
+l.13 \input{./configuracions/preambul_GRAFCET}
+                                              ^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 2210 strings out of 473522
+ 39402 string characters out of 5714610
+ 430724 words of memory out of 5000000
+ 25503 multiletter control sequences out of 15000+600000
+ 558837 words of font info for 36 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,0n,65p,336b,39s stack positions out of 10000i,1000n,20000p,200000b,200000s
+c:/Users/carlo/OneDrive/Escritorio/uni/4A/Automatizacion Industrial/T1/T1-CDPI/Plantilla_LaTeX_informes/NOTOCAR_GRAFCETS.tex:13:  ==> Fatal error occurred, no output PDF file produced!

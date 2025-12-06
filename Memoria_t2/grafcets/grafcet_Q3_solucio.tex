@@ -1,0 +1,48 @@
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\setlength{\nodeDist}{1.2\nodeDist}
+		
+	% --------------------------------------------
+	\etapaInicial{10}	
+	\primeraAccion{10}{X10-A1}{CONT := 0}
+	\sobreActivacion{X10-A1}
+
+	% --------------------------------------------
+	{\renewcommand{\transitionPos}{0.35}
+	\etapa[1.35\nodeDist]{11}{10}{M}
+	\primeraAccion{11}{X11-A1}{P1}
+	\condicionada{X11-A1}{\NOT{T1}}
+	\otraAccion{X11-A1}{X11-A2}{P2}
+	\condicionada{X11-A2}{\NOT{T2}}
+	\otraAccion{X11-A2}{X11-A3}{CONT := CONT + 1}
+	\sobreActivacion{X11-A3}	
+	}
+	
+	% --------------------------------------------
+	\etapa[1.35\nodeDist]{12}{11}{T1$\,\cdot\,$T2$\,\cdot\,$REACTOR\_VACIO}
+	\primeraAccion{12}{X12-A1}{V1}
+	\condicionada{X12-A1}{B1}
+	\otraAccion{X12-A1}{X12-A2}{V2}
+	\condicionada{X12-A2}{B2}
+
+	% --------------------------------------------
+	\etapa{13}{12}{\NOT{B1}$\,\cdot\,$\NOT{B2}}
+	\primeraAccion{13}{X13-A1}{ACTIVA\_REACTOR}
+
+	% --------------------------------------------
+	{
+	\setlength{\retornoDist}{2.50cm}
+	\renewcommand{\transitionPosRetorno}{0.40}
+	\retornoInicio[3cm]{13}{10}{$[\mathtt{CONT} = 20]$}
+	}
+	
+	% --------------------------------------------
+	{
+	\setlength{\retornoDist}{1.00cm}
+	\setlength{\enlaceRetornoDist}{0.35\nodeDist}
+	\retornoHorizontal[9.5cm]{13}{11}{$[\mathtt{CONT} < 20]$}
+	}
+            
+\end{tikzpicture}

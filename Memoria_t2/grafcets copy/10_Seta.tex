@@ -1,0 +1,60 @@
+\begin{tikzpicture}
+  \ttfamily
+
+  %---------------------------
+  % Columna izquierda
+  %---------------------------
+  \etapaInicial{1000}
+
+  % 100 -> 101  (transición de alarmas)
+  \etapa{1001}{1000}{SETA};
+  \primeraAccion{1001}{X1001-A1}{SETA\_ACTIVADA}
+  %\forzado{X1101-A1}{X1101-A2}{G100\{$INIT$\}}
+  \etapa{1002}{1001}{\NOT{SETA}};
+  \primeraAccion{1002}{X1002-A1}{SETA\_DESACT}
+  \etapa{1003}{1002}{RESET};
+  \primeraAccion{1003}{X1003-A1}{Act\_Mantenimiento}
+  \etapa{1004}{1003}{Mantenimiento\_Fin};
+  \primeraAccion{1004}{X1004-A1}{Emergencia\_Acabada}
+  \retornoInicio[4.2cm]{1004}{1000}{\underline{1}}
+  
+
+  
+
+
+  % 101 -> 102 (bajada del lazo)
+  %\etapa[1.35\nodeDist]{102}{101}{\underline{1}}
+  %\forzado{102}{X102-A1}{G10\{INIT\}}
+  %\otraAccion{X102-A1}{X102-A2}{Reiniciar\_Cinta}
+
+  % 102 -> 104 (bajada final izquierda)
+  %\concurrencia{102}{103}{TRANSICION}{104}
+
+  
+
+  %---------------------------
+  % Columna derecha (etapa 103)
+  %---------------------------
+  % Colocamos 103 a la derecha de 102
+  %\node[block, right of = X102, node distance = 9cm] (X103) {};
+  %\node[below=0ex,anchor=south] at (X103) {103};
+  %\forzado{103}{X103-A1}{G10\{\}}
+  %\otraAccion{X103-A1}{X103-A2}{Reanudar\_cinta}
+
+  %---------------------------
+  % Lazo superior y retorno derecho
+  %---------------------------
+  % Ajuste del “rectángulo” superior: barra (101)→(103) con texto “Reset • Resume”
+ %\setlength{\retornoDist}{0.75cm}
+ % \setlength{\enlaceRetornoDist}{0.35\nodeDist}
+ %\saltoHorizontal[9cm]{103}{104}{\makebox[0pt][c]{Reset $\bullet$ Resume}}
+ %\transicion{103}{104}{a}
+  % Retorno vertical derecho (de 103 hacia 102) para cerrar el lazo
+  %\retornoHorizontal{103}{104}{}
+
+  %---------------------------
+  % Retorno grande inferior hacia el inicio (104 → 100)
+  %---------------------------
+  %\retornoInicio[4.2cm]{104}{100}{\underline{1}}
+
+\end{tikzpicture}

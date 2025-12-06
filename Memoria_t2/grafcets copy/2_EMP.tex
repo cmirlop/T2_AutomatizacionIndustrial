@@ -1,0 +1,55 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{20}
+	\primeraAccion{20}{X20-A1}{EMP1\_Libre}
+
+	%-----
+	\etapa[1.25\nodeDist]{21}{20}{Act\_EMP};
+	\comentari[21]{X21}{Pieza LLegando}
+
+	%---
+	\etapa[1.25\nodeDist]{22}{21}{1s/x21};
+	\primeraAccion{22}{X22-A1}{Pieza\_REC\_EMP}
+
+	%---
+	\etapa[1.25\nodeDist]{23}{22}{\underline{1}};
+	\comentari[3]{X23}{Esperando Fresadora}
+
+	%---
+	\etapa[1.25\nodeDist]{24}{23}{Fresadora\_Libre};
+	\primeraAccion{24}{X24-A1}{QE1BW}
+	\otraAccion{X24-A1}{X24-A2}{Act\_Fresadora}
+	\otraAccion{X24-A2}{X24-A3}{Alarma\_EMP1\_1}
+	\condicionada{X24-A3}{3s/x24}
+
+	%---
+	\etapa[1.25\nodeDist]{25}{24}{EMP1F};
+	\primeraAccion{25}{X25-A1}{QE1BW}
+	\otraAccion{X25-A1}{X25-A2}{Alarma\_EMP1\_2}
+	\condicionada{X25-A2}{3s/x25}
+	\retornoInicio[6em]{25}{0}{EMP1I}
+
+
+
+
+		
+
+
+
+
+	
+
+            
+\end{tikzpicture}

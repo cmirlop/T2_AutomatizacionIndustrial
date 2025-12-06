@@ -1,0 +1,32 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{0P}
+		
+
+	% --------------------------------------------
+  	{
+   	\renewcommand{\transitionPos}{0.35}
+   	\etapa[1.25\nodeDist]{1}{0}{PARO};
+	\primeraAccion{1}{X1-A1}{Paro\_de\_Ciclo}
+	%\otraAccion{X1-A1}{X1-A2}{QCINALIM}
+	}
+	\retornoInicio[6em]{1}{0}{X0}
+	%\retornoInicio[7em]{4}{0}{\NOT{INICIO}}
+	%\retorno[18em]{4}{3}{INICIO}
+
+
+            
+\end{tikzpicture}
+

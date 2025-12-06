@@ -1,0 +1,52 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{0}	
+
+	% --------------------------------------------
+  	{
+   	\renewcommand{\transitionPos}{0.35}
+   	\etapa[1.25\nodeDist]{1}{0}{INICIO};
+	\primeraAccion{1}{X1-A1}{Act\_Mantenimiento}
+	%\otraAccion{X1-A1}{X1-A2}{QCINALIM}
+	}
+	
+	% --------------------------------------------
+   	\etapa[1.25\nodeDist]{2}{1}{Mantenimiento\_Fin};
+	\primeraAccion{2}{X2-A1}{Proceso\_Activo}
+	\otraAccion{X2-A1}{X2-A2}{$\mathtt{C:=0}$}
+	\sobreActivacion{X2-A2}{X2-A3}{}
+	%\condicionada{X2-A2}{CONDICION}
+	%\comentari[1]{X2-A1}{Máquina fresadora en marcha}
+
+	\etapa[1.25\nodeDist]{3}{2}{\underline{1}};
+	\primeraAccion{3}{X3-A1}{Proceso\_Activo}
+
+	%Falta flanco de subida en pieza entregada
+	\etapa[1.25\nodeDist]{4}{3}{Pieza\_Entregada};
+	\primeraAccion{4}{X4-A1}{Proceso\_Activo}
+	\otraAccion{X4-A1}{X4-A2}{$\mathtt{C:=C+1}$}
+	\sobreActivacion{X4-A2}{X4-A3}{}
+	\bifurcacionRetorno[15ex]{4}{5}{6}
+	\retornoInicio[6em]{5}{0}{INICIO}
+	{
+	\setlength{\enlaceRetornoDist}{0.30\nodeDist}
+	\retorno[18em]{6}{3}{\NOT{INICIO}}
+	}
+	%\retornoInicio[7em]{4}{0}{\NOT{INICIO}}
+	%\retorno[18em]{4}{3}{INICIO}
+
+
+            
+\end{tikzpicture}

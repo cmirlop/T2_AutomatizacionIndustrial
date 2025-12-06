@@ -1,0 +1,44 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+\begin{tikzpicture}[auto]
+
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{0}	
+
+	% --------------------------------------------
+	% Sincronización
+	\sincronizacion[3cm]{0}{Pm}{11a}{12a}	
+
+	\primeraAccion{11a}{X11a-A1}{V1}
+	\primeraAccion{12a}{X11a-A1}{VA}
+
+   	\etapa{11b}{11a}{DL};
+   	\etapaFantasma{11c}{11b}
+
+   	\etapa{12b}{12a}{SP1};
+	\primeraAccion{12b}{X12b-A1}{VB}
+   	\etapa{12c}{12b}{SP2};
+
+	% --------------------------------------------
+	% Concurrencia -> fin de la sincronización 
+	\concurrencia{11c}{12c}{\underline{1}}{2}
+	\primeraAccion{2}{X2-A1}{V2}
+
+   	\etapa{3}{2}{10s/X2};
+	\primeraAccion{3}{X3-A1}{M}
+
+   	\etapa{4}{3}{30s/X2};
+	\primeraAccion{4}{X4-A1}{V3}
+
+	\retornoInicio[6.5cm]{4}{0}{\NOT{DV}}
+
+
+\end{tikzpicture}

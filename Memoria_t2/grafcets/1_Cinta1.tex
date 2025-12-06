@@ -1,0 +1,59 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	% --------------------------------------------
+	\etapaInicial{10}
+	\primeraAccion{10}{X10-A1}{Cinta\_Libre}	
+
+	%-----
+	\renewcommand{\transitionPos}{0.35}
+   	\etapa[1.25\nodeDist]{11}{10}{Proceso\_Activo};
+	\primeraAccion{11}{X11-A1}{Emisor\_Vacunas}
+	\otraAccion{X11-A1}{X11-A2}{QC1\_VAC}
+	
+
+	%---
+	\etapa[1.25\nodeDist]{11b}{11}{SPress\_X};
+	\primeraAccion{11b}{X11-A1}{QC1\_VAC}
+
+	\etapa[1.25\nodeDist]{12}{11b}{\NOT{SPress\_X}};
+	\primeraAccion{12}{X12-A1}{QC1\_VAC}
+	
+
+
+	%---
+	%\etapa[1.25\nodeDist]{13}{12}{S\_VAC\_A $\cdot$ S\_PRESENCIA};
+	
+
+	%---
+	\etapa[1.25\nodeDist]{13}{12}{S1\_VAC};
+	
+
+	%---
+	%\etapa[1.25\nodeDist]{14}{12}{\NOT(S\_VAC\_A) $\cdot$ S\_PRESENCIA};
+
+	%----
+	\etapa[1.25\nodeDist]{14}{13}{Descartador\_Libre};
+	\primeraAccion{14}{X14-A1}{QC1\_VAC}
+	\otraAccion{X14-A1}{X14-A2}{Act\_Descartador\_B}
+
+
+	%----
+	\retornoInicio[6em]{14}{0}{\NOT{S1\_VAC}}
+	
+
+
+	
+
+            
+\end{tikzpicture}

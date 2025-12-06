@@ -1,0 +1,35 @@
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
+
+
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\etapaInicial{80}
+	\primeraAccion{80}{X80-A1}{Descartador\_Libre}
+	%---
+	\etapa[1.25\nodeDist]{81}{80}{Act\_Maq\_A\_Buena};
+	\primeraAccion{81}{X81-A1}{QC5\_VAC}
+	
+	%--
+	\etapa[1.25\nodeDist]{82}{81}{S5};
+	\comentari[3]{X82}{Esperamos máquina de calidad libre}
+
+	%---
+	\etapa[1.25\nodeDist]{83}{82}{SIG\_MAQ\_LIBRE};
+	\primeraAccion{83}{X83-A1}{QC3}
+	\otraAccion{X83-A1}{X83-A2}{Act\_SIG\_MAQ}
+	
+
+
+
+
+	\retornoInicio[6em]{83}{0}{\NOT{S5}}
+
+\end{tikzpicture}
