@@ -1,0 +1,45 @@
+//Flancos
+
+
+// EMERGENCIA
+#S135e := (#X137e AND #CI) OR "FirstScan";
+#S136e := #X135e AND "Emergencia";
+#S137e := #X136e;
+
+#X135e := #S135e OR (#X135e AND NOT #S136e);
+#X136e := #S136e OR (#X136e AND NOT #S137e);
+#X137e := #S137e OR (#X137e AND NOT #S135e);
+
+#FORCE_INIT_E := #X136e;
+#FORCE_CURRENT_E := #X137e;
+
+
+#FORCE_INIT := #FORCE_INIT_E OR #X137a;
+#FORCE_CURRENT := #FORCE_CURRENT_E OR #X136a;
+
+
+T1 / 20s/X136
+
+// PRODUCCIÓN
+#S135 := ("FirstScan" OR (#X137 AND Fin_Vaciado )) AND NOT #FORCE_CURRENT;
+#S136 := (#X135 AND #Act_Vaciado_maquina) AND NOT #FORCE_CURRENT;
+#S137 := (#X136 AND T1.Q) AND NOT #FORCE_CURRENT;
+
+
+
+#X135 := (#S135 OR #X135 AND (NOT #S136)) OR #FORCE_INIT;
+#X136 := (#S136 OR #X136 AND (NOT #S137)) AND NOT #FORCE_INIT;
+#X137 := (#S137 OR #X137 AND (NOT #S135)) AND NOT #FORCE_INIT;
+
+Vaciados_QC5_VAC := X136;
+vaciados_qc6_vac := X136;
+vaciados_qc7_vac := x136;
+vaciados_subclamper1:= x136;
+Vaciados_QC8_VAC := X136;
+vaciados_qc9_vac := X136;
+vaciados_qc10_vac := x136;
+vaciados_subclamper2:= x136;
+
+
+
+fin_vaciado := x137 

@@ -1,0 +1,35 @@
+//Flancos
+
+
+// EMERGENCIA
+#S120e := (#X122e AND #CI) OR "FirstScan";
+#S121e := #X120e AND "Emergencia";
+#S122e := #X121e;
+
+#X120e := #S120e OR (#X120e AND NOT #S121e);
+#X121e := #S121e OR (#X121e AND NOT #S122e);
+#X122e := #S122e OR (#X122e AND NOT #S120e);
+
+#FORCE_INIT_E := #X121e;
+#FORCE_CURRENT_E := #X122e;
+
+
+#FORCE_INIT := #FORCE_INIT_E OR #X122a;
+#FORCE_CURRENT := #FORCE_CURRENT_E OR #X121a;
+
+
+Vac_Finalizados := FIN_VAC_1 and fin_vac_2 and fin_vac_3 and fin_sop_1 and fin_sop_2 and fin_sop_3 and fin_emb_1 and fin_emb_2 and fin_emb_3 and fin_emb4;
+
+
+// PRODUCCIÓN
+#S120 := ("FirstScan" OR (#X122)) AND NOT #FORCE_CURRENT;
+#S121 := (#X120 AND (#Act_Vaciado)) AND NOT #FORCE_CURRENT;
+#S122 := (#X121 AND Vac_Finalizados) AND NOT #FORCE_CURRENT;
+
+
+
+#X120 := (#S120 OR #X120 AND (NOT #S121)) OR #FORCE_INIT;
+#X121 := (#S121 OR #X121 AND (NOT #S122)) AND NOT #FORCE_INIT;
+#X122 := (#S122 OR #X122 AND (NOT #S120)) AND NOT #FORCE_INIT;
+
+act_vaciados_maquinas := X121;

@@ -1,0 +1,44 @@
+//Flancos
+
+
+// EMERGENCIA
+#S130e := (#X132e AND #CI) OR "FirstScan";
+#S131e := #X130e AND "Emergencia";
+#S132e := #X131e;
+
+#X130e := #S130e OR (#X130e AND NOT #S131e);
+#X131e := #S131e OR (#X131e AND NOT #S132e);
+#X132e := #S132e OR (#X132e AND NOT #S130e);
+
+#FORCE_INIT_E := #X131e;
+#FORCE_CURRENT_E := #X132e;
+
+
+#FORCE_INIT := #FORCE_INIT_E OR #X132a;
+#FORCE_CURRENT := #FORCE_CURRENT_E OR #X131a;
+
+
+T1 / 20s/X131
+
+// PRODUCCIÓN
+#S130 := ("FirstScan" OR (#X132 AND Fin_Vaciado )) AND NOT #FORCE_CURRENT;
+#S131 := (#X130 AND #Act_Vaciado_maquina) AND NOT #FORCE_CURRENT;
+#S132 := (#X131 AND T1.Q) AND NOT #FORCE_CURRENT;
+
+
+
+#X130 := (#S130 OR #X130 AND (NOT #S131)) OR #FORCE_INIT;
+#X131 := (#S131 OR #X131 AND (NOT #S132)) AND NOT #FORCE_INIT;
+#X132 := (#S132 OR #X132 AND (NOT #S130)) AND NOT #FORCE_INIT;
+
+Vaciados_maq_1 := X131;
+vaciados_maq_2 := X131;
+Vaciados_maq_3 := X131;
+vaciados_maq_4 := X131;
+Vaciados_maq_5 := X131;
+vaciados_maq_6 := X131;
+Vaciados_maq_7 := X131;
+vaciados_maq_8 := X131;
+
+
+fin_vaciado := x132
