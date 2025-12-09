@@ -1,0 +1,36 @@
+// EMERGENCIA
+#S10e := (#X13e AND #CI) OR "FirstScan";
+#S11e := #X10e AND "EMERGENCIA";
+#S12e := #X11e;
+
+#X10e := #S10e OR (#X10e AND NOT #S11e);
+#X11e := #S11e OR (#X11e AND NOT #S12e);
+#X12e := #S12e OR (#X12e AND NOT #S10e);
+
+#FORCE_INIT_E    := #X11e;
+#FORCE_CURRENT_E := #X12e;
+
+#STOP_NEG := NOT #Paro ;
+
+#S0p := ("FirstScan" OR #X0) AND NOT #FORCE_CURRENT_E;
+#S1p := #X0 AND (#STOP_NEG OR #HMI_Paro) AND NOT #FORCE_CURRENT_E;
+
+#X0p := (#S0p OR #X0p AND NOT #S1p) AND NOT #FORCE_INIT_E;
+#X1p := (#S1p OR #X1p AND NOT #S0p) AND NOT #FORCE_INIT_E;
+
+
+#Paro_Ciclo := #X1p;
+
+//Grafcet principal
+#S0 := ("FirstScan" OR (#X3 AND #Paro_Ciclo)) AND NOT #FORCE_CURRENT_E;
+#S1 := #X0 AND (#Marcha OR #HMI_Marcha) AND NOT #FORCE_CURRENT_E;
+#S2 := (#X1 AND #Mantenimiento_Fin) OR (#X3 AND NOT #Paro_Ciclo) AND NOT #FORCE_CURRENT_E;
+#S3 := (#X2 AND #Pieza_Empaquetada) AND NOT #FORCE_CURRENT_E;
+
+#X0 := (#S0 OR #X0 AND (NOT #S1)) AND NOT #FORCE_INIT_E;
+#X1 := (#S1 OR #X1 AND (NOT #S2)) AND NOT #FORCE_INIT_E;
+#X2 := (#S2 OR #X2 AND (NOT #S3)) AND NOT #FORCE_INIT_E;
+#X3 := (#S3 OR #X3 AND (NOT #S0)) AND NOT #FORCE_INIT_E;
+
+#Act_Mantenimiento := #X1;
+#Proceso_Activo := #X2 OR #X3;
