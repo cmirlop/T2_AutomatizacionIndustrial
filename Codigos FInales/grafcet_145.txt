@@ -1,0 +1,42 @@
+//Flancos
+
+
+// EMERGENCIA
+#S145e := (#X147e AND #CI) OR "FirstScan";
+#S146e := #X145e AND "Emergencia";
+#S147e := #X146e;
+
+#X145e := #S145e OR (#X145e AND NOT #S146e);
+#X146e := #S146e OR (#X146e AND NOT #S147e);
+#X147e := #S147e OR (#X147e AND NOT #S145e);
+
+#FORCE_INIT_E := #X146e;
+#FORCE_CURRENT_E := #X147e;
+
+
+#FORCE_INIT := #FORCE_INIT_E OR #X147a;
+#FORCE_CURRENT := #FORCE_CURRENT_E OR #X146a;
+
+
+T1 / 20s/X146
+
+// PRODUCCIÓN
+#S145 := ("FirstScan" OR (#X146 AND NOT #Act_Manual_maq )) AND NOT #FORCE_CURRENT;
+#S146 := (#X145 AND #Act_Manual_Maq) AND NOT #FORCE_CURRENT;
+
+
+
+
+#X145 := (#S145 OR #X145 AND (NOT #S146)) OR #FORCE_INIT;
+#X146 := (#S146 OR #X146 AND (NOT #S145)) AND NOT #FORCE_INIT;
+
+
+QCIN1 := (X146 AND Man_QC1) AND NOT Emergencia;
+QCIN2 := (X146 AND Man_QC2) AND NOT Emergencia;
+QCIN3 := (X146 AND Man_QC3) AND NOT Emergencia;
+QCIN4 := (X146 AND Man_QC4) AND NOT Emergencia;
+QTrans1 := (X146 AND Man_QTran1) AND NOT Emergencia;
+QTrans2 := (X146 AND Man_QTran2) AND NOT Emergencia;
+
+
+

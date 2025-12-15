@@ -2,7 +2,7 @@
 <DownloadTask>
   <ProjectInfo
     DeviceVersion="17.0.0.0"
-    CreationTime="2025-12-02 19:42:09 (UTC)"
+    CreationTime="2025-12-12 18:15:52 (UTC)"
     Runtime="COLORADO"
     RtProjectName="T2.HMI_1[TP1500 Comfort PRO]"
     RtProjectFolderName="T2.HMI_1[TP1500 Comfort PRO]"
@@ -12,8 +12,8 @@
     ImageReleaseNo="17.0.0.0"
     RTCV="17.0.0.0"
     PRCV="17.0.0.0"
-    FirmwareFileName=""
-    RuntimeFileName=""
+    FirmwareFileName="CP_15_19_22_PRO\17.0.0.0\CP_15_19_22_PRO_V17_0.fwf"
+    RuntimeFileName="CP_15_19_22_PRO\17.0.0.0\CP_15_19_22_PRO_V17_0.ruf"
     RuntimeAddonFolderName="CP_15_19_22_PRO" />
   <FullDownload>pdata.fwc</FullDownload>
   <FullDownload

@@ -1,0 +1,37 @@
+//Flancos
+
+
+// EMERGENCIA
+#S140e := (#X142e AND #CI) OR "FirstScan";
+#S141e := #X140e AND "Emergencia";
+#S142e := #X141e;
+
+#X140e := #S140e OR (#X140e AND NOT #S141e);
+#X141e := #S141e OR (#X141e AND NOT #S142e);
+#X142e := #S142e OR (#X142e AND NOT #S140e);
+
+#FORCE_INIT_E := #X141e;
+#FORCE_CURRENT_E := #X142e;
+
+
+#FORCE_INIT := #FORCE_INIT_E OR #X142a;
+#FORCE_CURRENT := #FORCE_CURRENT_E OR #X141a;
+
+
+T1 / 20s/X141
+
+// PRODUCCIÓN
+#S140 := ("FirstScan" OR (#X141 AND NOT #Act_Manual )) AND NOT #FORCE_CURRENT;
+#S141 := (#X140 AND #Act_Manual) AND NOT #FORCE_CURRENT;
+
+
+
+
+#X140 := (#S140 OR #X140 AND (NOT #S141)) OR #FORCE_INIT;
+#X141 := (#S141 OR #X141 AND (NOT #S140)) AND NOT #FORCE_INIT;
+
+
+Activar_Manuales := X141 AND NOT Emergencia;
+
+
+
