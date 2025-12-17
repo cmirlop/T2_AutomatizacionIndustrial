@@ -17,7 +17,7 @@
 	\etapa[1\nodeDist]{51}{50}{Act\_Maq};
 	\primeraAccion{51}{X51-A1}{QC5\_VAC}
 	\otraAccion{X51-A1}{X51-A2}{QC6\_VAC}
-	\otraAccion{X51-A1}{X51-A2}{X51-A3}{QC7\_VAC}
+	\otraAccion{X51-A2}{X51-A3}{QC7\_VAC}
 
 	%---
 
@@ -25,7 +25,7 @@
 	\etapa[1\nodeDist]{52}{51}{S5};
 	\primeraAccion{52}{X52-A1}{QC5\_VAC}
 	\otraAccion{X52-A1}{X52-A2}{QC6\_VAC}
-	\otraAccion{X52-A1}{X52-A2}{X52-A3}{QC7\_VAC}
+	\otraAccion{X52-A2}{X52-A3}{QC7\_VAC}
 	
 
 	%---
@@ -37,13 +37,13 @@
 	\otraAccion{X54-A1}{X54-A2}{QCLAMP}
 
 	\etapa[1\nodeDist]{55}{54}{Hay\_Soporte};
-	\primeraAccion{55}{X55-A1}{GRIPPER2}
+	\primeraAccion{55}{X55-A1}{QBAJ}
 	\otraAccion{X55-A1}{X55-A2}{QCLAMP}
 
 	\etapa[1\nodeDist]{56}{55}{2s/X55};
 	\primeraAccion{56}{X56-A1}{QBAJ}
 	\otraAccion{X56-A1}{X56-A2}{GRIPPER}
-	\otraAccion{X56-A1}{X56-A2}{X56-A3}{QCLAMP}
+	\otraAccion{X56-A2}{X56-A3}{QCLAMP}
 
 	\etapa[1\nodeDist]{57}{56}{2s/X56};
 	\primeraAccion{57}{X57-A1}{GRIPPER}
@@ -56,7 +56,7 @@
 	\etapa[1\nodeDist]{59}{58}{2s/X58};
 	\primeraAccion{59}{X59-A1}{GRIPPER}
 	\otraAccion{X59-A1}{X59-A2}{QBAJ\_MAQ}
-	\otraAccion{X59-A1}{X59-A2}{X56-A3}{QHOR}
+	\otraAccion{X59-A2}{X56-A3}{QHOR}
 
 	\etapa[1\nodeDist]{60}{59}{2s/X59};
 	\primeraAccion{60}{X60-A1}{QHOR}

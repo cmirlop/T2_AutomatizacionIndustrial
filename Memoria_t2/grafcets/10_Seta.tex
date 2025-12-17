@@ -16,7 +16,7 @@
 	
 	\etapaInicial{100}
 	\primeraAccion{100}{X100-A1}{MAQ\_CAL\_VAC\_LIBRE}
-  \otraAccion{X100-A1}{X100-A2}{$\mathtt{C:=0}$}
+    \otraAccion{X100-A1}{X100-A2}{$\mathtt{C:=0}$}
   \sobreActivacion{X100-A2}{X100-A3}{}
 	%---
 
@@ -34,7 +34,7 @@
 	\etapa[1.25\nodeDist]{104}{103}{1s/X103};
 	\primeraAccion{104}{X104-A1}{HAYSoporte}
 
-  \etapa[1.25\nodeDist]{105}{104}{1s/X103};
+  \etapa[1.25\nodeDist]{105}{104}{Pieza\_Empaquetada};
   \primeraAccion{105}{X105-A1}{$\mathtt{C:=C+1}$}
   \sobreActivacion{X105-A1}{X105-A2}{}
 
@@ -42,7 +42,7 @@
   %\etapa[1.25\nodeDist]{104}{105}{$\mathtt{C<2}$}
   \saltoHorizontal[5.5cm]{105}{104}{$\mathtt{C<2}$}
   
-  \etapa[1.25\nodeDist]{106}{105}{$\mathtt{C==1}$};
+  \etapa[1.4\nodeDist]{106}{105}{$\mathtt{C==1}$};
 	\primeraAccion{106}{X106-A1}{QCLAMP\_SUB}
 	\otraAccion{X106-A1}{X106-A2}{QC7\_VAC}
 

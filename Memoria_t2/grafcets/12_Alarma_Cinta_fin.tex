@@ -4,28 +4,20 @@
   %---------------------------
   % Columna izquierda
   %---------------------------
-  \etapaInicial{60a}
-  \etapa[1.5\nodeDist]{61a}{60a}{Alarma};
-  \forzado{61a}{X61a-A1}{G60\{$*$\}}
-  \otraAccion{X61a-A1}{X61a-A2}{Stop\_Act}
+  \etapaInicial{120}
+  \etapa[1.25\nodeDist]{121}{120}{VACIAR\_MAQS};
+  \primeraAccion{121}{X121-A1}{Activar\_Vaciado\_Maquinas}
   
-  {
-    \renewcommand{\transitionPos}{0.65}
-    \etapa[1.6\nodeDist]{62a}{61a}{Reset$\,\cdot\,$\NOT{Resume}};
-  }
+ 
   
   
-  \etapa[1.5\nodeDist]{63a}{62a}{\underline{1}};
- 	
-  \forzado{62a}{X62a-A1}{G60\{$INIT$\}}
-  {
-	\setlength{\retornoDist}{0.75cm}
-	\setlength{\enlaceRetornoDist}{0.35\nodeDist}	
-	\saltoHorizontal[5.5cm]{61a}{63a}{Resume$\,\cdot\,$\NOT{Reset}}
-	}
+  \etapa[1.25\nodeDist]{122}{121}{Fin\_VAC\_VAC\_1 $\cdot$ Fin\_VAC\_EMB\_1 $\cdot$ Fin\_VAC\_SOP\_1 $\cdot$ Fin\_VAC\_VAC\_2 $\cdot$ Fin\_VAC\_EMB\_2 $\cdot$ Fin\_VAC\_SOP\_2 };
+ 	\primeraAccion{122}{X122-A1}{Fin\_Vaciado}
   
+    \etapa[1.25\nodeDist]{122V2}{122}{ $\cdot$ Fin\_VAC\_VAC\_3 $\cdot$ Fin\_VAC\_EMB\_3 $\cdot$ Fin\_VAC\_SOP\_3 $\cdot$ Fin\_VAC\_SOP\_4};
+ 	\primeraAccion{122V2}{X122V2-A1}{Fin\_Vaciado}
 
-  \retornoInicio[4.2cm]{63a}{60a}{\underline{1}}
+  \retornoInicio[6cm]{122V2}{120}{\underline{1}}
 
 
 

@@ -17,13 +17,13 @@
 	\etapa[1.25\nodeDist]{71}{70}{Act\_Maq};
 	\primeraAccion{71}{X71-A1}{QC5\_VAC}
 	\otraAccion{X71-A1}{X71-A2}{QC6\_VAC}
-	\otraAccion{X71-A1}{X71-A2}{X71-A3}{QC7\_VAC}
+	\otraAccion{X71-A2}{X71-A3}{QC7\_VAC}
 	
 	%--
 	\etapa[1.25\nodeDist]{72}{71}{S5};
 	\primeraAccion{72}{X72-A1}{QC5\_VAC}
 	\otraAccion{X72-A1}{X72-A2}{QC6\_VAC}
-	\otraAccion{X72-A1}{X72-A2}{X72-A3}{QC7\_VAC}
+	\otraAccion{X72-A2}{X72-A3}{QC7\_VAC}
 	%---
 	\etapa[1.25\nodeDist]{73}{72}{1s/X72};
 	\primeraAccion{73}{X73-A1}{QCLAMP}
@@ -33,10 +33,10 @@
 
 	\etapa[1.25\nodeDist]{75}{74}{Pieza\_Empaquetada};
 
-	\etapa[1.25\nodeDist]{76}{75}{S5};
+	\etapa[1.25\nodeDist]{76}{75}{SIG\_MAQ\_LIBRE};
 	\primeraAccion{76}{X76-A1}{QCLAMP\_SUB}
 	\otraAccion{X76-A1}{X76-A2}{QC7\_VAC}
-	\otraAccion{X76-A1}{X76-A2}{X76-A3}{Act\_SIG\_MAQ}
+	\otraAccion{X76-A2}{X76-A3}{Act\_SIG\_MAQ}
 
 	\retornoInicio[6em]{76}{0}{\underline{1}}
 

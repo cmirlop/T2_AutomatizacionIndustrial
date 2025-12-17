@@ -592,6 +592,12 @@ INPUT grafcets\9_Gripper.tex
 INPUT .\grafcets\10_Seta.tex
 INPUT .\grafcets\10_Seta.tex
 INPUT grafcets\10_Seta.tex
+INPUT .\grafcets\11_SETA_Cinta_fin.tex
+INPUT .\grafcets\11_SETA_Cinta_fin.tex
+INPUT grafcets\11_SETA_Cinta_fin.tex
+INPUT .\grafcets\12_Alarma_Cinta_fin.tex
+INPUT .\grafcets\12_Alarma_Cinta_fin.tex
+INPUT grafcets\12_Alarma_Cinta_fin.tex
 INPUT Informe.aux
 INPUT .\Informe.out
 INPUT .\Informe.out
@@ -625,6 +631,8 @@ INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Users\vitto\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
