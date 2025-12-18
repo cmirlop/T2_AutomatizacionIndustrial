@@ -1,3 +1,17 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{Resumen}{1}{section*.4}%
-\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {section}{\numberline {1}Metodolgía}{1}{section.1}%
+\contentsline {section}{\numberline {2}Grafcets}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Grafcet Principal}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Grafcet Paro}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Grafcet Cinta 1}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Grafcet Identificador de Tipo}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Grafcet Transfer 1}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Grafcet Transfer 2}{5}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Grafcet Posicionamiento Vacuna}{6}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Grafcet Empaquetado}{8}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Grafcet Encajado}{9}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Grafcet Gripper}{10}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Grafcet Seta}{11}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Grafcet Cinta Fin}{12}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Grafcet Alarma Cinta Fin}{13}{subsection.2.13}%

@@ -18,16 +18,18 @@
 	%-----
 	\renewcommand{\transitionPos}{0.35}
    	\etapa[1.25\nodeDist]{11}{10}{Proceso\_Activo};
-	\primeraAccion{11}{X11-A1}{Emisor\_Vacunas}
-	\otraAccion{X11-A1}{X11-A2}{QC1\_VAC}
+	\primeraAccion{11}{X11-A1}{Emisor}
+	\otraAccion{X11-A1}{X11-A2}{QC1\_A}
+	\otraAccion{X11-A2}{X11-A3}{QC1\_B}
 	
 
 	%---
 	\etapa[1.25\nodeDist]{11b}{11}{SPress\_X};
-	\primeraAccion{11b}{X11-A1}{QC1\_VAC}
+	\primeraAccion{11b}{X11-A1}{QC1\_B}
 
 	\etapa[1.25\nodeDist]{12}{11b}{\NOT{SPress\_X}};
-	\primeraAccion{12}{X12-A1}{QC1\_VAC}
+	\primeraAccion{12}{X12-A1}{QC1\_A}
+	\otraAccion{X12-A1}{X12-A2}{QC1\_B}
 	
 
 
@@ -36,7 +38,7 @@
 	
 
 	%---
-	\etapa[1.25\nodeDist]{13}{12}{S1\_VAC};
+	\etapa[1.25\nodeDist]{13}{12}{S1};
 	
 
 	%---
@@ -44,10 +46,10 @@
 
 	%----
 	\etapa[1.25\nodeDist]{14}{13}{Descartador\_Libre};
-	\primeraAccion{14}{X14-A1}{QC1\_VAC}
+	\primeraAccion{14}{X14-A1}{QC1\_B}
 	\otraAccion{X14-A1}{X14-A2}{Act\_Descartador\_B}
 
-	\etapa[1.25\nodeDist]{15}{14}{\NOT{S1\_VAC}};
+	\etapa[1.25\nodeDist]{15}{14}{\NOT{S1}};
 
 
 	%----
