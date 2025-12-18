@@ -15,3 +15,5 @@
 \contentsline {subsection}{\numberline {2.11}Grafcet Seta}{11}{subsection.2.11}%
 \contentsline {subsection}{\numberline {2.12}Grafcet Cinta Fin}{12}{subsection.2.12}%
 \contentsline {subsection}{\numberline {2.13}Grafcet Alarma Cinta Fin}{13}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}Grafcet Vaciado}{13}{subsection.2.14}%
+\contentsline {subsection}{\numberline {2.15}Grafcet otro Vaciado}{14}{subsection.2.15}%

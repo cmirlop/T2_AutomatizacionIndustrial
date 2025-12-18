@@ -6,33 +6,36 @@
 %\sincDistYbelow = 0.6\sincDistYabove
 %\sincDistYBlockbelow = 0.5\nodeDist
 
+
 \begin{tikzpicture}[auto]
-
+	
 	\ttfamily
-		
-	% --------------------------------------------
-	\etapaInicial{10}	
-
-   	{
-   	\renewcommand{\transitionPos}{0.35}
-   	\etapa[1.35\nodeDist]{11}{10}{CINALIM2};
-	\primeraAccion{11}{X11-A1}{POWER}
-	\otraAccion{X11-A1}{X11-A2}{QCINALIM}
-	}
 	
-   	\etapa{12}{11}{CINALIM2};
-	\primeraAccion{12}{X12-A1}{FRESA}
-	\comentari[1]{X12-A1}{Máquina fresadora en marcha}
-
-	% --------------------------------------------
-	% Bifurcación
-
-	\bifurcacionRetorno[15ex]{12}{13}{14}
-	\retornoInicio[6em]{13}{10}{A}
+	\etapaInicial{125}
 	
-	{
-	\setlength{\enlaceRetornoDist}{0.30\nodeDist}
-	\retorno[14em]{14}{11}{B}
-	}
-            
+	%---
+	\etapa[1.25\nodeDist]{126}{125}{MAQ\_VAC\_VAC\_1};
+	\primeraAccion{126}{X126-A1}{QC1\_VAC}
+    \otraAccion{X126-A1}{X126-A2}{QC2\_VAC}
+
+	\bifurcacion[80]{126}{127}{10s/X1}{126a}{\NOT{S2}}
+
+	
+
+	\primeraAccion{127}{X127-A1}{Fin\_VAC\_VAC\_1}
+	
+	%--
+	
+	\primeraAccion{126a}{X126a-A1}{QC2\_VAC}
+	
+	%---
+	\etapa[1.25\nodeDist]{126b}{126a}{S3};
+	\primeraAccion{126b}{X126b-A1}{QTransfer1\_VAC}
+	
+	\saltoHorizontal[10cm]{126}{126b}{S3}
+
+
+	\retornoInicio[-19em]{126b}{0}{\NOT{S3}}
+	\retornoInicio[6em]{127}{0}{Fin\_Vaciado}
+
 \end{tikzpicture}
