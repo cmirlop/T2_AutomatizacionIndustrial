@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber Informe"] 1766084456.28 "Informe.bcf" "Informe.bbl" "Informe" 1766085437.32219 0
-  "Informe.bcf" 1766085436 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
+["biber Informe"] 1766084456.28 "Informe.bcf" "Informe.bbl" "Informe" 1766085625.42397 0
+  "Informe.bcf" 1766085625 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
   (generated)
   "Informe.bbl"
   "Informe.blg"
   (rewritten before read)
-["pdflatex"] 1766085433.75361 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766085437.32298 0
+["pdflatex"] 1766085621.7944 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766085625.42468 0
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765640236 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1762450105 34112 6077470a731733ee0e995aa9c01a906c ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0900.pk" 1760431305 22504 a5dd8a55bad19e6d843a98e120614012 ""
@@ -297,16 +297,16 @@
   "C:/Users/Usuario/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Usuario/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Usuario/AppData/Local/Programs/MiKTeX/tex/latex/xifthen/xifthen.sty" 1448274436 5689 1bfa68243e89a54479e7d0580773c57e ""
-  "Informe.aux" 1766085436 6163 6ce2d657777f3881db1dada7e8f4b8d2 "pdflatex"
+  "Informe.aux" 1766085625 6182 58d397fb9fc036ae1a8d912817b1b3bf "pdflatex"
   "Informe.bbl" 1766084458 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
-  "Informe.lof" 1766085436 1391 6be15c779dac40285d679b61a6497ec2 "pdflatex"
-  "Informe.lot" 1766085436 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
-  "Informe.out" 1766085436 2286 8e747fd9920212d0086a3e6f30b4e22c "pdflatex"
-  "Informe.run.xml" 1766085436 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
+  "Informe.lof" 1766085625 1396 29148c9756e6df89c8c64ec0add3a8d2 "pdflatex"
+  "Informe.lot" 1766085625 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
+  "Informe.out" 1766085625 2319 2fc2cd5809a891cc9f43c2fdc137f6da "pdflatex"
+  "Informe.run.xml" 1766085625 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
   "Informe.tex" 1766081070 4039 90c011e3dcdd05c29eae72c6a0e136a3 ""
-  "Informe.toc" 1766085436 1322 42bae67546227f3fb595d78513a0b767 "pdflatex"
+  "Informe.toc" 1766085625 1329 ecf2642b4022b34a00a035c392ca45a8 "pdflatex"
   "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" 1766081070 4039 90c011e3dcdd05c29eae72c6a0e136a3 ""
-  "capitulos/cap_grafcets.tex" 1766085429 2783 94c98ff22471e88d8a1f8d2fedca869f ""
+  "capitulos/cap_grafcets.tex" 1766085617 2793 75fa8926306383db8c536354378f8cda ""
   "capitulos/cap_metodologia.tex" 1766081623 850 b4358f7ae8a0fe9035578435df6fe32c ""
   "configuraciones/configura_listings_SCL.tex" 1765187789 420 0e32d40cb00908db3d7c8b38c183bdb6 ""
   "configuraciones/post_begin_document.tex" 1765187789 1002 0da7031cdd98781be417c8e0562538a9 ""
