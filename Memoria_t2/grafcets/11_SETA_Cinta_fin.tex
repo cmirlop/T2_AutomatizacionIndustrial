@@ -1,22 +1,44 @@
-\begin{tikzpicture}
-  \ttfamily
+%\nodeDist = 2.5cm
+%\retornoDist = 0.7\nodeDist % Distància vertical dels retorns
+%\bifDistX = 10ex
+%\bifDistY = 1.1\nodeDist
+%\sincDistYabove = 0.85\nodeDist
+%\sincDistYbelow = 0.6\sincDistYabove
+%\sincDistYBlockbelow = 0.5\nodeDist
 
-  %---------------------------
-  % Columna izquierda
-  %---------------------------
-  \etapaInicial{60e}
 
-  % 100 -> 101  (transición de alarmas)
-  \etapa{61e}{60e}{SETA};
-  \forzado{61e}{X61e-A1}{G60\{$INIT$\}}
-  \etapa{62e}{61e}{\underline{1}};
-  \forzado{62e}{X62e-A1}{G60\{$*$\}}
-  \otraAccion{X62e-A1}{X62e-A2}{Act\_Mantenimiento}
-	\condicionada{X62e-A2}{Reset}
-  \retornoInicio[4.2cm]{62e}{60e}{Mantenimiento\_fin}
-  
+\begin{tikzpicture}[auto]
+	
+	\ttfamily
+	
+	\etapaInicial{110}
+	
+	%---
+	\etapa[1.25\nodeDist]{111}{110}{Act\_Mantenimiento};
 
-  
+	
+	%--
+	\etapa[1.25\nodeDist]{112}{111}{\NOT{SENSORES}};
+	\primeraAccion{112}{X112-A1}{Activar\_Cinta}
+	
+	%---
+	\etapa[1.25\nodeDist]{113}{112}{2s/X112};
+	\primeraAccion{113}{X113-A1}{Activar\_Transfers}
 
+	\etapa[1.25\nodeDist]{114}{113}{2s/X113};
+	\primeraAccion{114}{X114-A1}{Bajar\_Robot}
+  \otraAccion{X114-A1}{X114-A2}{Subir\_CLAMPER}
+
+	\etapa[1.25\nodeDist]{115}{114}{2s/X114};
+	\primeraAccion{115}{X115-A1}{Grippers}
+  \otraAccion{X115-A1}{X115-A2}{CLAMPER}
+
+	\etapa[1.25\nodeDist]{116}{115}{2s/X115};
+	\primeraAccion{116}{X116-A1}{Mover\_Horizontal\_Robots}
+
+  \etapa[1.25\nodeDist]{117}{116}{2s/X116};
+	\primeraAccion{117}{X117-A1}{Fin\_Mantenimiento}
+
+	\retornoInicio[6em]{117}{0}{\underline{1}}
 
 \end{tikzpicture}

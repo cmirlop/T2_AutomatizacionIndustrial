@@ -12,35 +12,43 @@
 	\ttfamily
 	
 	% --------------------------------------------
-	\etapaInicial{15}
-	\primeraAccion{15}{X15-A1}{Descartador\_Libre}
+	\etapaInicial{20}
+	\primeraAccion{20}{X20-A1}{Descartador\_Libre}
 
-	\bifurcacion[20ex]{15}{16}{SOPORTE\_A}{17}{SOPORTE\_B}
+
+	\etapa[1.25\nodeDist]{21}{20}{Act\_Descartador};
+	\primeraAccion{21}{X21-A1}{QC2\_VAC}
+
+	\bifurcacion[44ex]{21}{22}{SA\_Buenos}{24}{SB}
 	%-----
-	\primeraAccion{16}{X16-A1}{QC2\_VAC}
-	\primeraAccion{17}{X17-A1}{QC2\_VAC}
-	
+	\comentari[3]{X22}{Esperamos máquina de calidad libre}
+	\primeraAccion{22}{X22-A1}{Pieza\_Rec}
 
-	%---
-	\etapa[1.25\nodeDist]{16b}{16}{S1GIR\_VAC};
-	\comentari[3]{X16b}{Esperamos máquina de calidad libre}
+	\etapa[2.2\nodeDist]{22b}{22}{SIG\_MAQ\_LIBRE};
+	\primeraAccion{22b}{X22b-A1}{QC2\_VAC}
+	\otraAccion{X22b-A1}{X22b-A2}{Act\_Maq\_A\_Buena}
+	\otraAccion{X22b-A2}{X22b-A3}{Counter\_TipoAB}
 
-	%---
-	\etapa[1.25\nodeDist]{16c}{16b}{MAQ\_CAL\_VAC\_LIBRE};
-	\primeraAccion{16c}{X16c-A1}{QC2\_VAC}
-	\otraAccion{X16c-A1}{X16c-A2}{ACT\_MAQ\_CAL\_VAC}
+	\retornoInicio[6em]{22b}{0}{\NOT{SA\_Buenos}}
 
-	%---
-	
-	\etapa[1.25\nodeDist]{17b}{17}{S1GIR\_VAC};
-	\primeraAccion{17b}{X17b-A1}{QC2\_VAC}
+	\primeraAccion{24}{X24-A1}{QTRANS}
+	\otraAccion{X24-A1}{X24-A2}{Pieza\_Rec}
+	\otraAccion{X24-A2}{X24-A3}{Counter\_TipoB}
+
+	\retornoInicio[-6em]{24}{0}{2s/X24}
 
 	
+	%---
+	\etapa[1.25\nodeDist]{23}{21}{SA\_Buenos $\cdot$ \NOT{SA\_Bueno}};
+	\comentari[3]{X23}{Esperamos máquina de calidad libre}
+	\primeraAccion{23}{X23-A1}{QTRANS}
 
+	\etapa[1.25\nodeDist]{23b}{23}{SIG\_MAQ\_LIBRE};
+	\primeraAccion{23b}{X23b-A1}{QC2\_VAC}
+	\otraAccion{X23b-A1}{X23b-A2}{Act\_Maq\_A\_Mala}
+	\otraAccion{X23b-A2}{X23b-A3}{Counter\_TipoAM}
 
-
-	\retornoInicio[6em]{16c}{0}{\NOT {S1GIR\_VAC}}
-	\retornoInicio[-9em]{17b}{0}{\NOT {S1GIR\_VAC}}
+	\retornoInicio[15em]{23b}{0}{\NOT{SA\_Malos}}
 
 
 

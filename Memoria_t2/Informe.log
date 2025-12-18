@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.4)  6 DEC 2025 15:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.4)  17 DEC 2025 20:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1076,6 +1076,12 @@ LaTeX Warning: Label `graf:fresadora' multiply defined.
 
 LaTeX Warning: Label `graf:fresadora' multiply defined.
 
+
+LaTeX Warning: Label `graf:fresadora' multiply defined.
+
+
+LaTeX Warning: Label `graf:fresadora' multiply defined.
+
 )
 \openout1 = `Informe.aux'.
 
@@ -1247,6 +1253,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 )
 
 Package babel Info: 'spanish' activates 'spanish' shorthands.
@@ -1266,7 +1273,14 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 )
+Overfull \hbox (98.22705pt too wide) in paragraph at lines 29--32
+ [][] 
+ []
+
+
 
 [2] (grafcets/4_Transfer1.tex
 Missing character: There is no ; in font nullfont!
@@ -1277,50 +1291,26 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-) (grafcets/5_Transfer2.tex
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 )
 
-[3] (grafcets/6_Empaquetado.tex
-Missing character: There is no ; in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no 7 in font nullfont!
-Missing character: There is no _ in font nullfont!
-Missing character: There is no V in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no 7 in font nullfont!
-Missing character: There is no _ in font nullfont!
-Missing character: There is no V in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no C in font nullfont!
+[3] (grafcets/5_Transfer2.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no L in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no M in font nullfont!
-Missing character: There is no P in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no H in font nullfont!
-Missing character: There is no O in font nullfont!
-Missing character: There is no R in font nullfont!
+) (grafcets/6_Empaquetado.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1334,36 +1324,11 @@ Overfull \vbox (33.78967pt too high) has occurred while \output is active []
 
 [5] (grafcets/7_Transfer2der.tex
 Missing character: There is no ; in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no 7 in font nullfont!
-Missing character: There is no _ in font nullfont!
-Missing character: There is no V in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no Q in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no 7 in font nullfont!
-Missing character: There is no _ in font nullfont!
-Missing character: There is no V in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no C in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no _ in font nullfont!
-Missing character: There is no S in font nullfont!
-Missing character: There is no I in font nullfont!
-Missing character: There is no G in font nullfont!
-Missing character: There is no _ in font nullfont!
-Missing character: There is no M in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no Q in font nullfont!
+Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 ) (grafcets/8_Encajado.tex
 Missing character: There is no ; in font nullfont!
@@ -1402,11 +1367,34 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-))
+)
 
-[7]
+[7] (grafcets/11_SETA_Cinta_fin.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+)
 
-[8] 
+[8] (grafcets/12_Alarma_Cinta_fin.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+)
+Overfull \hbox (77.76518pt too wide) in paragraph at lines 103--106
+ [][] 
+ []
+
+)
+
+[9]
+
+[10] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (Informe.aux)
  ***********
@@ -1424,17 +1412,17 @@ Package logreq Info: Writing requests to 'Informe.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53142 strings out of 468081
- 1229826 string characters out of 5425789
- 2230026 words of memory out of 5000000
- 80996 multiletter control sequences out of 15000+600000
+ 53621 strings out of 468081
+ 1237794 string characters out of 5425789
+ 2236032 words of memory out of 5000000
+ 81465 multiletter control sequences out of 15000+600000
  647237 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,12n,90p,1281b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Informe.pdf (11 pages, 429371 bytes).
+ <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\vitto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/vitto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Informe.pdf (13 pages, 445226 bytes).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
+ 452 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
  34 words of extra memory for PDF output out of 10000 (max. 10000000)
 
