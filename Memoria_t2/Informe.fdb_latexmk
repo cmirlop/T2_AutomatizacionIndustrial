@@ -1,11 +1,12 @@
 # Fdb version 4
-["biber Informe"] 1766089394.3458 "Informe.bcf" "Informe.bbl" "Informe" 1766089444.99209 0
-  "Informe.bcf" 1766089444 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
+["biber Informe"] 0 "Informe.bcf" "Informe.bbl" "Informe" 1766089370.77831 -1
+  "./configuraciones/referencias.bib" 1762277436 1376 1ddfa30c7ab16acdd0d1046f00dd7da7 ""
+  "Informe.bcf" 1766089370 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
   (generated)
   "Informe.bbl"
   "Informe.blg"
   (rewritten before read)
-["pdflatex"] 1766089437.03758 "c:/Users/vitto/OneDrive/Documentos/GitHub/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766089444.99385 0
+["pdflatex"] 1766089363.60812 "c:/Users/vitto/OneDrive/Documentos/GitHub/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766089370.78022 0
   "C:/Users/vitto/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1764697464 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/vitto/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1762451891 34112 f8eec4451e2153d4b6a6c52b99048cec ""
   "C:/Users/vitto/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0900.pk" 1762451902 22504 c37af3812ca9483498023f3faf049979 ""
@@ -297,16 +298,16 @@
   "C:/Users/vitto/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/vitto/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729261622 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/vitto/AppData/Local/Programs/MiKTeX/tex/latex/xifthen/xifthen.sty" 1448274436 5689 1bfa68243e89a54479e7d0580773c57e ""
-  "Informe.aux" 1766089444 6976 38d29e90e5eaa53fd46faa8567d16fad "pdflatex"
-  "Informe.bbl" 1766089408 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
-  "Informe.lof" 1766089444 1594 98c454c23c769f2c6ff33f920c6f1c95 "pdflatex"
-  "Informe.lot" 1766089444 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
-  "Informe.out" 1766089444 2588 e2e82f158803b69b2a578582147eeee6 "pdflatex"
-  "Informe.run.xml" 1766089444 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
+  "Informe.aux" 1766089370 6976 38d29e90e5eaa53fd46faa8567d16fad "pdflatex"
+  "Informe.bbl" 1766085532 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
+  "Informe.lof" 1766089370 1594 98c454c23c769f2c6ff33f920c6f1c95 "pdflatex"
+  "Informe.lot" 1766089370 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
+  "Informe.out" 1766089370 2588 e2e82f158803b69b2a578582147eeee6 "pdflatex"
+  "Informe.run.xml" 1766089370 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
   "Informe.tex" 1766085532 4039 90c011e3dcdd05c29eae72c6a0e136a3 ""
-  "Informe.toc" 1766089444 1495 362b8d17e994a6e637fc163447e6260f "pdflatex"
+  "Informe.toc" 1766089370 1495 362b8d17e994a6e637fc163447e6260f "pdflatex"
   "c:/Users/vitto/OneDrive/Documentos/GitHub/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" 1766085532 4039 90c011e3dcdd05c29eae72c6a0e136a3 ""
-  "capitulos/cap_grafcets.tex" 1766089420 3205 c30496053e5c2ec1cbc903db9ab2b877 ""
+  "capitulos/cap_grafcets.tex" 1766089354 3205 c30496053e5c2ec1cbc903db9ab2b877 ""
   "capitulos/cap_metodologia.tex" 1766085532 850 b4358f7ae8a0fe9035578435df6fe32c ""
   "configuraciones/configura_listings_SCL.tex" 1762277436 420 0e32d40cb00908db3d7c8b38c183bdb6 ""
   "configuraciones/post_begin_document.tex" 1762277436 1002 0da7031cdd98781be417c8e0562538a9 ""
