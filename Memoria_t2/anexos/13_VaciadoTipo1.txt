@@ -1,0 +1,87 @@
+FUNCTION_BLOCK "grafcet_125_vaciado_tipo1"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Vaciado_Maquina : Bool;
+      s2 : Bool;
+      S3_2 : Bool;
+      S3_3 : Bool;
+      S3_1 : Bool;
+      Fin_vaciado : Bool;
+      CI : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      QCINTA1 : Bool;
+      QCINTA2 : Bool;
+      QTrans : Bool;
+      FIN_Vaciado_MAq : Bool;
+   END_VAR
+
+   VAR 
+      S125 : Bool;
+      S126 : Bool;
+      S126a : Bool;
+      S126b : Bool;
+      S127 : Bool;
+      X125 : Bool;
+      X126 : Bool;
+      x126a : Bool;
+      x126b : Bool;
+      x127 : Bool;
+      s1250e : Bool;
+      s1251e : Bool;
+      s1252e : Bool;
+      x1250e : Bool;
+      x1251e : Bool;
+      x1252e : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_CURRENT_E : Bool;
+      S3 : Bool;
+      T1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      F_S2 {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+   END_VAR
+
+
+BEGIN
+	// EMERGENCIA
+	#s1250e := (#x1252e AND #CI) OR "FirstScan";
+	#s1251e := #x1250e AND FALSE;
+	#s1252e := #x1251e;
+	
+	#x1250e := #s1250e OR (#x1250e AND NOT #s1251e);
+	#x1251e := #s1251e OR (#x1251e AND NOT #s1252e);
+	#x1252e := #s1252e OR (#x1252e AND NOT #s1250e);
+	
+	#FORCE_INIT_E := #x1251e;
+	#FORCE_CURRENT_E := #x1252e;
+	
+	#S3 := #S3_1 OR #S3_2 OR #S3_3;
+	
+	#T1(IN:=#X126,
+	    PT:=T#10s);
+	#F_S2(CLK:=#s2);
+	
+	
+	
+	// PRODUCCIÓN
+	#S125 := ("FirstScan" OR (#x126b AND NOT #S3_1) OR (#x127 AND #Fin_vaciado)) AND NOT #FORCE_CURRENT_E;
+	#S126 := ((#X125 AND #Act_Vaciado_Maquina) OR (#x126b AND NOT #S3)) AND NOT #FORCE_CURRENT_E;
+	#S126a := (#X126 AND #F_S2.Q ) AND NOT #FORCE_CURRENT_E;
+	#S126b := ((#X126 AND #S3) OR(#x126a AND #S3)  ) AND NOT #FORCE_CURRENT_E;
+	#S127 := (#X126 AND #T1.Q) AND NOT #FORCE_CURRENT_E;
+	
+	// hay que revisar lo del FORCE_INIT
+	#X125 := (#S125 OR #X125 AND NOT #S126) OR #FORCE_INIT_E;
+	#X126 := (#S126 OR #X126 AND (NOT #S126a AND NOT #S127 AND NOT #S126b)) AND NOT #FORCE_INIT_E;
+	#x126a := (#S126a OR #x126a AND NOT #S126b) AND NOT #FORCE_INIT_E;
+	#x126b := (#S126b OR #x126b AND NOT #S125) AND NOT #FORCE_INIT_E;
+	#x127 := (#S127 OR #x127 AND NOT #S125) AND NOT #FORCE_INIT_E;
+	
+	#QCINTA1 := #X126;
+	#QCINTA2 := #X126 OR #x126a;
+	#FIN_Vaciado_MAq := #x127;
+	#QTrans := #x126b;
+END_FUNCTION_BLOCK
+

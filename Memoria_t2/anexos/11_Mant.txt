@@ -1,0 +1,161 @@
+FUNCTION_BLOCK "Grafcet_110_Mantenimiento"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Mantenimiento : Bool;
+      Act_Mantenimiento_Emergencia : Bool;
+      Act_Mantenimiento_HMI : Bool;
+      CI : Bool;
+      Reset : Bool;
+      Resume : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Mantenimiento_Activado : Bool;
+      Activar_Cintas : Bool;
+      Activar_Transfers : Bool;
+      BAJAR_ROBOTS : Bool;
+      SUBIR_CLAMPERS : Bool;
+      GRIPPERS : Bool;
+      CLAMPER : Bool;
+      MOVER_HOR : Bool;
+      Fin_Mantenimiento : Bool;
+   END_VAR
+
+   VAR 
+      X110 : Bool;
+      X111 : Bool;
+      X112 : Bool;
+      X113 : Bool;
+      X114 : Bool;
+      X115 : Bool;
+      X116 : Bool;
+      X117 : Bool;
+      S110 : Bool;
+      S111 : Bool;
+      S112 : Bool;
+      S113 : Bool;
+      S114 : Bool;
+      S115 : Bool;
+      S116 : Bool;
+      S117 : Bool;
+      Sensores : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_CURRENT_E : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      STOP_ACT : Bool;
+      S110e : Bool;
+      S111e : Bool;
+      S112e : Bool;
+      X110e : Bool;
+      X111e : Bool;
+      X112e : Bool;
+      S110a : Bool;
+      S111a : Bool;
+      S112a : Bool;
+      S113a : Bool;
+      X110a : Bool;
+      X111a : Bool;
+      X112a : Bool;
+      X113a : Bool;
+      Alarma : Bool;
+      RESET_ALARMA : Bool;
+      T1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T3 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T4 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T5 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#S110e := (#X112e AND #CI) OR "FirstScan";
+	#S111e := #X110e AND FALSE;
+	#S112e := #X111e;
+	
+	#X110e := #S110e OR (#X110e AND NOT #S111e);
+	#X111e := #S111e OR (#X111e AND NOT #S112e);
+	#X112e := #S112e OR (#X112e AND NOT #S110e);
+	
+	#FORCE_INIT_E := #X111e;
+	#FORCE_CURRENT_E := #X112e;
+	
+	
+	// ALARMAS
+	#S110a := (#X113a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S111a := (#X110a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S112a := (#X111a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S113a := (#X112a OR (#X111a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X110a := #S110a OR (#X110a AND NOT #S111a) OR #FORCE_INIT_E;
+	#X111a := (#S111a OR (#X111a AND NOT #S112a AND NOT #S113a)) AND NOT #FORCE_INIT_E;
+	#X112a := (#S112a OR (#X112a AND NOT #S113a)) AND NOT #FORCE_INIT_E;
+	#X113a := (#S113a OR (#X113a AND NOT #S110a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X111a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X112a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X111a;
+	#RESET_ALARMA := #X113a;
+	
+	
+	#T1(IN:=#X112,
+	    PT:=T#2s
+	);
+	#T2(IN := #X113,
+	    PT := T#2s
+	);
+	#T3(IN := #X114,
+	    PT := T#2s
+	);
+	#T4(IN := #X115,
+	    PT := T#2s
+	);
+	#T5(IN := #X116,
+	    PT := T#2s
+	);
+	
+	
+	#Sensores := FALSE;
+	
+	// PRODUCCIÓN
+	#S110 := ("FirstScan" OR (#X117)) AND NOT #FORCE_CURRENT;
+	//#S111 := (#X110 AND (#Act_Mantenimiento OR #Act_Mantenimiento_Emergencia)) AND NOT #FORCE_CURRENT;
+	#S111 := (#X110 AND (#Act_Mantenimiento OR #Act_Mantenimiento_Emergencia OR #Act_Mantenimiento_HMI) ) AND NOT #FORCE_CURRENT;
+	#S112 := (#X111 AND NOT #Sensores) AND NOT #FORCE_CURRENT;
+	#S113 := (#X112 AND #T1.Q) AND NOT #FORCE_CURRENT;
+	#S114 := (#X113 AND #T2.Q) AND NOT #FORCE_CURRENT;
+	#S115 := (#X114 AND #T3.Q) AND NOT #FORCE_CURRENT;
+	#S116 := (#X115 AND #T4.Q) AND NOT #FORCE_CURRENT;
+	#S117 := (#X116 AND #T5.Q) AND NOT #FORCE_CURRENT;
+	
+	
+	#X110 := (#S110 OR #X110 AND (NOT #S111)) OR #FORCE_INIT;
+	#X111 := (#S111 OR #X111 AND (NOT #S112)) AND NOT #FORCE_INIT;
+	#X112 := (#S112 OR #X112 AND (NOT #S113)) AND NOT #FORCE_INIT;
+	#X113 := (#S113 OR #X113 AND (NOT #S114)) AND NOT #FORCE_INIT;
+	#X114 := (#S114 OR #X114 AND (NOT #S115)) AND NOT #FORCE_INIT;
+	#X115 := (#S115 OR #X115 AND (NOT #S116)) AND NOT #FORCE_INIT;
+	#X116 := (#S116 OR #X116 AND (NOT #S117)) AND NOT #FORCE_INIT;
+	#X117 := (#S117 OR #X117 AND (NOT #S110)) AND NOT #FORCE_INIT;
+	
+	#Activar_Cintas := #X112 AND NOT #STOP_ACT;
+	#Activar_Transfers := #X113 AND NOT #STOP_ACT;
+	#BAJAR_ROBOTS := #X114 AND NOT #STOP_ACT;
+	#SUBIR_CLAMPERS := #X114 AND NOT #STOP_ACT;
+	#GRIPPERS := #X115 AND NOT #STOP_ACT;
+	#CLAMPER := #X115 AND NOT #STOP_ACT;
+	#MOVER_HOR := #X116 AND NOT #STOP_ACT;
+	#Fin_Mantenimiento := #X117 AND NOT #STOP_ACT;
+	
+	
+	//#Alarma_1 := (#Alarma_1 OR (#X31 AND #T1.Q)) AND NOT RESET_ALARMA;
+	//#Alarma_2 := (#Alarma_2 OR (#X33 AND #T2.Q)) AND NOT RESET_ALARMA;
+	
+	//#Alarma := (#Alarma_1 OR #Alarma_2 OR #Alarma_3) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+END_FUNCTION_BLOCK
+

@@ -1,0 +1,88 @@
+FUNCTION_BLOCK "grafcet_120_vaciado_general"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Vaciado : Bool;
+      Act_Vaciado_HMI : Bool;
+      CI : Bool;
+      Reset : Bool;
+      Resume : Bool;
+      fin_vac_1 : Bool;
+      fin_vac_2 : Bool;
+      fin_vac_3 : Bool;
+      fin_sop_1 : Bool;
+      fin_sop_2 : Bool;
+      fin_sop_3 : Bool;
+      fin_emb_1 : Bool;
+      fin_emb_2 : Bool;
+      fin_emb_3 : Bool;
+      fin_emb_4 : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Vaciado_activado : Bool;
+      act_vaciados_maquinas : Bool;
+      Fin_vaciado : Bool;
+   END_VAR
+
+   VAR 
+      vac_finalizados : Bool;
+      s120 : Bool;
+      s121 : Bool;
+      s122 : Bool;
+      x120 : Bool;
+      x121 : Bool;
+      x122 : Bool;
+      s120e : Bool;
+      s121e : Bool;
+      s122e : Bool;
+      x120e : Bool;
+      x121e : Bool;
+      x122e : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_CURRENT_E : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#s120e := (#x122e AND #CI) OR "FirstScan";
+	#s121e := #x120e AND FALSE;
+	#s122e := #x121e;
+	
+	#x120e := #s120e OR (#x120e AND NOT #s121e);
+	#x121e := #s121e OR (#x121e AND NOT #s122e);
+	#x122e := #s122e OR (#x122e AND NOT #s120e);
+	
+	#FORCE_INIT_E := #x121e;
+	#FORCE_CURRENT_E := #x122e;
+	
+	
+	#FORCE_INIT := #FORCE_INIT_E;
+	#FORCE_CURRENT := #FORCE_CURRENT_E ;
+	
+	
+	#vac_finalizados := #fin_vac_1 AND #fin_vac_2 AND #fin_vac_3 AND #fin_sop_1 AND #fin_sop_2 AND #fin_sop_3 AND #fin_emb_1 AND #fin_emb_2 AND #fin_emb_3 AND #fin_emb_4;
+	
+	
+	// PRODUCCIÓN
+	#s120 := ("FirstScan" OR (#x122)) AND NOT #FORCE_CURRENT;
+	#s121 := (#x120 AND (#Act_Vaciado OR #Act_Vaciado_HMI)) AND NOT #FORCE_CURRENT;
+	#s122 := (#x121 AND #vac_finalizados) AND NOT #FORCE_CURRENT;
+	
+	
+	
+	#x120 := (#s120 OR #x120 AND (NOT #s121)) OR #FORCE_INIT;
+	#x121 := (#s121 OR #x121 AND (NOT #s122)) AND NOT #FORCE_INIT;
+	#x122 := (#s122 OR #x122 AND (NOT #s120)) AND NOT #FORCE_INIT;
+	
+	#act_vaciados_maquinas := #x121;
+	#Fin_vaciado := #x122;
+	
+END_FUNCTION_BLOCK
+

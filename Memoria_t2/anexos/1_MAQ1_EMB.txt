@@ -1,0 +1,166 @@
+FUNCTION_BLOCK "Grafcet_10_Final_1"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Maquina : Bool;
+      S_Pres : Bool;
+      S1 : Bool;
+      Sig_Maq_Libre : Bool;
+      Mantenimiento_Cintas : Bool;
+      vaciado_cinta : Bool;
+      man_cintaA : Bool;
+      man_cintaB : Bool;
+      Pieza_Rec : Bool;
+      Reset : Bool;
+      Resume : Bool;
+      CI : Bool;
+      Emergencia : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Emisor : Bool;
+      Emisor_2 : Bool;
+      Maq_Libre : Bool;
+      QC1A : Bool;
+      QC1B : Bool;
+      Act_SIG_MAQ : Bool;
+      Alarma_Maquina : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+      Alarma_2 : Bool;
+   END_VAR
+
+   VAR 
+      S10 : Bool;
+      S11 : Bool;
+      S12 : Bool;
+      S13 : Bool;
+      S14 : Bool;
+      S15 : Bool;
+      X10 : Bool;
+      X15 : Bool;
+      X11 : Bool;
+      X12 : Bool;
+      X13 : Bool;
+      X14 : Bool;
+      S10e : Bool;
+      S11e : Bool;
+      S12e : Bool;
+      X10e : Bool;
+      X11e : Bool;
+      X12e : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_CURRENT_E : Bool;
+      S10a : Bool;
+      S11a : Bool;
+      S12a : Bool;
+      S13a : Bool;
+      X10a : Bool;
+      X11a : Bool;
+      X12a : Bool;
+      X13a : Bool;
+      FORCE_CURRENT : Bool;
+      STOP_ACT : Bool;
+      RESET_ALARMA : Bool;
+      Alarma : Bool;
+      S11b : Bool;
+      X11b : Bool;
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      trig_PR {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#S10e := (#X12e AND #CI) OR "FirstScan";
+	#S11e := #X10e AND "Emergencia";
+	#S12e := #X11e;
+	
+	#X10e := #S10e OR (#X10e AND NOT #S11e);
+	#X11e := #S11e OR (#X11e AND NOT #S12e);
+	#X12e := #S12e OR (#X12e AND NOT #S10e);
+	
+	#FORCE_INIT_E := #X11e;
+	#FORCE_CURRENT_E := #X12e;
+	
+	
+	// ALARMAS
+	#S10a := (#X13a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S11a := (#X10a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S12a := (#X11a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S13a := (#X12a OR (#X11a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X10a := #S10a OR (#X10a AND NOT #S11a) OR #FORCE_INIT_E;
+	#X11a := (#S11a OR (#X11a AND NOT #S12a AND NOT #S13a)) AND NOT #FORCE_INIT_E;
+	#X12a := (#S12a OR (#X12a AND NOT #S13a)) AND NOT #FORCE_INIT_E;
+	#X13a := (#S13a OR (#X13a AND NOT #S10a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X11a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X12a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X11a;
+	#RESET_ALARMA := #X13a;
+	
+	#trig_PR(CLK:=#Pieza_Rec);
+	
+	// PRODUCCIÓN
+	#S10 := ("FirstScan" OR (#X15 AND #trig_PR.Q)) AND NOT #FORCE_CURRENT;
+	#S11 := (#X10 AND #Act_Maquina) AND NOT #FORCE_CURRENT;
+	#S11b := (#X11 AND (#S_Pres )) AND NOT #FORCE_CURRENT;
+	#S12 := (#X11b AND( NOT #S_Pres )) AND NOT #FORCE_CURRENT;
+	#S13 := (#X12 AND #S1) AND NOT #FORCE_CURRENT;
+	#S14 := (#X13 AND #Sig_Maq_Libre) AND NOT #FORCE_CURRENT;
+	#S15 := (#X14 AND NOT #S1) AND NOT #FORCE_CURRENT;
+	
+	
+	#X10 := (#S10 OR #X10 AND (NOT #S11)) OR #FORCE_INIT;
+	#X11 := (#S11 OR #X11 AND (NOT #S11b)) AND NOT #FORCE_INIT;
+	#X11b := (#S11b OR #X11b AND (NOT #S12)) AND NOT #FORCE_INIT;
+	#X12 := (#S12 OR #X12 AND (NOT #S13 AND NOT #S14)) AND NOT #FORCE_INIT;
+	#X13 := (#S13 OR #X13 AND (NOT #S14)) AND NOT #FORCE_INIT;
+	#X14 := (#S14 OR #X14 AND (NOT #S15)) AND NOT #FORCE_INIT;
+	#X15 := (#S15 OR #X15 AND (NOT #S10)) AND NOT #FORCE_INIT;
+	
+	
+	#Maq_Libre := #X10 AND NOT #STOP_ACT;
+	#Emisor_2 := ("Proceso_Activo") AND NOT #STOP_ACT;
+	#Emisor := ("Proceso_Activo") AND NOT #STOP_ACT;
+	//#Emisor_2 := (#X11 AND NOT #S_Pres) AND NOT #STOP_ACT;
+	//#Emisor := (#X11 AND NOT #S_Pres) AND NOT #STOP_ACT;
+	#QC1A := (#X11 OR #X11b OR #Mantenimiento_Cintas OR #vaciado_cinta OR #man_cintaA)  AND NOT #STOP_ACT;
+	#QC1B := ( #X11b OR #X12 OR #X14 OR #Mantenimiento_Cintas OR #vaciado_cinta OR #man_cintaB) AND NOT #STOP_ACT;
+	#Act_SIG_MAQ := #X14 AND NOT #STOP_ACT;
+	
+	
+	
+	IF #X10 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X10 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+	
+	
+	#T1a(IN:=#X14 AND NOT #RESET_ALARMA,
+	     PT:=T#5s);
+	
+	#Alarma_1 := (#Alarma_1 OR (#T1a.Q)) AND NOT #RESET_ALARMA;
+	#Alarma := (#Alarma_1 ) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	#Alarma_Maquina := #Alarma;
+	
+	
+END_FUNCTION_BLOCK
+

@@ -1,0 +1,178 @@
+FUNCTION_BLOCK "Grafcet_20_FInal"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Proceso : Bool;
+      SigMaqLibre : Bool;
+      SA_Bueno : Bool;
+      SA_Malo : Bool;
+      SB : Bool;
+      Mantenimiento_Cintas : Bool;
+      Mantenimiento_Transfes : Bool;
+      vaciado_cinta : Bool;
+      vaciado_Trans : Bool;
+      Man_Cinta : Bool;
+      Man_Trans : Bool;
+      CI : Bool;
+      Reset : Bool;
+      Resume : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Maq_Libre : Bool;
+      QC2 : Bool;
+      QTRANS : Bool;
+      Act_SIG_MAQ_Buena : Bool;
+      Act_SIG_MAQ_Mala : Bool;
+      TipoAbuena : Bool;
+      TipoAMala : Bool;
+      TipoB : Bool;
+      Alarma_Maquina : Bool;
+      Pieza_Rec : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+   END_VAR
+
+   VAR 
+      S20 : Bool;
+      S21 : Bool;
+      S22 : Bool;
+      S23 : Bool;
+      S24 : Bool;
+      S22b : Bool;
+      S23b : Bool;
+      X20 : Bool;
+      X21 : Bool;
+      X22 : Bool;
+      X22b : Bool;
+      X23 : Bool;
+      X23b : Bool;
+      X24 : Bool;
+      S20a : Bool;
+      S21a : Bool;
+      S22a : Bool;
+      S23a : Bool;
+      X20a : Bool;
+      X21a : Bool;
+      X22a : Bool;
+      X23a : Bool;
+      S20e : Bool;
+      S21e : Bool;
+      S22e : Bool;
+      X20e : Bool;
+      X21e : Bool;
+      X22e : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_CURRENT_E : Bool;
+      STOP_ACT : Bool;
+      RESET_ALARMA : Bool;
+      Alarma : Bool;
+      T1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	
+	// EMERGENCIA
+	#S20e := (#X22e AND #CI) OR "FirstScan";
+	#S21e := #X20e AND "Emergencia";
+	#S22e := #X21e;
+	
+	#X20e := #S20e OR (#X20e AND NOT #S21e);
+	#X21e := #S21e OR (#X21e AND NOT #S22e);
+	#X22e := #S22e OR (#X22e AND NOT #S20e);
+	
+	#FORCE_INIT_E := #X21e;
+	#FORCE_CURRENT_E := #X22e;
+	
+	
+	// ALARMAS
+	#S20a := (#X23a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S21a := (#X20a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S22a := (#X21a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S23a := (#X22a OR (#X21a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X20a := #S20a OR (#X20a AND NOT #S21a) OR #FORCE_INIT_E;
+	#X21a := (#S21a OR (#X21a AND NOT #S22a AND NOT #S23a)) AND NOT #FORCE_INIT_E;
+	#X22a := (#S22a OR (#X22a AND NOT #S23a)) AND NOT #FORCE_INIT_E;
+	#X23a := (#S23a OR (#X23a AND NOT #S20a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X21a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X22a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X21a;
+	#RESET_ALARMA := #X23a;
+	#T1(IN:=#X24,
+	    PT:=T#2s);
+	
+	
+	
+	
+	// PRODUCCIÓN
+	#S20 := ("FirstScan" OR (#X22b AND NOT #SA_Bueno) OR (#X23b AND NOT #SA_Malo) OR (#X24 AND #T1.Q) ) AND NOT #FORCE_CURRENT;
+	#S21 := (#X20 AND #Act_Proceso) AND NOT #FORCE_CURRENT;
+	#S22 := (#X21 AND #SA_Bueno) AND NOT #FORCE_CURRENT;
+	#S22b := (#X22 AND #SigMaqLibre) AND NOT #FORCE_CURRENT;
+	#S23 := (#X21 AND #SA_Malo AND NOT #SA_Bueno) AND NOT #FORCE_CURRENT;
+	#S23b := (#X23 AND #SigMaqLibre) AND NOT #FORCE_CURRENT;
+	#S24 := (#X21 AND #SB) AND NOT #FORCE_CURRENT;
+	
+	
+	
+	#X20 := (#S20 OR #X20 AND (NOT #S21)) OR #FORCE_INIT;
+	#X21 := (#S21 OR #X21 AND (NOT #S22 AND NOT #S23 AND NOT #S24)) AND NOT #FORCE_INIT;
+	#X22 := (#S22 OR #X22 AND (NOT #S22b)) AND NOT #FORCE_INIT;
+	#X22b := (#S22b OR #X22b AND (NOT #S20)) AND NOT #FORCE_INIT;
+	#X23 := (#S23 OR #X23 AND (NOT #S23b)) AND NOT #FORCE_INIT;
+	#X23b := (#S23b OR #X23b AND (NOT #S20)) AND NOT #FORCE_INIT;
+	#X24 := (#S24 OR #X24 AND (NOT #S20)) AND NOT #FORCE_INIT;
+	
+	
+	
+	#Maq_Libre := #X20 AND NOT #STOP_ACT;
+	#QC2 := (#X21 OR #X22b OR #X23b OR #Mantenimiento_Cintas OR #vaciado_cinta OR #Man_Cinta) AND NOT #STOP_ACT;
+	#QTRANS := (#X24 OR #Mantenimiento_Transfes OR #vaciado_Trans OR #Man_Trans) AND NOT #STOP_ACT;
+	#Act_SIG_MAQ_Buena := #X22b AND NOT #STOP_ACT;
+	#Act_SIG_MAQ_Mala := #X23b AND NOT #STOP_ACT;
+	#Pieza_Rec := (#X22 OR #X23 OR #X24) AND NOT #STOP_ACT;
+	
+	#TipoAbuena := #X22b;
+	#TipoAMala := #X23b;
+	#TipoB := #X24;
+	
+	#T1a(IN := #X21 AND NOT #RESET_ALARMA,
+	     PT := T#5s);
+	
+	
+	
+	#Alarma_1 := (#Alarma_1 OR (#T1a.Q)) AND NOT #RESET_ALARMA;
+	
+	
+	#Alarma := (#Alarma_1) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	#Alarma_Maquina := #Alarma;
+	
+	
+	
+	
+	
+	IF #X20 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X20 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

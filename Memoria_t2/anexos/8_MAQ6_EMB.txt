@@ -1,0 +1,146 @@
+FUNCTION_BLOCK "grafcte_80_final"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Proceso : Bool;
+      S5 : Bool;
+      SigMaqLibre : Bool;
+      Mantenimiento_Cinta : Bool;
+      vaciado_cinta : Bool;
+      CI : Bool;
+      Reset : Bool;
+      Resume : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Maq_Libre : Bool;
+      QC3 : Bool;
+      Act_Sig_Maq : Bool;
+      Alarma_Maquina : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+      Alarma_2 : Bool;
+   END_VAR
+
+   VAR 
+      S80 : Bool;
+      S81 : Bool;
+      S82 : Bool;
+      S83 : Bool;
+      X80 : Bool;
+      X81 : Bool;
+      X82 : Bool;
+      X83 : Bool;
+      S80e : Bool;
+      S81e : Bool;
+      S82e : Bool;
+      X80e : Bool;
+      X81e : Bool;
+      X82e : Bool;
+      S80a : Bool;
+      S81a : Bool;
+      S82a : Bool;
+      S83a : Bool;
+      X80a : Bool;
+      X81a : Bool;
+      X82a : Bool;
+      X83a : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_CURRENT_E : Bool;
+      FORCE_CURRENT : Bool;
+      STOP_ACT : Bool;
+      RESET_ALARMA : Bool;
+      Alarma : Bool;
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#S80e := (#X82e AND #CI) OR "FirstScan";
+	#S81e := #X80e AND "Emergencia";
+	#S82e := #X81e;
+	
+	#X80e := #S80e OR (#X80e AND NOT #S81e);
+	#X81e := #S81e OR (#X81e AND NOT #S82e);
+	#X82e := #S82e OR (#X82e AND NOT #S80e);
+	
+	#FORCE_INIT_E := #X81e;
+	#FORCE_CURRENT_E := #X82e;
+	
+	
+	// ALARMAS
+	#S80a := (#X83a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S81a := (#X80a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S82a := (#X81a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S83a := (#X82a OR (#X81a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X80a := #S80a OR (#X80a AND NOT #S81a) OR #FORCE_INIT_E;
+	#X81a := (#S81a OR (#X81a AND NOT #S82a AND NOT #S83a)) AND NOT #FORCE_INIT_E;
+	#X82a := (#S82a OR (#X82a AND NOT #S83a)) AND NOT #FORCE_INIT_E;
+	#X83a := (#S83a OR (#X83a AND NOT #S80a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X81a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X82a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X81a;
+	#RESET_ALARMA := #X83a;
+	
+	
+	
+	
+	// PRODUCCIÓN
+	#S80 := ("FirstScan" OR (#X83 AND NOT #S5)) AND NOT #FORCE_CURRENT;
+	#S81 := (#X80 AND #Act_Proceso) AND NOT #FORCE_CURRENT;
+	#S82 := (#X81 AND #S5) AND NOT #FORCE_CURRENT;
+	#S83 := (#X82 AND #SigMaqLibre) AND NOT #FORCE_CURRENT;
+	
+	
+	
+	#X80 := (#S80 OR #X80 AND (NOT #S81)) OR #FORCE_INIT;
+	#X81 := (#S81 OR #X81 AND (NOT #S82)) AND NOT #FORCE_INIT;
+	#X82 := (#S82 OR #X82 AND (NOT #S83)) AND NOT #FORCE_INIT;
+	#X83 := (#S83 OR #X83 AND (NOT #S80)) AND NOT #FORCE_INIT;
+	
+	
+	
+	#Maq_Libre := #X80 AND NOT #STOP_ACT;
+	#QC3 := (#X81 OR #X83 OR #Mantenimiento_Cinta OR #vaciado_cinta) AND NOT #STOP_ACT;
+	#Act_Sig_Maq := #X83 AND NOT #STOP_ACT;
+	
+	#T1a(IN:=#X81,
+	     PT:=T#5s);
+	#T2a(IN := #X83,
+	     PT := T#5s);
+	
+	
+	//#Alarma_1 := (#Alarma_1 OR #T1a.Q) AND NOT #RESET_ALARMA;
+	//#Alarma_2 := (#Alarma_2 OR #T2a.Q) AND NOT #RESET_ALARMA;
+	
+	//#Alarma := (#Alarma_1 OR #Alarma_2 ) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	//
+	
+	
+	
+	IF #X80 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X80 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

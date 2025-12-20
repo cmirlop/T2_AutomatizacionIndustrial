@@ -14,18 +14,23 @@
 	% --------------------------------------------
 	\etapaInicial{0}
 	\primeraAccion{0}{X0-A1}{$\mathtt{C:=0}$}
-	\sobreActivacion{X0-A1}{X0-A2}{}	
+	\sobreActivacion{X0-A1}{X0-A2}{}
+	
+	
+	\bifurcacion[100]{0}{1}{Marcha $\cdot$ \NOT{MAN}}{4}{MAN}
+
+	\retornoInicio[-6em]{4}{0}{\NOT{MAN}}
 
 	% --------------------------------------------
   	{
    	\renewcommand{\transitionPos}{0.35}
-   	\etapa[1.25\nodeDist]{1}{0}{MARCHA};
+   	%\etapa[1.25\nodeDist]{1}{0}{MARCHA};
 	\primeraAccion{1}{X1-A1}{Act\_Mantenimiento}
 	%\otraAccion{X1-A1}{X1-A2}{QCINALIM}
 	}
 	
 	% --------------------------------------------
-   	\etapa[1.25\nodeDist]{2}{1}{Mantenimiento\_Fin};
+   	\etapa[1.5\nodeDist]{2}{1}{Mantenimiento\_Fin};
 	\primeraAccion{2}{X2-A1}{Proceso\_Activo}
 	%\condicionada{X2-A2}{CONDICION}
 	%\comentari[1]{X2-A1}{Máquina fresadora en marcha}
@@ -35,11 +40,11 @@
 	\otraAccion{X3-A1}{X3-A2}{$\mathtt{C:=C+1}$}
 	\sobreActivacion{X3-A2}{X3-A3}{}
 
-	\bifurcacionRetorno[15ex]{3}{4}{5}
-	\retornoInicio[6em]{4}{0}{Paro\_Ciclo}
+	\bifurcacionRetorno[15ex]{3}{6}{7}
+	\retornoInicio[6em]{6}{0}{Paro\_Ciclo}
 	{
 	\setlength{\enlaceRetornoDist}{0.30\nodeDist}
-	\retorno[18em]{5}{2}{\NOT{Paro\_Ciclo}}
+	\retorno[18em]{7}{2}{\NOT{Paro\_Ciclo}}
 	}
 	%\retornoInicio[7em]{4}{0}{\NOT{INICIO}}
 	%\retorno[18em]{4}{3}{INICIO}

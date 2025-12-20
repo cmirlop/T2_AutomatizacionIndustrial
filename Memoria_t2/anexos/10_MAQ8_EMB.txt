@@ -1,0 +1,191 @@
+FUNCTION_BLOCK "grafcet_100"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Proceso : Bool;
+      S5 : Bool;
+      Pieza_Empaquetada : Bool;
+      Mantenimiento_Cinta : Bool;
+      Mantenimiento_Clamper : Bool;
+      Mantenimiento_SubirClamp : Bool;
+      vaciado_cinta : Bool;
+      vaciado_subclamp : Bool;
+      CI : Bool;
+      Reset : Bool;
+      Resume : Bool;
+      PiezasPalet : Int := 2;
+   END_VAR
+
+   VAR_OUTPUT 
+      Maq_Libre : Bool;
+      QC7 : Bool;
+      QCLAMP : Bool;
+      QCLAMP_SUB : Bool;
+      HayPieza : Bool;
+      Pieza_Entregada : Bool;
+      Alarma_Maquina : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+   END_VAR
+
+   VAR 
+      S100 : Bool;
+      S101 : Bool;
+      S102 : Bool;
+      S103 : Bool;
+      S104 : Bool;
+      S105 : Bool;
+      S106 : Bool;
+      X100 : Bool;
+      X102 : Bool;
+      X101 : Bool;
+      X103 : Bool;
+      X104 : Bool;
+      X105 : Bool;
+      X106 : Bool;
+      S100e : Bool;
+      S101e : Bool;
+      S102e : Bool;
+      X100e : Bool;
+      X101e : Bool;
+      X102e : Bool;
+      S100a : Bool;
+      S101a : Bool;
+      S102a : Bool;
+      S103a : Bool;
+      X100a : Bool;
+      X101a : Bool;
+      X102a : Bool;
+      X103a : Bool;
+      FORCE_CURRENT_E : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      STOP_ACT : Bool;
+      RESET_ALARMA : Bool;
+      Alarma : Bool;
+      S107 : Bool;
+      X107 : Bool;
+      T1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T3 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      Trig105 {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+   END_VAR
+   VAR RETAIN
+      "Counter" {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+   END_VAR
+   VAR 
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#S100e := (#X102e AND #CI) OR "FirstScan";
+	#S101e := #X100e AND "Emergencia";
+	#S102e := #X101e;
+	
+	#X100e := #S100e OR (#X100e AND NOT #S101e);
+	#X101e := #S101e OR (#X101e AND NOT #S102e);
+	#X102e := #S102e OR (#X102e AND NOT #S100e);
+	
+	#FORCE_INIT_E := #X101e;
+	#FORCE_CURRENT_E := #X102e;
+	
+	
+	// ALARMAS
+	#S100a := (#X103a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S101a := (#X100a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S102a := (#X101a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S103a := (#X102a OR (#X101a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X100a := #S100a OR (#X100a AND NOT #S101a) OR #FORCE_INIT_E;
+	#X101a := (#S101a OR (#X101a AND NOT #S102a AND NOT #S103a)) AND NOT #FORCE_INIT_E;
+	#X102a := (#S102a OR (#X102a AND NOT #S103a)) AND NOT #FORCE_INIT_E;
+	#X103a := (#S103a OR (#X103a AND NOT #S100a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X101a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X102a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X101a;
+	#RESET_ALARMA := #X103a;
+	#T1(IN:=#X102,
+	    PT:=T#1s
+	);
+	#T2(IN := #X103,
+	    PT := T#1s
+	);
+	#T3(IN := #X106,
+	    PT := T#3s
+	);
+	
+	#Trig105(CLK:=#X105);
+	
+	
+	#Counter(CU:=#Trig105.Q,
+	         R:= #X100,
+	         PV:=#PiezasPalet);
+	
+	
+	
+	// PRODUCCIÓN
+	#S100 := ("FirstScan" OR (#X107)) AND NOT #FORCE_CURRENT;
+	#S101 := (#X100 AND #Act_Proceso) AND NOT #FORCE_CURRENT;
+	#S102 := (#X101 AND #S5) AND NOT #FORCE_CURRENT;
+	#S103 := (#X102 AND #T1.Q) AND NOT #FORCE_CURRENT;
+	#S104 := (#X103 AND #T2.Q) OR (#X105 AND #Counter.CV < #PiezasPalet) AND NOT #FORCE_CURRENT;
+	#S105 := (#X104 AND #Pieza_Empaquetada) AND NOT #FORCE_CURRENT;
+	#S106 := (#X105 AND #Counter.CV = #PiezasPalet) AND NOT #FORCE_CURRENT;
+	#S107 := (#X106 AND #T3.Q) AND NOT #FORCE_CURRENT;
+	
+	
+	#X100 := (#S100 OR #X100 AND (NOT #S101)) OR #FORCE_INIT;
+	#X101 := (#S101 OR #X101 AND (NOT #S102)) AND NOT #FORCE_INIT;
+	#X102 := (#S102 OR #X102 AND (NOT #S103)) AND NOT #FORCE_INIT;
+	#X103 := (#S103 OR #X103 AND (NOT #S104)) AND NOT #FORCE_INIT;
+	#X104 := (#S104 OR #X104 AND (NOT #S105)) AND NOT #FORCE_INIT;
+	#X105 := (#S105 OR #X105 AND (NOT #S106 AND NOT #S104)) AND NOT #FORCE_INIT;
+	#X106 := (#S106 OR #X106 AND (NOT #S107)) AND NOT #FORCE_INIT;
+	#X107 := (#S107 OR #X107 AND (NOT #S100)) AND NOT #FORCE_INIT;
+	
+	
+	#Maq_Libre := #X100 AND NOT #STOP_ACT;
+	
+	#QC7 := (#X101 OR #X102 OR #X106 OR #Mantenimiento_Cinta OR #vaciado_cinta) AND NOT #STOP_ACT;
+	#QCLAMP := (#X103 OR #Mantenimiento_Clamper ) AND NOT #STOP_ACT;
+	#QCLAMP_SUB := (#X106 OR #Mantenimiento_SubirClamp OR #vaciado_subclamp) AND NOT #STOP_ACT;
+	#HayPieza := #X104 AND NOT #STOP_ACT;
+	#Pieza_Entregada := #X107;
+	
+	#T1a(IN := #X101 AND NOT #RESET_ALARMA,
+	     PT := T#8s);
+	
+	
+	#Alarma_1 := (#Alarma_1 OR (#X101 AND #T1a.Q)) AND NOT #RESET_ALARMA;
+	
+	#Alarma := (#Alarma_1 ) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	#Alarma_Maquina := #Alarma;
+	
+	
+	
+	
+	IF #X100 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X100 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

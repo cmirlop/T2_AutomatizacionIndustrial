@@ -1,0 +1,157 @@
+FUNCTION_BLOCK "grafcet_30_fina"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Proceso_Bueno : Bool;
+      Act_Proceso_malo : Bool;
+      S3 : Bool;
+      SigMaqLibre : Bool;
+      Mantenimiento_Cinta : Bool;
+      vaciado_cinta : Bool;
+      man_cinta : Bool;
+      Reset : Bool;
+      Resume : Bool;
+      CI : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Maq_Libre : Bool;
+      QC3 : Bool;
+      Act_SIG_MAQ_Buena : Bool;
+      Act_SIG_MAQ_Mala : Bool;
+      Alarma_Maquina : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+   END_VAR
+
+   VAR 
+      S30 : Bool;
+      S31 : Bool;
+      S31b : Bool;
+      S31c : Bool;
+      S32 : Bool;
+      S32b : Bool;
+      S32c : Bool;
+      X30 : Bool;
+      X31 : Bool;
+      X32 : Bool;
+      X32b : Bool;
+      X32c : Bool;
+      X31b : Bool;
+      X31c : Bool;
+      S30e : Bool;
+      S31e : Bool;
+      S32e : Bool;
+      X30e : Bool;
+      X31e : Bool;
+      X32e : Bool;
+      X30a : Bool;
+      X31a : Bool;
+      X32a : Bool;
+      X33a : Bool;
+      S30a : Bool;
+      S31a : Bool;
+      S32a : Bool;
+      S33a : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_INIT : Bool;
+      FORCE_CURRENT_e : Bool;
+      FORCE_CURRENT : Bool;
+      RESET_ALARMA : Bool;
+      STOP_ACT : Bool;
+      Alarma : Bool;
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#S30e := (#X32e AND #CI) OR "FirstScan";
+	#S31e := #X30e AND "Emergencia";
+	#S32e := #X31e;
+	
+	#X30e := #S30e OR (#X30e AND NOT #S31e);
+	#X31e := #S31e OR (#X31e AND NOT #S32e);
+	#X32e := #S32e OR (#X32e AND NOT #S30e);
+	
+	#FORCE_INIT_E := #X31e;
+	#FORCE_CURRENT_e := #X32e;
+	
+	
+	// ALARMAS
+	#S30a := (#X33a AND NOT #FORCE_CURRENT_e) OR "FirstScan";
+	#S31a := (#X30a AND #Alarma) AND NOT #FORCE_CURRENT_e;
+	#S32a := (#X31a AND #Reset) AND NOT #FORCE_CURRENT_e;
+	#S33a := (#X32a OR (#X31a AND #Resume)) AND NOT #FORCE_CURRENT_e;
+	
+	#X30a := #S30a OR (#X30a AND NOT #S31a) OR #FORCE_INIT_E;
+	#X31a := (#S31a OR (#X31a AND NOT #S32a AND NOT #S33a)) AND NOT #FORCE_INIT_E;
+	#X32a := (#S32a OR (#X32a AND NOT #S33a)) AND NOT #FORCE_INIT_E;
+	#X33a := (#S33a OR (#X33a AND NOT #S30a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X31a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X32a;
+	#FORCE_CURRENT := #FORCE_CURRENT_e OR #X31a;
+	#RESET_ALARMA := #X33a;
+	
+	
+	// PRODUCCIÓN
+	#S30 := ("FirstScan" OR (#X31c AND NOT #S3) OR (#X32c AND NOT #S3)) AND NOT #FORCE_CURRENT;
+	#S31 := (#X30 AND #Act_Proceso_Bueno) AND NOT #FORCE_CURRENT;
+	#S31b := (#X31 AND #S3) AND NOT #FORCE_CURRENT;
+	#S31c := (#X31b AND #SigMaqLibre) AND NOT #FORCE_CURRENT;
+	#S32 := (#X30 AND #Act_Proceso_malo) AND NOT #FORCE_CURRENT;
+	#S32b := (#X32 AND #S3) AND NOT #FORCE_CURRENT;
+	#S32c := (#X32b AND #SigMaqLibre) AND NOT #FORCE_CURRENT;
+	
+	
+	
+	#X30 := (#S30 OR #X30 AND (NOT #S31 AND NOT #S32)) OR #FORCE_INIT;
+	#X31 := (#S31 OR #X31 AND (NOT #S31b)) AND NOT #FORCE_INIT;
+	#X31b := (#S31b OR #X31b AND (NOT #S31c)) AND NOT #FORCE_INIT;
+	#X31c := (#S31c OR #X31c AND (NOT #S30)) AND NOT #FORCE_INIT;
+	#X32 := (#S32 OR #X32 AND (NOT #S32b)) AND NOT #FORCE_INIT;
+	#X32b := (#S32b OR #X32b AND (NOT #S32c)) AND NOT #FORCE_INIT;
+	#X32c := (#S32c OR #X32c AND (NOT #S30)) AND NOT #FORCE_INIT;
+	
+	
+	
+	#Maq_Libre := #X30 AND NOT #STOP_ACT;
+	#QC3 := (#X31 OR #X31c OR #X32 OR #X32c OR #Mantenimiento_Cinta OR #vaciado_cinta OR #man_cinta) AND NOT #STOP_ACT;
+	#Act_SIG_MAQ_Buena := #X31c AND NOT #STOP_ACT;
+	#Act_SIG_MAQ_Mala := #X32c AND NOT #STOP_ACT;
+	
+	#T1a(IN:=(#X31 OR #X32) AND NOT #RESET_ALARMA,
+	     PT:=T#6s);
+	
+	
+	
+	#Alarma_1 := (#Alarma_1 OR (#T1a.Q)) AND NOT #RESET_ALARMA;
+	
+	
+	#Alarma := (#Alarma_1 ) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	#Alarma_Maquina := #Alarma;
+	//
+	
+	IF #X30 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X30 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

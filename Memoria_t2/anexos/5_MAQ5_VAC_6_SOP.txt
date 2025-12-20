@@ -1,0 +1,223 @@
+FUNCTION_BLOCK "grafcet_50_Final"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Proceso : Bool;
+      S5 : Bool;
+      HaySoporte : Bool;
+      CI : Bool;
+      Mantenimiento_Cinta : Bool;
+      Mantenimiento_Clamper : Bool;
+      Mantenimiento_Gripper : Bool;
+      Mantenimiento_BajarGripper : Bool;
+      Mantenimiento_MOVHOR : Bool;
+      vaciado_cinta : Bool;
+      vaciado_subclamper : Bool;
+      Reset : Bool;
+      Resume : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Maq_Libre : Bool;
+      QC5 : Bool;
+      QC6 : Bool;
+      QC7 : Bool;
+      QCLAMP : Bool;
+      qsubclamp : Bool;
+      QBAJ : Bool;
+      QGRIPPER : Bool;
+      QHOR : Bool;
+      HayPieza : Bool;
+      Pieza_Empaquetada : Bool;
+      Alarma_Maquina : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+   END_VAR
+
+   VAR 
+      S50 : Bool;
+      S51 : Bool;
+      S52 : Bool;
+      S53 : Bool;
+      S54 : Bool;
+      S55 : Bool;
+      S56 : Bool;
+      S57 : Bool;
+      S58 : Bool;
+      S59 : Bool;
+      S60 : Bool;
+      S61 : Bool;
+      S62 : Bool;
+      X50 : Bool;
+      X51 : Bool;
+      X52 : Bool;
+      X53 : Bool;
+      X54 : Bool;
+      X55 : Bool;
+      X56 : Bool;
+      X57 : Bool;
+      X58 : Bool;
+      X59 : Bool;
+      X60 : Bool;
+      X61 : Bool;
+      X62 : Bool;
+      S50e : Bool;
+      S51e : Bool;
+      S52e : Bool;
+      X50e : Bool;
+      X51e : Bool;
+      X52e : Bool;
+      S50a : Bool;
+      S51a : Bool;
+      S52a : Bool;
+      S53a : Bool;
+      X50a : Bool;
+      X51a : Bool;
+      X52a : Bool;
+      X53a : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_CURRENT_E : Bool;
+      STOP_ACT : Bool;
+      RESET_ALARMA : Bool;
+      Alarma : Bool;
+      T1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T3 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T4 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T5 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T6 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T7 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T8 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T9 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	
+	
+	// EMERGENCIA
+	#S50e := (#X52e AND #CI) OR "FirstScan";
+	#S51e := #X50e AND "Emergencia";
+	#S52e := #X51e;
+	
+	#X50e := #S50e OR (#X50e AND NOT #S51e);
+	#X51e := #S51e OR (#X51e AND NOT #S52e);
+	#X52e := #S52e OR (#X52e AND NOT #S50e);
+	
+	#FORCE_INIT_E := #X51e;
+	#FORCE_CURRENT_E := #X52e;
+	
+	
+	// ALARMAS
+	#S50a := (#X53a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S51a := (#X50a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S52a := (#X51a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S53a := (#X52a OR (#X51a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X50a := #S50a OR (#X50a AND NOT #S51a) OR #FORCE_INIT_E;
+	#X51a := (#S51a OR (#X51a AND NOT #S52a AND NOT #S53a)) AND NOT #FORCE_INIT_E;
+	#X52a := (#S52a OR (#X52a AND NOT #S53a)) AND NOT #FORCE_INIT_E;
+	#X53a := (#S53a OR (#X53a AND NOT #S50a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X51a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X52a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X51a;
+	#RESET_ALARMA := #X53a;
+	
+	#T1(IN:=#X52,
+	    PT:=T#2s);
+	#T2(IN := #X53,
+	    PT := T#2s);
+	#T3(IN := #X55,
+	    PT := T#2s);
+	#T4(IN := #X56,
+	    PT := T#2s);
+	#T5(IN := #X57,
+	    PT := T#2s);
+	#T6(IN := #X58,
+	    PT := T#2s);
+	#T7(IN := #X59,
+	    PT := T#2s);
+	#T8(IN := #X60,
+	    PT := T#2s);
+	#T9(IN := #X61,
+	    PT := T#2s);
+	
+	
+	
+	// PRODUCCIÓN
+	#S50 := ("FirstScan" OR (#X62)) AND NOT #FORCE_CURRENT;
+	#S51 := (#X50 AND #Act_Proceso) AND NOT #FORCE_CURRENT;
+	#S52 := (#X51 AND #S5) AND NOT #FORCE_CURRENT;
+	#S53 := (#X52 AND #T1.Q) AND NOT #FORCE_CURRENT;
+	#S54 := (#X53 AND #T2.Q) AND NOT #FORCE_CURRENT;
+	#S55 := (#X54 AND #HaySoporte) AND NOT #FORCE_CURRENT;
+	#S56 := (#X55 AND #T3.Q) AND NOT #FORCE_CURRENT;
+	#S57 := (#X56 AND #T4.Q) AND NOT #FORCE_CURRENT;
+	#S58 := (#X57 AND #T5.Q) AND NOT #FORCE_CURRENT;
+	#S59 := (#X58 AND #T6.Q) AND NOT #FORCE_CURRENT;
+	#S60 := (#X59 AND #T7.Q) AND NOT #FORCE_CURRENT;
+	#S61 := (#X60 AND #T8.Q) AND NOT #FORCE_CURRENT;
+	#S62 := (#X61 AND #T9.Q) AND NOT #FORCE_CURRENT;
+	
+	
+	#X50 := (#S50 OR #X50 AND (NOT #S51)) OR #FORCE_INIT;
+	#X51 := (#S51 OR #X51 AND (NOT #S52)) AND NOT #FORCE_INIT;
+	#X52 := (#S52 OR #X52 AND (NOT #S53)) AND NOT #FORCE_INIT;
+	#X53 := (#S53 OR #X53 AND (NOT #S54)) AND NOT #FORCE_INIT;
+	#X54 := (#S54 OR #X54 AND (NOT #S55)) AND NOT #FORCE_INIT;
+	#X55 := (#S55 OR #X55 AND (NOT #S56)) AND NOT #FORCE_INIT;
+	#X56 := (#S56 OR #X56 AND (NOT #S57)) AND NOT #FORCE_INIT;
+	#X57 := (#S57 OR #X57 AND (NOT #S58)) AND NOT #FORCE_INIT;
+	#X58 := (#S58 OR #X58 AND (NOT #S59)) AND NOT #FORCE_INIT;
+	#X59 := (#S59 OR #X59 AND (NOT #S60)) AND NOT #FORCE_INIT;
+	#X60 := (#S60 OR #X60 AND (NOT #S61)) AND NOT #FORCE_INIT;
+	#X61 := (#S61 OR #X61 AND (NOT #S62)) AND NOT #FORCE_INIT;
+	#X62 := (#S62 OR #X62 AND (NOT #S50)) AND NOT #FORCE_INIT;
+	
+	
+	
+	#Maq_Libre := #X50 AND NOT #STOP_ACT;
+	#QC5 := (#X51 OR #X52 OR #Mantenimiento_Cinta OR #vaciado_cinta) AND NOT #STOP_ACT;
+	#QC6 := (#X51 OR #X52 OR #Mantenimiento_Cinta OR #vaciado_cinta) AND NOT #STOP_ACT;
+	#QC7 := (#X51 OR #X52 OR #X53 OR #X54 OR #Mantenimiento_Cinta OR #vaciado_cinta) AND NOT #STOP_ACT;
+	#QCLAMP := (#X53 OR #X54 OR #X55 OR #X56 OR #X57 OR #Mantenimiento_Clamper)AND NOT #STOP_ACT;
+	#QBAJ := (#X55 OR #X56 OR #X59 OR #X60 OR #Mantenimiento_BajarGripper) AND NOT #STOP_ACT;
+	#QGRIPPER := (#X56 OR #X57 OR #X58 OR #X59 OR #Mantenimiento_Gripper) AND NOT #STOP_ACT;
+	#QHOR := (#X58 OR #X59 OR #X60 OR #X61 OR #Mantenimiento_MOVHOR) AND NOT #STOP_ACT;
+	#qsubclamp := #vaciado_subclamper AND NOT #STOP_ACT;
+	#HayPieza := #X54 AND NOT #STOP_ACT;
+	#Pieza_Empaquetada := #X62 AND NOT #STOP_ACT;
+	
+	
+	#T1a(IN:=#X51 AND NOT #RESET_ALARMA,
+	     PT:=T#12s);
+	
+	
+	#Alarma_1 := (#Alarma_1 OR (#T1a.Q)) AND NOT #RESET_ALARMA;
+	
+	#Alarma := (#Alarma_1) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	#Alarma_Maquina := #Alarma;
+	//
+	
+	IF #X50 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X50 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

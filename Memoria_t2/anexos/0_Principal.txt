@@ -1,0 +1,196 @@
+FUNCTION_BLOCK "Grafcet_0_Principal"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Paro : Bool;
+      HMI_Paro : Bool;
+      Marcha : Bool;
+      HMI_Marcha : Bool;
+      Mantenimiento_Fin : Bool;
+      Modo_Manual : Bool;
+      Pieza_Empaquetada : Bool;
+      CI : Bool;
+      VacunaABuena : Bool;
+      VacunaAMala : Bool;
+      VacunaB : Bool;
+      SoporteABueno : Bool;
+      SoporteAMalo : Bool;
+      SoporteB : Bool;
+      EmbalajeABuneo : Bool;
+      EmbalajeAMalo : Bool;
+      EmbalajeB : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Act_Mantenimiento : Bool;
+      Proceso_Activo : Bool;
+      Modo_Manual_Activado : Bool;
+      contador : Int;
+      C_VACAB : Int;
+      C_VACAM : Int;
+      C_VACB : Int;
+      C_SOPAB : Int;
+      C_SOPAM : Int;
+      C_SOPB : Int;
+      C_EMBAB : Int;
+      C_EMBAM : Int;
+      C_EMBB : Int;
+   END_VAR
+
+   VAR 
+      S0 : Bool;
+      S1 : Bool;
+      S2 : Bool;
+      X0 : Bool;
+      X1 : Bool;
+      X2 : Bool;
+      X3 : Bool;
+      S4 : Bool;
+      X4 : Bool;
+      STOP_NEG : Bool;
+      S3 : Bool;
+      Paro_Ciclo : Bool;
+      S0p : Bool;
+      S10e : Bool;
+      S11e : Bool;
+      S12e : Bool;
+      X10e : Bool;
+      S1p : Bool;
+      X11e : Bool;
+      X0p : Bool;
+      FORCE_CURRENT_E : Bool;
+      FORCE_INIT_E : Bool;
+      X12e : Bool;
+      X1p : Bool;
+      TrigX3 {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigVACAB {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigVACAM {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigVACB {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigSOPAB {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigSOPAM {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigSOPB {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigEMBAB {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigEMBAM {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TrigEMBB {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+   END_VAR
+   VAR RETAIN
+      Contador_G {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_VACAB {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_VACAM {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_VACB {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_SOPAB {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_SOPAM {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_SOPB {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_EMBAB {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_EMBAM {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+      Contador_EMBB {InstructionName := 'CTU_INT'; LibVersion := '1.0'} : CTU_INT;
+   END_VAR
+
+
+BEGIN
+	
+	// EMERGENCIA
+	#S10e := (#X12e AND #CI) OR "FirstScan";
+	#S11e := #X10e AND "Emergencia";
+	#S12e := #X11e;
+	
+	#X10e := #S10e OR (#X10e AND NOT #S11e);
+	#X11e := #S11e OR (#X11e AND NOT #S12e);
+	#X12e := #S12e OR (#X12e AND NOT #S10e);
+	
+	#FORCE_INIT_E := #X11e;
+	#FORCE_CURRENT_E := #X12e;
+	
+	#STOP_NEG := NOT #Paro;
+	
+	#S0p := ("FirstScan" OR #X0) AND NOT #FORCE_CURRENT_E;
+	#S1p := #X0 AND (#STOP_NEG OR #HMI_Paro) AND NOT #FORCE_CURRENT_E;
+	
+	#X0p := (#S0p OR #X0p AND NOT #S1p) AND NOT #FORCE_INIT_E;
+	#X1p := (#S1p OR #X1p AND NOT #S0p) AND NOT #FORCE_INIT_E;
+	
+	
+	#Paro_Ciclo := #X1p;
+	
+	//Grafcet principal
+	#S0 := ("FirstScan" OR (#X3 AND #Paro_Ciclo) OR (#X4 AND NOT #Modo_Manual)) AND NOT #FORCE_CURRENT_E;
+	#S1 := #X0 AND ((#Marcha OR #HMI_Marcha)AND NOT #Modo_Manual) AND NOT #FORCE_CURRENT_E;
+	#S2 := (#X1 AND #Mantenimiento_Fin) OR (#X3 AND NOT #Paro_Ciclo) AND NOT #FORCE_CURRENT_E;
+	#S3 := (#X2 AND #Pieza_Empaquetada) AND NOT #FORCE_CURRENT_E;
+	#S4 := (#X0 AND #Modo_Manual) AND NOT #FORCE_CURRENT_E;
+	
+	#X0 := (#S0 OR #X0 AND (NOT #S1 AND NOT #S4)) OR #FORCE_INIT_E;
+	#X1 := (#S1 OR #X1 AND (NOT #S2)) AND NOT #FORCE_INIT_E;
+	#X2 := (#S2 OR #X2 AND (NOT #S3)) AND NOT #FORCE_INIT_E;
+	#X3 := (#S3 OR #X3 AND (NOT #S0 AND NOT #S2)) AND NOT #FORCE_INIT_E;
+	#X4 := (#S4 OR #X4 AND (NOT #S0)) AND NOT #FORCE_INIT_E;
+	
+	#Act_Mantenimiento := #X1;
+	#Proceso_Activo := #X2 OR #X3;
+	#Modo_Manual_Activado := #X4;
+	
+	
+	
+	#TrigX3(CLK:=#X3);
+	#TrigVACAB(CLK := (#X3 OR #X2) AND #VacunaABuena);
+	#TrigVACAM(CLK := (#X3 OR #X2) AND #VacunaAMala);
+	#TrigVACB(CLK := (#X3 OR #X2) AND #VacunaB);
+	#TrigSOPAB(CLK := (#X3 OR #X2) AND #SoporteABueno);
+	#TrigSOPAM(CLK := (#X3 OR #X2) AND #SoporteAMalo);
+	#TrigSOPB(CLK := (#X3 OR #X2) AND #SoporteB);
+	#TrigEMBAB(CLK := (#X3 OR #X2) AND #EmbalajeABuneo);
+	#TrigEMBAM(CLK := (#X3 OR #X2) AND #EmbalajeAMalo);
+	#TrigEMBB(CLK := (#X3 OR #X2) AND #EmbalajeB);
+	
+	#Contador_G(CU:=#TrigX3.Q,
+	            R:=#X0,
+	            PV:=50,
+	            CV=>#contador);
+	
+	#Contador_VACAB(CU := #TrigVACAB.Q,
+	            R := #X0,
+	            PV := 50,
+	            CV => #C_VACAB);
+	
+	#Contador_VACAM(CU := #TrigVACAM.Q,
+	            R := #X0,
+	            PV := 50,
+	            CV => #C_VACAM);
+	
+	#Contador_VACB(CU := #TrigVACB.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_VACB);
+	 
+	 #Contador_SOPAB(CU := #TrigSOPAB.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_SOPAB);
+	
+	#Contador_SOPAM(CU := #TrigSOPAM.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_SOPAM);
+	
+	#Contador_SOPB(CU := #TrigSOPB.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_SOPB);
+	
+	 #Contador_EMBAB(CU := #TrigEMBAB.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_EMBAB);
+	
+	#Contador_EMBAM(CU := #TrigEMBAM.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_EMBAM);
+	#Contador_EMBB(CU := #TrigEMBB.Q,
+	                R := #X0,
+	                PV := 50,
+	                CV => #C_EMBB);
+	
+	
+END_FUNCTION_BLOCK
+

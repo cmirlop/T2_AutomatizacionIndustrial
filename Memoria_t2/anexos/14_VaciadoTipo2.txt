@@ -1,0 +1,92 @@
+FUNCTION_BLOCK "grafcet_130_vaciados_maq"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Vaciado_maquina : Bool;
+      Fin_vaciado : Bool;
+      CI : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Fin_vaciado_maq : Bool;
+      Vaciados_maq_1 : Bool;
+      Vaciados_maq_2 : Bool;
+      Vaciados_maq_3 : Bool;
+      Vaciados_maq_4 : Bool;
+      Vaciados_maq_5 : Bool;
+      Vaciados_maq_6 : Bool;
+      Vaciados_maq_7 : Bool;
+      Vaciados_maq_8 : Bool;
+   END_VAR
+
+   VAR 
+      S130 : Bool;
+      S131 : Bool;
+      s132 : Bool;
+      x130 : Bool;
+      x131 : Bool;
+      x132 : Bool;
+      s130e : Bool;
+      s131e : Bool;
+      s132e : Bool;
+      x130e : Bool;
+      x131e : Bool;
+      x132e : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_CURRENT_E : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      T1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#s130e := (#x132e AND #CI) OR "FirstScan";
+	#s131e := #x130e AND FALSE;
+	#s132e := #x131e;
+	
+	#x130e := #s130e OR (#x130e AND NOT #s131e);
+	#x131e := #s131e OR (#x131e AND NOT #s132e);
+	#x132e := #s132e OR (#x132e AND NOT #s130e);
+	
+	#FORCE_INIT_E := #x131e;
+	#FORCE_CURRENT_E := #x132e;
+	
+	
+	#FORCE_INIT := #FORCE_INIT_E ;
+	#FORCE_CURRENT := #FORCE_CURRENT_E ;
+	#T1(IN:=#x131,
+	    PT:=T#20s);
+	
+	
+	
+	
+	// PRODUCCIÓN
+	#S130 := ("FirstScan" OR (#x132 AND #Fin_vaciado )) AND NOT #FORCE_CURRENT;
+	#S131 := (#x130 AND #Act_Vaciado_maquina) AND NOT #FORCE_CURRENT;
+	#s132 := (#x131 AND #T1.Q) AND NOT #FORCE_CURRENT;
+	
+	
+	
+	#x130 := (#S130 OR #x130 AND (NOT #S131)) OR #FORCE_INIT;
+	#x131 := (#S131 OR #x131 AND (NOT #s132)) AND NOT #FORCE_INIT;
+	#x132 := (#s132 OR #x132 AND (NOT #S130)) AND NOT #FORCE_INIT;
+	
+	#Vaciados_maq_1 := #x131;
+	#Vaciados_maq_2 := #x131;
+	#Vaciados_maq_3 := #x131;
+	#Vaciados_maq_4 := #x131;
+	#Vaciados_maq_5 := #x131;
+	#Vaciados_maq_6 := #x131;
+	#Vaciados_maq_7 := #x131;
+	#Vaciados_maq_8 := #x131;
+	
+	
+	#Fin_vaciado_maq := #x132;
+	
+END_FUNCTION_BLOCK
+

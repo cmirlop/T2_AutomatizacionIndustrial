@@ -1,0 +1,152 @@
+FUNCTION_BLOCK "grafcet_90"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Act_Proceso : Bool;
+      SENSOR : Bool;
+      SigMaqLibre : Bool;
+      Mantenimiento_Cinta : Bool;
+      Mantenimiento_Trans : Bool;
+      vaicado_cinta : Bool;
+      vaciado_trnas : Bool;
+      CI : Bool;
+      Reset : Bool;
+      Resume : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Maq_Libre : Bool;
+      QC3 : Bool;
+      QTrans : Bool;
+      Act_Sig_Maq : Bool;
+      Alarma_Maquina : Bool;
+      EstadoMaquina : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      Alarma_1 : Bool;
+      Alarma_2 : Bool;
+   END_VAR
+
+   VAR 
+      S90 : Bool;
+      S91 : Bool;
+      S92 : Bool;
+      S93 : Bool;
+      S94 : Bool;
+      X90 : Bool;
+      X91 : Bool;
+      X92 : Bool;
+      X93 : Bool;
+      X94 : Bool;
+      S90e : Bool;
+      S91e : Bool;
+      S92e : Bool;
+      X90e : Bool;
+      X91e : Bool;
+      X92e : Bool;
+      S90a : Bool;
+      S91a : Bool;
+      S92a : Bool;
+      S93a : Bool;
+      X90a : Bool;
+      X91a : Bool;
+      X92a : Bool;
+      X93a : Bool;
+      Alarma : Bool;
+      FORCE_INIT : Bool;
+      FORCE_INIT_E : Bool;
+      FORCE_CURRENT : Bool;
+      FORCE_CURRENT_E : Bool;
+      STOP_ACT : Bool;
+      RESET_ALARMA : Bool;
+      T1a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      T2a {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#S90e := (#X92e AND #CI) OR "FirstScan";
+	#S91e := #X90e AND "Emergencia";
+	#S92e := #X91e;
+	
+	#X90e := #S90e OR (#X90e AND NOT #S91e);
+	#X91e := #S91e OR (#X91e AND NOT #S92e);
+	#X92e := #S92e OR (#X92e AND NOT #S90e);
+	
+	#FORCE_INIT_E := #X91e;
+	#FORCE_CURRENT_E := #X92e;
+	
+	
+	// ALARMAS
+	#S90a := (#X93a AND NOT #FORCE_CURRENT_E) OR "FirstScan";
+	#S91a := (#X90a AND #Alarma) AND NOT #FORCE_CURRENT_E;
+	#S92a := (#X91a AND #Reset) AND NOT #FORCE_CURRENT_E;
+	#S93a := (#X92a OR (#X91a AND #Resume)) AND NOT #FORCE_CURRENT_E;
+	
+	#X90a := #S90a OR (#X90a AND NOT #S91a) OR #FORCE_INIT_E;
+	#X91a := (#S91a OR (#X91a AND NOT #S92a AND NOT #S93a)) AND NOT #FORCE_INIT_E;
+	#X92a := (#S92a OR (#X92a AND NOT #S93a)) AND NOT #FORCE_INIT_E;
+	#X93a := (#S93a OR (#X93a AND NOT #S90a)) AND NOT #FORCE_INIT_E;
+	
+	#STOP_ACT := #X91a;
+	#FORCE_INIT := #FORCE_INIT_E OR #X92a;
+	#FORCE_CURRENT := #FORCE_CURRENT_E OR #X91a;
+	#RESET_ALARMA := #X93a;
+	
+	
+	
+	
+	// PRODUCCIÓN
+	#S90 := ("FirstScan" OR (#X94)) AND NOT #FORCE_CURRENT;
+	#S91 := (#X90 AND #Act_Proceso) AND NOT #FORCE_CURRENT;
+	#S92 := (#X91 AND #SENSOR) AND NOT #FORCE_CURRENT;
+	#S93 := (#X92 AND #SigMaqLibre) AND NOT #FORCE_CURRENT;
+	#S94 := (#X93 AND NOT #SENSOR) AND NOT #FORCE_CURRENT;
+	
+	
+	
+	#X90 := (#S90 OR #X90 AND (NOT #S91)) OR #FORCE_INIT;
+	#X91 := (#S91 OR #X91 AND (NOT #S92)) AND NOT #FORCE_INIT;
+	#X92 := (#S92 OR #X92 AND (NOT #S93)) AND NOT #FORCE_INIT;
+	#X93 := (#S93 OR #X93 AND (NOT #S94)) AND NOT #FORCE_INIT;
+	#X94 := (#S94 OR #X94 AND (NOT #S90)) AND NOT #FORCE_INIT;
+	
+	
+	
+	#Maq_Libre := #X90 AND NOT #STOP_ACT;
+	#QC3 := (#X91 OR #Mantenimiento_Cinta OR #vaicado_cinta) AND NOT #STOP_ACT;
+	#QTrans := (#X93 OR #Mantenimiento_Trans OR #vaciado_trnas) AND NOT #STOP_ACT;
+	#Act_Sig_Maq := #X94 AND NOT #STOP_ACT;
+	
+	#T1a(IN:=#X91 AND NOT #RESET_ALARMA,
+	     PT:=T#5s);
+	
+	
+	
+	
+	#Alarma_1 := (#Alarma_1 OR #T1a.Q) AND NOT #RESET_ALARMA;
+	
+	#Alarma := (#Alarma_1) AND NOT (#FORCE_INIT OR #RESET_ALARMA);
+	
+	
+	
+	IF #X90 = TRUE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 0;
+	END_IF;
+	IF #X90 = FALSE AND NOT #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 1;
+	END_IF;
+	IF #Alarma AND NOT "Emergencia" THEN
+	    #EstadoMaquina := 2;
+	END_IF;
+	IF "Emergencia" THEN
+	    #EstadoMaquina := 3;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

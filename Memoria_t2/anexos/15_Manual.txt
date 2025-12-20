@@ -1,0 +1,89 @@
+FUNCTION_BLOCK "grafcet_145_manual_maquinas"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      act_manual_maq : Bool;
+      CI : Bool;
+      Man_qc1 : Bool;
+      man_Qc1b : Bool;
+      man_qc2 : Bool;
+      man_qc3 : Bool;
+      man_qc4 : Bool;
+      man_qtran1 : Bool;
+      man_Qtran2 : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      qcin1 : Bool;
+      qcin1b : Bool;
+      qcin2 : Bool;
+      qcin3 : Bool;
+      qcin4 : Bool;
+      qtrans1 : Bool;
+      qtrans2 : Bool;
+   END_VAR
+
+   VAR 
+      s145 : Bool;
+      s146 : Bool;
+      x145 : Bool;
+      x146 : Bool;
+      s145e : Bool;
+      s146e : Bool;
+      s147e : Bool;
+      x145e : Bool;
+      x146e : Bool;
+      x147e : Bool;
+      force_init : Bool;
+      force_current : Bool;
+      force_init_e : Bool;
+      force_current_e : Bool;
+   END_VAR
+
+
+BEGIN
+	//Flancos
+	
+	
+	// EMERGENCIA
+	#s145e := (#x147e AND #CI) OR "FirstScan";
+	#s146e := #x145e AND "Emergencia";
+	#s147e := #x146e;
+	
+	#x145e := #s145e OR (#x145e AND NOT #s146e);
+	#x146e := #s146e OR (#x146e AND NOT #s147e);
+	#x147e := #s147e OR (#x147e AND NOT #s145e);
+	
+	#force_init_e := #x146e;
+	#force_current_e := #x147e;
+	
+	
+	#force_init := #force_init_e ;
+	#force_current := #force_current_e ;
+	
+	
+	
+	// PRODUCCIÓN
+	#s145 := ("FirstScan" OR (#x146 AND NOT #act_manual_maq )) AND NOT #force_current;
+	#s146 := (#x145 AND #act_manual_maq) AND NOT #force_current;
+	
+	
+	
+	
+	#x145 := (#s145 OR #x145 AND (NOT #s146)) OR #force_init;
+	#x146 := (#s146 OR #x146 AND (NOT #s145)) AND NOT #force_init;
+	
+	
+	#qcin1 := (#x146 AND #Man_qc1) AND NOT "Emergencia";
+	#qcin1b := (#x146 AND #man_Qc1b) AND NOT "Emergencia";
+	#qcin2 := (#x146 AND #man_qc2) AND NOT "Emergencia";
+	#qcin3 := (#x146 AND #man_qc3) AND NOT "Emergencia";
+	#qcin4 := (#x146 AND #man_qc4) AND NOT "Emergencia";
+	#qtrans1 := (#x146 AND #man_qtran1) AND NOT "Emergencia";
+	#qtrans2 := (#x146 AND #man_Qtran2) AND NOT "Emergencia";
+	
+	
+	
+	
+END_FUNCTION_BLOCK
+
