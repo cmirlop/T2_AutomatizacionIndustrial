@@ -10,10 +10,10 @@
 \contentsline {subsection}{\numberline {2.6}Grafcet máquina 4}{8}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Grafcet Máquina 5 soporte}{10}{subsection.2.7}%
 \contentsline {subsection}{\numberline {2.8}Grafcet máquina 5 vacuna y 6 soporte }{12}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Grafcet máquina 5 embalaje}{15}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.9}Grafcet Máquina 5 embalaje}{15}{subsection.2.9}%
 \contentsline {subsection}{\numberline {2.10}Grafcet máquina 6 embalaje}{15}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}Grafcet máquina 7 embalaje}{16}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.11}Grafcet Máquina 7 embalaje}{16}{subsection.2.11}%
 \contentsline {subsection}{\numberline {2.12}Grafcet Cinta Fin}{18}{subsection.2.12}%
 \contentsline {subsection}{\numberline {2.13}Grafcet Alarma Cinta Fin}{19}{subsection.2.13}%
-\contentsline {subsection}{\numberline {2.14}Grafcet Vaciado}{19}{subsection.2.14}%
-\contentsline {subsection}{\numberline {2.15}Grafcet otro Vaciado}{20}{subsection.2.15}%
+\contentsline {subsection}{\numberline {2.14}Grafcet Vaciado}{20}{subsection.2.14}%
+\contentsline {subsection}{\numberline {2.15}Grafcet otro Vaciado}{21}{subsection.2.15}%

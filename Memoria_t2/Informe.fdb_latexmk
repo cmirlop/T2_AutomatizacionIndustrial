@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber Informe"] 1766257192.19709 "Informe.bcf" "Informe.bbl" "Informe" 1766259165.88346 0
-  "Informe.bcf" 1766259165 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
+["biber Informe"] 1766259520.38644 "Informe.bcf" "Informe.bbl" "Informe" 1766259841.25167 0
+  "Informe.bcf" 1766259840 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
   (generated)
   "Informe.bbl"
   "Informe.blg"
   (rewritten before read)
-["pdflatex"] 1766259161.50049 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766259165.88432 0
+["pdflatex"] 1766259836.66864 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766259841.2525 0
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765640236 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1762450105 34112 6077470a731733ee0e995aa9c01a906c ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0900.pk" 1760431305 22504 a5dd8a55bad19e6d843a98e120614012 ""
@@ -303,21 +303,21 @@
   "Figuras/maq4.png" 1766256947 218029 e2641392588c6e7d861f0d6728e210eb ""
   "Figuras/maq5_SOP.png" 1766256947 371783 77b95fe107548423bd1dca4b4b78b777 ""
   "Figuras/maq5_VAC_6_SOP.png" 1766256947 437275 54556fd8793c93933d2007d776c1405e ""
-  "Informe.aux" 1766259165 8929 795bf63d47b26af6e0fdadee98553b11 "pdflatex"
-  "Informe.bbl" 1766257194 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
-  "Informe.lof" 1766259165 2292 18215e71e38ca31095519ebfec058769 "pdflatex"
-  "Informe.lot" 1766259165 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
-  "Informe.out" 1766259165 2831 d6ededf2c0e798f5f1f6c533c8dbc382 "pdflatex"
-  "Informe.run.xml" 1766259165 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
+  "Informe.aux" 1766259840 8931 2ed08dd0fc921ab4e754b62585f549bf "pdflatex"
+  "Informe.bbl" 1766259526 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
+  "Informe.lof" 1766259840 2294 0b41b0f2ed4d8693f2cc422ff98c3881 "pdflatex"
+  "Informe.lot" 1766259840 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
+  "Informe.out" 1766259840 2831 b3f346d22d6e133dcbed350a4072246c "pdflatex"
+  "Informe.run.xml" 1766259840 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
   "Informe.tex" 1766256947 4241 7619066ee643aa448917ed6ea5ce3570 ""
-  "Informe.toc" 1766259165 1543 780337fbdf2d8b251dcdff5afb3659d2 "pdflatex"
+  "Informe.toc" 1766259840 1543 594c015bda6e91c3b5d8ee0bbf0b9d2b "pdflatex"
   "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" 1766256947 4241 7619066ee643aa448917ed6ea5ce3570 ""
   "capitulos/cap_grafcets_1.tex" 1766257774 2092 f19c34cb4f5e60108d2443dfd4d5fc60 ""
-  "capitulos/cap_grafcets_2.tex" 1766258207 3218 82ec35bc5bd2e93eacc942239b04dc1e ""
-  "capitulos/cap_grafcets_3.tex" 1766258921 2256 d452315cbc36c4f0887b2f866c959711 ""
-  "capitulos/cap_grafcets_4.tex" 1766259114 3208 a636ed094e82129012c8282ee283b2ae ""
-  "capitulos/cap_grafcets_5.tex" 1766258984 916 68bb519adf67dd4e998821f60874ebbf ""
-  "capitulos/cap_grafcets_6.tex" 1766259160 1596 0a61fecbad706fbd10a59c9619d097d8 ""
+  "capitulos/cap_grafcets_2.tex" 1766259832 3201 017379342d7bf3c54d15ed836df4a350 ""
+  "capitulos/cap_grafcets_3.tex" 1766259509 2254 376e6c274f4d206427f0eb21d08c06b7 ""
+  "capitulos/cap_grafcets_4.tex" 1766259755 3201 3057b63b5c599ebfe3964d2a6bc13f0c ""
+  "capitulos/cap_grafcets_5.tex" 1766259746 943 be4fc921e63ee96a7a9ff47c1760beb7 ""
+  "capitulos/cap_grafcets_6.tex" 1766259735 3646 46ada5f060c3ab965a57b5d49a0a7afb ""
   "capitulos/cap_metodologia.tex" 1766081623 850 b4358f7ae8a0fe9035578435df6fe32c ""
   "configuraciones/configura_listings_SCL.tex" 1765187789 420 0e32d40cb00908db3d7c8b38c183bdb6 ""
   "configuraciones/post_begin_document.tex" 1765187789 1002 0da7031cdd98781be417c8e0562538a9 ""
