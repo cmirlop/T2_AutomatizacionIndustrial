@@ -8,6 +8,14 @@ conectada via profinet al PLC, para poder tener acceso a las variables
 \subsection{Pantalla principal}
 En la siguiente figura .... podemos observar la pantalla principal, donde podemos observar distintos elementos.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/HMI1.png}
+	\medskip
+	\label{fig:maq2}
+	\caption{Maquina 2 de la planta}
+\end{figure}
+
 Respecto a los botones tenemos:
 \begin{itemize}
     \item Marcha : Este botón hace la misma función que el botón del panel
@@ -46,6 +54,10 @@ En la siguiente figura .... podemos ver como es una pantalla cuando sobre la pri
 máquina, vemos que podemos ver dos máquinas, unas luces encima de los actuadores que nos indican si
 están funcionando o no, y un contador donde se puede ver el numero de piezas descartadas en esa máquina.
 
+Vemos que también hay unos botones con los nombres de los actuadores, esto es porque si tenemos el modo
+manual activado, estos botones se harán visibles y podremos accionar los actuadores desde aqui.
+
+
 
 \subsection{Pantalla configuracion}
 En la siguiente figura ... podemos ver la pantalla de configuración a la cual solo se puede acceder a través
@@ -58,12 +70,37 @@ podemos ver:
     sin necesidad de la emergencia.
 \end{itemize}
 
+También disponemos de un botón de cerrar sesión, por si ya hemos configurado la máquina y probado, 
+y ya el próximo que la toque es un trabajador normal.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/HMI3.png}
+	\medskip
+	\label{fig:maq2}
+	\caption{Maquina 2 de la planta}
+\end{figure}
+
+
+
 \subsection{Usuarios}
+Respecto a los usuarios, el HMI dispone de dos grupos:
+\begin{itemize}
+    \item Grupo administrador --> Acceso al modo manual, y al modo de configuración de la máquina
+    \item Grupo Usuario --> Solo tiene acceso a ver el estado de la máquina, ponerla en marcha, pararla, reanudarla ,o acceder
+    a los valores de los contadores de piezas
+\end{itemize}
 
 
 \subsection{Registro de alarmas}
 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/HMI_AL.png}
+	\medskip
+	\label{fig:maq2}
+	\caption{Maquina 2 de la planta}
+\end{figure}
 
 
 

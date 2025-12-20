@@ -3,16 +3,66 @@
 
 
 
-\subsection{Grafcet Transfer 1}
+\subsection{Grafcet máquina 3}
+
+Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
+\begin{itemize}
+	\item 1 cinta.
+	\item 1 Sensor al final de la cinta.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/maq3.png}
+	\medskip
+	\label{fig:maq2}
+	\caption{Maquina 2 de la planta}
+\end{figure}
+
+Como vemos en el grafcet (REF), en esta máquina cuando nos entrega la pieza la máquina anterior,esta
+solo será del tipo A, pero nos idicará si es buena o mala, para poder indicarle
+a la máquina siguietne si la tiene que descartar o no.
+
+El funcionamiento es recibir la pieza indicando si es buena o mala, 
+llevarla hasta el final donde estará el sensor y si la siguiente máquina
+esta libre entregarla.
+
+En está máquina solo se trata una alarma, que es que tardemos más de 10 segundos
+en recorrer toda la cinta
+
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/4_Transfer1.tex}}
 	\medskip
 	\label{graf:fresadora}
-	\caption{Grafcet de la fresadora}
+	\caption{Grafcet de la máquina 3}
 \end{figure}
 
-\subsection{Grafcet Transfer 2 Cajas}
+
+\subsection{Grafcet máquina 4}
+Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
+\begin{itemize}
+	\item 1 transfer, que puede mover hacia un lado o ir en linea recta
+	\item 1 Sensor al final de la cinta.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/maq4.png}
+	\medskip
+	\label{fig:maq2}
+	\caption{Maquina 2 de la planta}
+\end{figure}
+
+Como vemos en el grafcet (REF), en esta máquina cuando nos entrega la pieza la máquina anterior,esta
+vendrá indicada si es buena o mala, por lo que al llegar al sensor si es buena se esperará
+a que la siguiente máquina este libre, y si es mala, la descartaremos
+
+
+En está máquina solo se trata una alarma, que es que tardemos más de 5 segundos
+en llegar al sensor desde que nos indican que nos activemos
+
+
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/5_Transfer2.tex}}

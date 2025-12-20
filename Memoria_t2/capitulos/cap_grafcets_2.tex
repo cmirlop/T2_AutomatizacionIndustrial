@@ -1,16 +1,84 @@
 
 
 
-\subsection{Grafcet Cinta 1}
+\subsection{Grafcet Maquina 1}
+Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
+\begin{itemize}
+	\item 1 Cinta para Vacunas y Soportes, 2 Cintas para los embalajes.
+	\item 1 Sensor de presencia al principio de la cinta, o al final de la segunda en los embalajes.
+	\item 1 Sensor final de la cinta
+	\item 1 Emisor de objetos.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/maq1.png}
+	\medskip
+	\label{fig:maq1}
+	\caption{Maquina 1 de la planta}
+\end{figure}
+
+Con estos elementos conformamos el siguiente grafcet (\ref{graf:cinta_1}), el cual su funcionamiento es 
+generar un objeto enviarlo al final de la cinta, y si la siguiente máquina esta libre
+entregarselo.
+
+Las alarmas que tenemos en está máquina que la detendrían son:
+\begin{itemize}
+	\item Si cuando el obejto esta de camino al sensor del final de la cinta, se pone otro objeto al principio de la cinta.
+	\item Si el objeto desde que se ha generado hasta el final de la cinta tarda más de 8 segundos.
+\end{itemize}
+
+
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/1_Cinta1.tex}}
 	\medskip
 	\label{graf:cinta_1}
-	\caption{Grafcet de la Cinta 1}
+	\caption{Grafcet de la máquina 1}
 \end{figure}
 
-\subsection{Grafcet Identificador de Tipo}
+
+
+\subsection{Grafcet máquina 2}
+Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
+\begin{itemize}
+	\item 1 Tranfer, que puede desplazar hacia el lado, o ir recto.
+	\item 1 Sensor de visión, o 3 sensores en la parte del embalaje.
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./Figuras/maq2.png}
+	\medskip
+	\label{fig:maq2}
+	\caption{Maquina 2 de la planta}
+\end{figure}
+
+Como vemos en el grafcet (REF), en esta máquina cuando nos entrega la pieza la máquina anterior, determinamos
+3 caminos:
+\begin{itemize}
+	\item Determinamos si la pieza es del tipo A bueno, que nos esperamos a que 
+	la siguiente máquina esta disponible.
+	\item Determinamos si la pieza es del tipo A malo, que seguimos a la espera de
+	que la siguiente máquina siga disponible, pero le avisaremos de que la pieza 
+	que esta de camino es mala .
+	\item Determinamos si es del tipo B, que lo que hacemos es descartarla con
+	un movimiento lateral del transfer.
+\end{itemize}
+
+Respecto a los 3 sensores en la máquina de embalaje, esta hecho por la siguiente razón:
+\begin{itemize}
+	\item Si se detectan los 3 sensores al final del transfer, es el tipo A bueno.
+	\item Si al final de la cinta solo se detectan los dos sensores de abajo 
+	es el tipo A malo.
+	\item Si solo se detectan los dos sensores finales, que están uno encima del otro
+	determinamos que es tipo B y se debe de descartar.
+\end{itemize}
+
+En está máquina solo se trata una alarma, que es que tardemos más de 5 segundos en recibir la pieza de la
+máquina anterior.
+
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/2_Separador.tex}}

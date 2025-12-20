@@ -1,9 +1,5 @@
-[0] Config.pm:308> INFO - This is Biber 2.20
-[1] Config.pm:311> INFO - Logfile is 'Informe.blg'
-[240] biber-MSWIN64:340> INFO - === 
-[313] Biber.pm:420> INFO - Reading 'Informe.bcf'
-[594] Biber.pm:994> INFO - Found 0 citekeys in bib section 0
-[637] bbl.pm:676> INFO - Writing 'Informe.bbl' with encoding 'UTF-8'
-[637] bbl.pm:779> INFO - Output to Informe.bbl
-[638] Biber.pm:131> WARN - The file 'Informe.bcf' does not contain any citations!
-[638] Biber.pm:133> INFO - WARNINGS: 1
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'Informe.blg'
+[147] biber-MSWIN64:340> INFO - === 
+[762] Utils.pm:410> ERROR - Cannot find control file 'Informe.bcf'! - Did latex run successfully on your .tex file before you ran biber?
+[762] Biber.pm:136> INFO - ERRORS: 1
