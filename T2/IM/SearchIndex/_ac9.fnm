@@ -1,18 +1,0 @@
-þÿÿÿÇ###id###VisulizationRootBrowsableId###TargetIdNameDisplayName-###SearchableNonTechnicalFieldNamesOfDocument###ParentIds###ImmediateParentId###ReferenceFieldIds###ReconstitutionDataIDAssociatedCultureFieldIdAssociatedProjectVersion!AssociatedIndexDataVersionFieldId,AssociatedTechnicalFieldNamesHashCodeFieldId-AssociatedTechnicalFieldContentVersionFieldIdIndexAtomStoreCommentDatatypeValue###SearchFilterIdsTitleLanguageVersionConstant nameEvent class###UpdatableParentIdInterfaceMember_NameInterfaceMember_DatatypeInterfaceMember_ValueInterfaceMember_CommentNetwork titleLADFBD CodeSCL CodeAddressInstance DBText.0Text.1Text.2
-AlarmClassAuthorFamilyUser-defined IDAcknowledgementModelIdEmailAddressAcknowledgedText
-ComingText	GoingTextAcknowledgementGroupTextInvalidAttempts	ValidDaysWarningDaysGenerationsMinNumPsswd
-ServerName
-PortNumberWindowsDomain	CycleUnit	CycleTimeNumber	ShortName
-LogoutTimeDataType	BackColor	GridColor
-LineColor1
-LineColor2OperatableAreaColor
-VisibilityTagAddressPanelInfoAcquisitionTriggerModeAcquisitionCycleConfirmationTypeCodingPlcNameControllerTagLimitHighConstantLimitHighLowConstantLimitLowHighConstantLimitLowConstant	JobNumber
-StartValueAddressAccessMode
-ConnectionCommonAlarmClassStationNamePartnerNameNodeNameBackFillStyleBorderBackColorBorderColor	EdgeStyleFirstGradientColorFlashing
-FocusColorFont	ForeColorHorizontalAlignmentHorizontalPictureAlignmentLayerMiddleGradientColorModePictureAutoSizingSecondGradientColorTextOffTextOnTextOrientationVerticalAlignmentVerticalPictureAlignment	FunctionsAboveUpperLimitColorBelowLowerLimitColor
-DataFormatFormatPatternUnitProcessValuePropertyNameTagValueForPropertyTagPageTextUITypeEditorBitPositionRangeFromToUITypeEditorTagExpressionCaptionColorCaptionFontCaptionTextHelpTextInnerBackColorOffInnerBackColorOnSwitchOrientationAcknowledgementBitAddressPlcAcknowledgementBitAddressTriggerBitAddress	AlarmTextDelayTimeUnitHysteresisMode	LimitMode
-LimitValueAlarmSourceButtonBackColorButtonBackFillStyleButtonBarStyleButtonBorderBackColorButtonBorderColorButtonEdgeStyleButtonFirstGradientColorButtonMiddleGradientColorButtonSecondGradientColorColumnTextAckGroupColumnTextAlarmStateColumnTextAlarmTextColumnTextClassNameColumnTextDateColumnTextDeviceColumnTextDiagnosableColumnTextNumberColumnTextTime
-FilterTextGridlineColorSelectionBackColorSelectionForeColorSortByTimeDirectionTableBackColorTableEvenRowBackColor	TableFontTableForeColorTableHeaderBackColorTableHeaderBackFillStyleTableHeaderBorderBackColorTableHeaderBorderColorTableHeaderEdgeStyleTableHeaderFirstGradientColorTableHeaderFontTableHeaderForeColorTableHeaderMiddleGradientColorTableHeaderSecondGradientColorViewTypeAdaptPicture
-AutoSizingPictureTransparentColorUITypeEditorStartvalueUITypeEditorEndvalueCaption	PictureOnTextListTemplateEvenRowBackColorSelectBackColorSelectForeColorTableGridlineColorAuthorizationPreCodeHeaderCodeFooter
-TriggerTagSizeTypeCommunicationType
-AlarmGroup
