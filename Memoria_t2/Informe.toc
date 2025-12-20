@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {2}Grafcets}{1}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Grafcet Principal}{1}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Grafcet Paro}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Grafcet Maquina 1}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Grafcet Máquina 1}{2}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Grafcet máquina 2}{4}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Grafcet máquina 3}{7}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Grafcet máquina 4}{8}{subsection.2.6}%

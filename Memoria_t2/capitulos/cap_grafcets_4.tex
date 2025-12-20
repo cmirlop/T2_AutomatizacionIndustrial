@@ -1,6 +1,6 @@
-\subsection{Grafcet Máquina 5 soporte}
+\subsection{Grafcet Máquina 5 soporte}\label{sec:map5_sop}
 
-En la siguiente fígura vemos los siguientes elementos:
+En la siguiente fígura (\hyperref[fig:maq5]{Máquina 5 soporte}) vemos los siguientes elementos:
 \begin{itemize}
 	\item 3 Cintas
 	\item 1 Clamper
@@ -11,8 +11,8 @@ En la siguiente fígura vemos los siguientes elementos:
 	\centering
 	\includegraphics[width=0.8\linewidth]{./Figuras/maq5_SOP.png}
 	\medskip
-	\label{fig:maq2}
-	\caption{Maquina 5 de la línea de soportes}
+	\label{fig:maq5}
+	\caption{Máquina 5 de la línea de soportes}
 \end{figure}
 
 El funcionamento de la máquina como vemos en el grafcet es el siguiente:
@@ -22,7 +22,7 @@ antes del clamper ponemos un temporizador de 1 segundo para que la pieza entre d
 Activamos el clamper, esto lo que nos hace es colocar la pieza en el sitio, para que el 
 robot al colocar la vacuna sobre el soporte, este no falle. Una vez tenemos la pieza
 colocada avisamos al robot de las vácunas que hay un soporte en el sitio, este aviso lo recibimos en el 
-grafcet que hablaremos más adelante (REF), y que nos colocará la pieza en su sitio. Una vez nos diga la 
+grafcet que hablaremos más adelante (\hyperref[graf:maq5]{Grafcet Máquina 5 soporte}), y que nos colocará la pieza en su sitio. Una vez nos diga la 
 otra máquina que tenemos la vacuna en el soporte, nos esperaremos a que la siguiente máquina nos indique 
 que esté libre para poder levantar el clamper y activar las cintas.
 
@@ -32,7 +32,7 @@ Aqui la alarma que tratamos es que la pieza tarde más de 15 segundos en llegar 
 	\centering
 	\scalebox{0.75}{\input{./grafcets/7_Transfer2der.tex}}
 	\medskip
-	\label{graf:fresadora}
+	\label{graf:maq5}
 	\caption{Grafcet en el que se posiciona la vacuna}
 \end{figure}
 
@@ -40,7 +40,7 @@ Aqui la alarma que tratamos es que la pieza tarde más de 15 segundos en llegar 
 
 
 \subsection{Grafcet máquina 5 vacuna y 6 soporte }
-En la siguiente figura (REF) observamos la máquina que forman la máquina numero 5 de la línea de vacunas, 
+En la siguiente figura (\hyperref[fig:maq5_vac_6_sop]{Máquina 5 vacuna y 6 soporte}) observamos la máquina que forman la máquina numero 5 de la línea de vacunas, 
 y la número 6 de la línea de soportes, conformada por los siguietnes elementos:
 \begin{itemize}
 	\item 3 Cintas
@@ -51,11 +51,11 @@ y la número 6 de la línea de soportes, conformada por los siguietnes elementos
 	\centering
 	\includegraphics[width=0.8\linewidth]{./Figuras/maq5_VAC_6_SOP.png}
 	\medskip
-	\label{fig:maq2}
-	\caption{Maquina 5 de la línea de soportes}
+	\label{fig:maq5_vac_6_sop}
+	\caption{Máquina 5 de la línea de soportes}
 \end{figure}
 
-El funcionamineto que describe el grafcet (REF) es el siguiente, activamos 
+El funcionamineto que describe el grafcet (\hyperref[graf:Empaquetado]{Grafcet Máquina 5 vacuna y 6 soporte}) es el siguiente, activamos 
 las 3 cintas hasta que se produzca un flanco de bajada del sensor que hay antes del clamper
 , cuando se produce el flanco nos esperamos 1 segundo, y activamos el clamper para que la pieza se quede 
 colocada correctamente, y nos ponemos a la espera de que en la línea de vacunas nos avisen que tenemos un soporte

@@ -1,8 +1,8 @@
 
 
 
-\subsection{Grafcet Maquina 1}
-Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
+\subsection{Grafcet Máquina 1}
+Como vemos en la siguiente figura (\hyperref[fig:maq1]{Máquina 1}), esta máquina esta compuesta por:
 \begin{itemize}
 	\item 1 Cinta para Vacunas y Soportes, 2 Cintas para los embalajes.
 	\item 1 Sensor de presencia al principio de la cinta, o al final de la segunda en los embalajes.
@@ -15,16 +15,16 @@ Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
 	\includegraphics[width=0.8\linewidth]{./Figuras/maq1.png}
 	\medskip
 	\label{fig:maq1}
-	\caption{Maquina 1 de la planta}
+	\caption{Máquina 1 de la planta}
 \end{figure}
 
-Con estos elementos conformamos el siguiente grafcet (\ref{graf:cinta_1}), el cual su funcionamiento es 
+Con estos elementos conformamos el siguiente grafcet (\hyperref[graf:cinta_1]{Grafcet Máquina 1}), el cual su funcionamiento es 
 generar un objeto enviarlo al final de la cinta, y si la siguiente máquina esta libre
 entregarselo.
 
 Las alarmas que tenemos en está máquina que la detendrían son:
 \begin{itemize}
-	\item Si cuando el obejto esta de camino al sensor del final de la cinta, se pone otro objeto al principio de la cinta.
+	\item Si cuando el objeto esta de camino al sensor del final de la cinta, se pone otro objeto al principio de la cinta.
 	\item Si el objeto desde que se ha generado hasta el final de la cinta tarda más de 8 segundos.
 \end{itemize}
 
@@ -40,7 +40,7 @@ Las alarmas que tenemos en está máquina que la detendrían son:
 
 
 \subsection{Grafcet máquina 2}
-Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
+Como vemos en la siguiente figura (\hyperref[fig:maq2]{Máquina 2}), esta máquina esta compuesta por:
 \begin{itemize}
 	\item 1 Tranfer, que puede desplazar hacia el lado, o ir recto.
 	\item 1 Sensor de visión, o 3 sensores en la parte del embalaje.
@@ -52,10 +52,10 @@ Como vemos en la siguiente figura (\ref{}), esta máquina esta compuesta por:
 	\includegraphics[width=0.8\linewidth]{./Figuras/maq2.png}
 	\medskip
 	\label{fig:maq2}
-	\caption{Maquina 2 de la planta}
+	\caption{Máquina 2 de la planta}
 \end{figure}
 
-Como vemos en el grafcet (REF), en esta máquina cuando nos entrega la pieza la máquina anterior, determinamos
+Como vemos en el grafcet (\hyperref[graf:Identificador_Tipo]{Grafcet Identificador Tipo}), en esta máquina cuando nos entrega la pieza la máquina anterior, determinamos
 3 caminos:
 \begin{itemize}
 	\item Determinamos si la pieza es del tipo A bueno, que nos esperamos a que 
