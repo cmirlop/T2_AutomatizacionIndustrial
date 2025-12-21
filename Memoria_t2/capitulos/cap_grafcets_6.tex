@@ -1,28 +1,40 @@
 
 
 \subsection{Grafcet Máquina 7 embalaje}
-Esta máquina (\hyperref[graf:Gripper]{Máquina 7 Embalaje}) es muy similar a la máquina 5 de la línea de soportes mencionada anteriormente (\hyperref[sec:map5_sop]{Sección de la Máquina 5 de Soportes}),
+Esta máquina (\hyperref[graf:maq7]{Máquina 7 Embalaje}) es muy similar a la máquina 5 de la línea de soportes mencionada anteriormente (\hyperref[sec:map5_sop]{Sección de la Máquina 5 de Soportes}),
 ya que la componen los mismos componentes, y su funcionamiento es el mismo a excepción
 de que en esta máquina se cuentan las piezas que hay embaladas, para que una vez se ha cumplido
 con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaquetando vacunas
 
 
+-- FOTO --
+
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/10_Seta.tex}}
 	\medskip
-	\label{graf:seta}
+	\label{graf:maq7_emb}
 	\caption{Grafcet de la Máquina 7 embalaje}
 \end{figure}
 
 
 
 
+<<<<<<< Updated upstream
 \subsection{Grafcet mantenimiento}
+=======
+\subsection{Grafcet de Mantenimiento}
+El (\hyperref[graf:mantenimiento]{Grafcet de Mantenimiento}) está diseñado con el propósito de asegurar que la máquina tiene un funcionamiento correcto antes
+de empezar a procesar los lotes. Se hace uso de este siempre que arranca la máquina, y después la ejecución del 
+(\hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}), para asegurar que cada vez que la seta sea presionada, la puesta 
+en marcha sea la correcta.
+
+>>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/11_SETA_Cinta_fin.tex}}
 	\medskip
+<<<<<<< Updated upstream
 	\label{graf:Cinta_Fin}
 	\caption{Grafcet de mantenimiento}
 \end{figure}
@@ -34,10 +46,24 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 
 
 \subsection{Grafcet vaciado general}
+=======
+	\label{graf:mantenimiento}
+	\caption{Grafcet de Mantenimiento}
+\end{figure}
+
+
+
+\subsection{Grafcet Principal de Vaciado}
+El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado} se activa después de haber desenclavado la seta de emergencia, ya que no aceptamos las piezas que estén en la máquina cuando ocurra una emergencia.
+Las máquinas, también se pueden vaciar, si un usuario que tenga permisos presiona el botón de vaciado del HMI (REF Botón vaciado).
+
+
+>>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/12_Alarma_Cinta_fin.tex}}
 	\medskip
+<<<<<<< Updated upstream
 	\label{graf:Alarma_Cinta_fin}
 	\caption{Grafcet de vaciado general}
 \end{figure}
@@ -49,10 +75,42 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 
 
 \subsection{Grafcet vaciado tipo 1}
+=======
+	\label{graf:principal_vaciado}
+	\caption{Grafcet de la Alarma de la Cinta Final}
+\end{figure}
+
+
+
+\subsubsection{Grafcet Vaciado 1}
+
+El \hyperref[graf:vaciado_1]{Grafcet de Vaciado 1} se activa por medio del \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}, y este vacía las siguientes máquinas:
+\begin{itemize}
+	\item Máquina 1:
+	\begin{itemize}
+		\item \hyperref[fig:maq1]{Vacunas, Soportes y Embalajes}
+	\end{itemize}
+	\item Máquina 2:
+	\begin{itemize}
+		\item \hyperref[fig:maq2]{Vacunas, Soportes y Embalajes}
+	\end{itemize}
+	\item Máquina 3:
+	\begin{itemize}
+		\item \hyperref[fig:maq3]{Vacunas, Soportes y Embalajes}
+	\end{itemize}
+	\item Máquina 4:
+	\begin{itemize}
+		\item \hyperref[fig:maq4]{Vacunas, Soportes y Embalajes}
+	\end{itemize}
+\end{itemize}
+
+
+>>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/grafcet_02.tex}}
 	\medskip
+<<<<<<< Updated upstream
 	\label{graf:Vaciado}
 	\caption{Grafcet de vaciado tipo 1}
 \end{figure}
@@ -64,10 +122,36 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 
 
 \subsection{Grafcet vaciado tipo 2}
+=======
+	\label{graf:vaciado_1}
+	\caption{Grafcet de vaciado 1}
+\end{figure}
+
+
+
+\subsubsection{Grafcet Vaciado 2}
+El \hyperref[graf:vaciado_2]{Grafcet de Vaciado 2} se activa por medio del \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}, y este vacía las siguientes máquinas:
+\begin{itemize}
+	\item Máquina 5 de Soportes:
+	\begin{itemize}
+		\item \hyperref[fig:maq5]{Soporte}
+	\end{itemize}
+	\item Máquina 5 de vacunas y 6 de soportes:
+	\begin{itemize}
+		\item \hyperref[fig:maq5_vac_6_sop]{Vacunas y Soportes}
+	\end{itemize}
+	\item Máquina 6 y 7 de embalaje:
+	\begin{itemize}
+		\item \hyperref[graf:maq7_emb]{Embalajes} cambiar ref a la foto
+		\item \hyperref[graf:maq6_emb]{Embalajes} cambiar ref a la foto
+	\end{itemize}
+\end{itemize}
+>>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/grafcet_03.tex}}
 	\medskip
+<<<<<<< Updated upstream
 	\label{graf:Vaciado_otro}
 	\caption{Grafcet de vaciado tipo 2}
 \end{figure}
@@ -76,3 +160,8 @@ Esta máquina (\hyperref[graf:Gripper]{Máquina  Embalaje}) es muy similar a la 
 ya que la componen los mismos componentes, y su funcionamiento es el mismo a excepción
 de que en esta máquina se cuentan las piezas que hay embaladas, para que una vez se ha cumplido
 con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaquetando vacunas
+=======
+	\label{graf:vaciado_2}
+	\caption{Grafcet de vaciado 2}
+\end{figure}
+>>>>>>> Stashed changes
