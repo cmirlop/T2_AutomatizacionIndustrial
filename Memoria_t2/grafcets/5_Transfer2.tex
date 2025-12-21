@@ -12,10 +12,10 @@
 	\ttfamily
 	
 	\etapaInicial{40}
-	\primeraAccion{40}{X40-A1}{Descartador\_Libre}
+	\primeraAccion{40}{X40-A1}{MAQ\_Libre}
 	%---
 
-	\bifurcacion[100]{40}{41}{Act\_Descartador}{42}{SigMaqMala}
+	\bifurcacion[100]{40}{41}{Act\_MAQ}{42}{SigMaqMala}
 
 	\primeraAccion{41}{X41-A1}{QC4}
 	\primeraAccion{42}{X42-A1}{QC4}
@@ -24,7 +24,6 @@
 	
 	%---
 	\etapa[1.25\nodeDist]{41b}{41}{S4};
-	\comentari[3]{X31b}{Esperamos máquina de calidad libre}
 
 	\etapa[1.25\nodeDist]{41c}{41b}{SIG\_MAQ\_LIBRE};
 	\primeraAccion{41c}{X41c-A1}{QC4}

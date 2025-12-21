@@ -104,7 +104,7 @@ El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}
 	\end{itemize}
 	\item Máquina 6 y 7 de embalaje:
 	\begin{itemize}
-		\item \hyperref[graf:maq6]{Embalajes}
+		\item \hyperref[graf:maq6_emb]{Embalajes}
 		\item \hyperref[graf:maq7]{Embalajes}
 	\end{itemize}
 \end{itemize}
@@ -118,9 +118,9 @@ El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}
 \end{figure}
 
 
-\subsection{Gestión de las alaras}
+\subsection{Gestión de las alarmas}
 El \hyperref[graf:emerg2]{Grafcet de alarmas en guía GEMMA} gestiona las alarmas de cada máquina,
-asegurandose de que la máquina se detenga cuando haya una alarma activa y 
+asegurándose de que la máquina se detenga cuando haya una alarma activa y 
 permitiendo resetear la alarma cuando se haya solucionado el problema, o reanudarlo 
 desde donde se havia parado si el problema era leve.
 
@@ -134,17 +134,17 @@ siguiendo la guia GEMMA para la estructura del código.
 	\label{graf:emerg2}
 \end{figure}
 
-\subsection{Gestión de la seta de emergéncia}
+\subsection{Gestión de la seta de emergencia}
 
-El \hyperref[graf:emerg_gem]{Grafcet de la seta de emergéncia } ,gestiona la señal que produce la
-seta de emergéncia, y todos los pasos que debe de seguir la máquina cuando se desenclava la seta 
+El \hyperref[graf:emerg_gem]{Grafcet de la seta de emergencia } ,gestiona la señal que produce la
+seta de emergencia, y todos los pasos que debe de seguir la máquina cuando se desenclava la seta 
 para poder rearmar la máquina y seguir con el proceso de producción.
 
 Lo primero que hacemos es activar la variable ''EMERGENCIA'' comunicando a todos 
 las partes del programa que la seta se ha enclavado, y por lo tanto la máquina
  debe de detenerse. Lo siguiente es desenclavar la seta, y una vez desenclavada,
  pular ''reset'' para activar el vaciado de la máquina, ya que no se aceptan las piezas
-  que estuvieran en la máquina durante la emergéncia. Una vez finalizado el vaciado,
+  que estuvieran en la máquina durante la emergencia. Una vez finalizado el vaciado,
    se activa el mantenimiento para comprobar que todo funciona correctamente, dejando 
    la máquina lista para volver a pulsar marcha o entrar a modo manual.
 
@@ -160,7 +160,7 @@ las partes del programa que la seta se ha enclavado, y por lo tanto la máquina
 
 
 
-El \hyperref[graf:emerg_seta]{Grafcet de la seta de emergéncia en guía GEMMA}, se encuentra implementado en todas las máquinas de la línea de producción, 
+El \hyperref[graf:emerg_seta]{Grafcet de la seta de emergencia en guía GEMMA}, se encuentra implementado en todas las máquinas de la línea de producción, 
 siguiendo la guia GEMMA para la estructura del código. Aunque como hemos hablado con anterioridad,
 las señales que le llegan a cada bloque de la máquina son que se ha enclavado la seta, y cuando
 ya se han pasado todas la verificaciones para reanudar el proceso.
@@ -169,6 +169,6 @@ ya se han pasado todas la verificaciones para reanudar el proceso.
 	\centering
 	\scalebox{0.75}{\input{./grafcets/11_SETA.tex}}
 	\medskip
-	\caption{Grafcet de la seta de emergéncia en guía GEMMA}
+	\caption{Grafcet de la seta de emergencia en guía GEMMA}
 	\label{graf:emerg_seta}
 \end{figure}

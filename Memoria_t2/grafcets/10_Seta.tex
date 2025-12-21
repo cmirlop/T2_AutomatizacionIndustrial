@@ -15,24 +15,24 @@
 	\ttfamily
 	
 	\etapaInicial{100}
-	\primeraAccion{100}{X100-A1}{MAQ\_CAL\_VAC\_LIBRE}
+	\primeraAccion{100}{X100-A1}{MAQ\_LIBRE}
     \otraAccion{X100-A1}{X100-A2}{$\mathtt{C:=0}$}
   \sobreActivacion{X100-A2}{X100-A3}{}
 	%---
 
 	\etapa[1.25\nodeDist]{101}{100}{Act\_Maq};
-	\primeraAccion{101}{X101-A1}{QC7\_VAC}
+	\primeraAccion{101}{X101-A1}{QC7}
 	
 	%--
 	\etapa[1.25\nodeDist]{102}{101}{S5};
-	\primeraAccion{102}{X102-A1}{QC7\_VAC}
+	\primeraAccion{102}{X102-A1}{QC7}
 
 	%---
 	\etapa[1.25\nodeDist]{103}{102}{1s/X102};
 	\primeraAccion{103}{X103-A1}{QCLAMP}
 
 	\etapa[1.25\nodeDist]{104}{103}{1s/X103};
-	\primeraAccion{104}{X104-A1}{HAYSoporte}
+	\primeraAccion{104}{X104-A1}{HAYSPieza}
 
   \etapa[1.25\nodeDist]{105}{104}{Pieza\_Empaquetada};
   \primeraAccion{105}{X105-A1}{$\mathtt{C:=C+1}$}
@@ -44,7 +44,7 @@
   
   \etapa[1.4\nodeDist]{106}{105}{$\mathtt{C==1}$};
 	\primeraAccion{106}{X106-A1}{QCLAMP\_SUB}
-	\otraAccion{X106-A1}{X106-A2}{QC7\_VAC}
+	\otraAccion{X106-A1}{X106-A2}{QC7}
 
   \etapa[1.25\nodeDist]{107}{106}{3s/X106};
 	\primeraAccion{107}{X107-A1}{Pieza\_Entregada}
