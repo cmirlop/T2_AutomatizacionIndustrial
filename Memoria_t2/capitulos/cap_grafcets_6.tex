@@ -21,19 +21,26 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 \subsection{Grafcet mantenimiento}
 =======
+=======
+>>>>>>> Stashed changes
 \subsection{Grafcet de Mantenimiento}
 El (\hyperref[graf:mantenimiento]{Grafcet de Mantenimiento}) está diseñado con el propósito de asegurar que la máquina tiene un funcionamiento correcto antes
 de empezar a procesar los lotes. Se hace uso de este siempre que arranca la máquina, y después la ejecución del 
 (\hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}), para asegurar que cada vez que la seta sea presionada, la puesta 
 en marcha sea la correcta.
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/11_SETA_Cinta_fin.tex}}
 	\medskip
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 	\label{graf:Cinta_Fin}
 	\caption{Grafcet de mantenimiento}
@@ -52,17 +59,28 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 \end{figure}
 
 
+=======
+	\label{graf:mantenimiento}
+	\caption{Grafcet de Mantenimiento}
+\end{figure}
+
+
+>>>>>>> Stashed changes
 
 \subsection{Grafcet Principal de Vaciado}
 El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado} se activa después de haber desenclavado la seta de emergencia, ya que no aceptamos las piezas que estén en la máquina cuando ocurra una emergencia.
 Las máquinas, también se pueden vaciar, si un usuario que tenga permisos presiona el botón de vaciado del HMI (REF Botón vaciado).
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/12_Alarma_Cinta_fin.tex}}
 	\medskip
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 	\label{graf:Alarma_Cinta_fin}
 	\caption{Grafcet de vaciado general}
@@ -81,6 +99,13 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 \end{figure}
 
 
+=======
+	\label{graf:principal_vaciado}
+	\caption{Grafcet de la Alarma de la Cinta Final}
+\end{figure}
+
+
+>>>>>>> Stashed changes
 
 \subsubsection{Grafcet Vaciado 1}
 
@@ -105,11 +130,15 @@ El \hyperref[graf:vaciado_1]{Grafcet de Vaciado 1} se activa por medio del \hype
 \end{itemize}
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/grafcet_02.tex}}
 	\medskip
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 	\label{graf:Vaciado}
 	\caption{Grafcet de vaciado tipo 1}
@@ -128,6 +157,13 @@ con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaq
 \end{figure}
 
 
+=======
+	\label{graf:vaciado_1}
+	\caption{Grafcet de vaciado 1}
+\end{figure}
+
+
+>>>>>>> Stashed changes
 
 \subsubsection{Grafcet Vaciado 2}
 El \hyperref[graf:vaciado_2]{Grafcet de Vaciado 2} se activa por medio del \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}, y este vacía las siguientes máquinas:
@@ -146,11 +182,15 @@ El \hyperref[graf:vaciado_2]{Grafcet de Vaciado 2} se activa por medio del \hype
 		\item \hyperref[graf:maq6_emb]{Embalajes} cambiar ref a la foto
 	\end{itemize}
 \end{itemize}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \begin{figure}[H]
 	\centering
 	\scalebox{0.75}{\input{./grafcets/grafcet_03.tex}}
 	\medskip
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 	\label{graf:Vaciado_otro}
 	\caption{Grafcet de vaciado tipo 2}
@@ -160,6 +200,11 @@ Esta máquina (\hyperref[graf:Gripper]{Máquina  Embalaje}) es muy similar a la 
 ya que la componen los mismos componentes, y su funcionamiento es el mismo a excepción
 de que en esta máquina se cuentan las piezas que hay embaladas, para que una vez se ha cumplido
 con el cupo, levantar el clamper y llevarla a otra zona, para poder seguir empaquetando vacunas
+=======
+	\label{graf:vaciado_2}
+	\caption{Grafcet de vaciado 2}
+\end{figure}
+>>>>>>> Stashed changes
 =======
 	\label{graf:vaciado_2}
 	\caption{Grafcet de vaciado 2}

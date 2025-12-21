@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.14)  21 DEC 2025 10:32
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.14)  20 DEC 2025 21:52
+>>>>>>> Stashed changes
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1042,7 +1046,14 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'spanish'.
+<<<<<<< Updated upstream
  (Informe.aux)
+=======
+ (Informe.aux
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 8.
+)
+>>>>>>> Stashed changes
 \openout1 = `Informe.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -1330,11 +1341,36 @@ LaTeX Warning: Hyper reference `fig:maq2' on page 7 undefined on input line 48.
 File: ./Figuras/maq2.png Graphic file (type png)
 <use ./Figuras/maq2.png>
 Package pdftex.def Info: ./Figuras/maq2.png  used on input line 57.
+<<<<<<< Updated upstream
 (pdftex.def)             Requested size: 136.57462pt x 273.95102pt.
 
 
 
 LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 62.
+=======
+(pdftex.def)             Requested size: 364.19667pt x 730.54451pt.
+
+
+[4]
+Overfull \vbox (53.53502pt too high) has occurred while \output is active []
+
+
+
+[5 <./Figuras/maq2.png>] (grafcets/2_Separador.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+)
+Overfull \hbox (98.22705pt too wide) in paragraph at lines 89--92
+ [][] 
+ []
+>>>>>>> Stashed changes
 
 [7]
 
@@ -1503,6 +1539,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )) (capitulos/cap_grafcets_6.tex
 
+<<<<<<< Updated upstream
 
 LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 1.
 
@@ -1512,6 +1549,11 @@ LaTeX Warning: Hyper reference `graf:maq7' on page 17 undefined on input line 4.
 
 
 LaTeX Warning: Hyper reference `sec:map5_sop' on page 17 undefined on input line 4.
+=======
+[15]
+
+LaTeX Warning: Hyper reference `graf:maq7' on page 16 undefined on input line 4.
+>>>>>>> Stashed changes
 
 (grafcets/10_Seta.tex
 Missing character: There is no X in font nullfont!
@@ -1643,7 +1685,11 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )
+<<<<<<< Updated upstream
 Overfull \hbox (77.76518pt too wide) in paragraph at lines 64--68
+=======
+Overfull \hbox (77.76518pt too wide) in paragraph at lines 46--49
+>>>>>>> Stashed changes
  [][] 
  []
 
@@ -1836,9 +1882,13 @@ LaTeX Warning: Hyper reference `graf:maq6_emb' on page 22 undefined on input lin
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-)
+))
 
+<<<<<<< Updated upstream
 LaTeX Warning: Hyper reference `graf:Gripper' on page 22 undefined on input line 159.
+=======
+[20]
+>>>>>>> Stashed changes
 
 
 LaTeX Warning: Hyper reference `sec:map5_sop' on page 22 undefined on input line 159.
@@ -2376,6 +2426,7 @@ L3 programming layer <2025-09-02>
 
 
 LaTeX Warning: There were undefined references.
+<<<<<<< Updated upstream
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
@@ -2396,11 +2447,17 @@ Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                Informe
 (biblatex)                and rerun LaTeX afterwards.
 
+=======
+
+Package rerunfilecheck Info: File `Informe.out' has not changed.
+(rerunfilecheck)             Checksum: B2B0325334952B9999FB978FC5D3B17B;2906.
+>>>>>>> Stashed changes
 Package logreq Info: Writing requests to 'Informe.run.xml'.
 \openout1 = `Informe.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< Updated upstream
  57710 strings out of 468080
  1298824 string characters out of 5424799
  2331706 words of memory out of 5000000
@@ -2414,4 +2471,19 @@ PDF statistics:
  4143 PDF objects out of 4296 (max. 8388607)
  2757 named destinations out of 2984 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+ 54055 strings out of 468080
+ 1246912 string characters out of 5424799
+ 2227954 words of memory out of 5000000
+ 81839 multiletter control sequences out of 15000+600000
+ 648361 words of font info for 85 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 89i,12n,90p,1264b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Informe.pdf (24 pages, 2007611 bytes).
+PDF statistics:
+ 818 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> Stashed changes
 

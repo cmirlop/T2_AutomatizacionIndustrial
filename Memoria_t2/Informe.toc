@@ -1,6 +1,7 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{Resumen}{1}{section*.4}%
 \contentsline {section}{\numberline {1}Metodolgía}{1}{section.1}%
+<<<<<<< Updated upstream
 \contentsline {section}{\numberline {2}Estructura TIA Portal}{1}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Línea 1}{1}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Línea 2}{2}{subsection.2.2}%
@@ -55,3 +56,21 @@
 \contentsline {subsection}{\numberline {6.15}Anexo 15: Grafcet\_125.scl}{60}{subsection.6.15}%
 \contentsline {subsection}{\numberline {6.16}Anexo 16: Grafcet\_130.scl}{61}{subsection.6.16}%
 \contentsline {subsection}{\numberline {6.17}Anexo 17: Grafcet\_145.scl}{62}{subsection.6.17}%
+=======
+\contentsline {section}{\numberline {2}Grafcets}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Grafcet Principal}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Grafcet Paro}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Grafcet Máquina 1}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Grafcet máquina 2}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Grafcet máquina 3}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Grafcet Máquina 4}{8}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Grafcet Máquina 5 soporte}{10}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Grafcet máquina 5 vacuna y 6 soporte }{12}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Grafcet Máquina 5 embalaje}{15}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Grafcet máquina 6 embalaje}{15}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Grafcet Máquina 7 embalaje}{16}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Grafcet de Mantenimiento}{17}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Grafcet Principal de Vaciado}{18}{subsection.2.13}%
+\contentsline {subsubsection}{\numberline {2.13.1}Grafcet Vaciado 1}{19}{subsubsection.2.13.1}%
+\contentsline {subsubsection}{\numberline {2.13.2}Grafcet Vaciado 2}{20}{subsubsection.2.13.2}%
+>>>>>>> Stashed changes

@@ -1,12 +1,21 @@
 # Fdb version 4
+<<<<<<< Updated upstream
 ["biber Informe"] 0 "Informe.bcf" "Informe.bbl" "Informe" 0 -1
   "./configuraciones/referencias.bib" 1765187789 1376 1ddfa30c7ab16acdd0d1046f00dd7da7 ""
   "Informe.bcf" 1766309559 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
+=======
+["biber Informe"] 1766263726.15324 "Informe.bcf" "Informe.bbl" "Informe" 1766263967.03211 0
+  "Informe.bcf" 1766263966 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
+>>>>>>> Stashed changes
   (generated)
   "Informe.bbl"
   "Informe.blg"
   (rewritten before read)
+<<<<<<< Updated upstream
 ["pdflatex"] 1766309552.62941 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766309560.1186 2
+=======
+["pdflatex"] 1766263962.68228 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766263967.03285 0
+>>>>>>> Stashed changes
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765640236 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1762450105 34112 6077470a731733ee0e995aa9c01a906c ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0900.pk" 1760431305 22504 a5dd8a55bad19e6d843a98e120614012 ""
@@ -316,6 +325,7 @@
   "Figuras/maq4.png" 1766256947 218029 e2641392588c6e7d861f0d6728e210eb ""
   "Figuras/maq5_SOP.png" 1766256947 371783 77b95fe107548423bd1dca4b4b78b777 ""
   "Figuras/maq5_VAC_6_SOP.png" 1766256947 437275 54556fd8793c93933d2007d776c1405e ""
+<<<<<<< Updated upstream
   "Informe.aux" 1766309559 21085 bbdbfee83ccf49aeb3c5417fbd56052e "pdflatex"
   "Informe.bbl" 0 -1 0 "biber Informe"
   "Informe.lof" 1766309559 3546 1dceda906bf0459d3d8687e36dadd436 "pdflatex"
@@ -352,6 +362,24 @@
   "capitulos/cap_grafcets_6.tex" 1766309537 6584 79b2f9c8d7401469b197279fffcc465c ""
   "capitulos/cap_metodologia.tex" 1766309356 852 4a5ba33b86ef1a02b4183ce944d21ed8 ""
   "capitulos/cap_resultados.tex" 1766309356 517 c2b15817d6425b153744074c260e3125 ""
+=======
+  "Informe.aux" 1766263966 8963 352e74708e5c08d20ff53506f1463d91 "pdflatex"
+  "Informe.bbl" 1766263728 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
+  "Informe.lof" 1766263966 2294 5069d71c22d93f7a62a9a66db43cdca7 "pdflatex"
+  "Informe.lot" 1766263966 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
+  "Informe.out" 1766263966 2906 b2b0325334952b9999fb978fc5d3b17b "pdflatex"
+  "Informe.run.xml" 1766263966 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
+  "Informe.tex" 1766256947 4241 7619066ee643aa448917ed6ea5ce3570 ""
+  "Informe.toc" 1766263966 1573 587017b9c4813aca2df8e303b5b56010 "pdflatex"
+  "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" 1766256947 4241 7619066ee643aa448917ed6ea5ce3570 ""
+  "capitulos/cap_grafcets_1.tex" 1766257774 2092 f19c34cb4f5e60108d2443dfd4d5fc60 ""
+  "capitulos/cap_grafcets_2.tex" 1766261825 3212 fe04a02b11ee76d4f26b9192f58ae93e ""
+  "capitulos/cap_grafcets_3.tex" 1766263322 2254 6fb79ac7c0c3fee2e419959108ccc549 ""
+  "capitulos/cap_grafcets_4.tex" 1766259755 3201 3057b63b5c599ebfe3964d2a6bc13f0c ""
+  "capitulos/cap_grafcets_5.tex" 1766263908 961 6d4792207f42741a287a9d7ed8e199d8 ""
+  "capitulos/cap_grafcets_6.tex" 1766263961 3768 5945bbb2bf5630c39d92b60ae6a4b589 ""
+  "capitulos/cap_metodologia.tex" 1766081623 850 b4358f7ae8a0fe9035578435df6fe32c ""
+>>>>>>> Stashed changes
   "configuraciones/configura_listings_SCL.tex" 1765187789 420 0e32d40cb00908db3d7c8b38c183bdb6 ""
   "configuraciones/post_begin_document.tex" 1765187789 1002 0da7031cdd98781be417c8e0562538a9 ""
   "configuraciones/preambul_GRAFCET.tex" 1765187789 14954 7241b0e5dda5422a7dda185c5df30383 ""
