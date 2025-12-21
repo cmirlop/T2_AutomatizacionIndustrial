@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.14)  21 DEC 2025 10:32
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.14)  20 DEC 2025 21:52
->>>>>>> Stashed changes
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.14)  21 DEC 2025 10:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1046,14 +1042,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'spanish'.
-<<<<<<< Updated upstream
  (Informe.aux)
-=======
- (Informe.aux
-Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 8.
-)
->>>>>>> Stashed changes
 \openout1 = `Informe.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -1162,11 +1151,11 @@ Package biblatex Info: Automatic encoding selection.
 \openout4 = `Informe.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'Informe.bbl' not found.
-
-No file Informe.bbl.
+Package biblatex Info: ... file 'Informe.bbl' found.
+ (Informe.bbl)
 Package biblatex Info: Reference section=0 on input line 59.
 Package biblatex Info: Reference segment=0 on input line 59.
+
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
  on input line 59.
@@ -1341,36 +1330,11 @@ LaTeX Warning: Hyper reference `fig:maq2' on page 7 undefined on input line 48.
 File: ./Figuras/maq2.png Graphic file (type png)
 <use ./Figuras/maq2.png>
 Package pdftex.def Info: ./Figuras/maq2.png  used on input line 57.
-<<<<<<< Updated upstream
 (pdftex.def)             Requested size: 136.57462pt x 273.95102pt.
 
 
 
 LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 62.
-=======
-(pdftex.def)             Requested size: 364.19667pt x 730.54451pt.
-
-
-[4]
-Overfull \vbox (53.53502pt too high) has occurred while \output is active []
-
-
-
-[5 <./Figuras/maq2.png>] (grafcets/2_Separador.tex
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-)
-Overfull \hbox (98.22705pt too wide) in paragraph at lines 89--92
- [][] 
- []
->>>>>>> Stashed changes
 
 [7]
 
@@ -1539,7 +1503,6 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )) (capitulos/cap_grafcets_6.tex
 
-<<<<<<< Updated upstream
 
 LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 1.
 
@@ -1549,11 +1512,6 @@ LaTeX Warning: Hyper reference `graf:maq7' on page 17 undefined on input line 4.
 
 
 LaTeX Warning: Hyper reference `sec:map5_sop' on page 17 undefined on input line 4.
-=======
-[15]
-
-LaTeX Warning: Hyper reference `graf:maq7' on page 16 undefined on input line 4.
->>>>>>> Stashed changes
 
 (grafcets/10_Seta.tex
 Missing character: There is no X in font nullfont!
@@ -1586,15 +1544,15 @@ LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 19.
 
 [17]
 
-LaTeX Warning: Hyper reference `graf:mantenimiento' on page 18 undefined on input line 27.
+LaTeX Warning: Hyper reference `graf:mantenimiento' on page 18 undefined on input line 30.
 
 
-LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 18 undefined on input line 29.
+LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 18 undefined on input line 32.
 
 
 
 
-LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 31.
+LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 34.
 
 [18] (grafcets/11_SETA_Cinta_fin.tex
 Missing character: There is no ; in font nullfont!
@@ -1607,25 +1565,25 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )
 
-LaTeX Warning: Hyper reference `graf:Gripper' on page 19 undefined on input line 42.
+LaTeX Warning: Hyper reference `graf:Gripper' on page 19 undefined on input line 49.
 
 
-LaTeX Warning: Hyper reference `sec:map5_sop' on page 19 undefined on input line 42.
+LaTeX Warning: Hyper reference `sec:map5_sop' on page 19 undefined on input line 49.
 
 
 
 
-LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 46.
+LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 53.
 
 [19]
 
-capitulos/cap_grafcets_6.tex:51: Package caption Error: \caption outside float.
+capitulos/cap_grafcets_6.tex:58: Package caption Error: \caption outside float.
 
 See the caption package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.51 	\caption
+l.58 	\caption
               {Grafcet de Mantenimiento}
 If you do not understand this error, please take a closer look
 at the documentation of the `caption' package, especially the
@@ -1633,51 +1591,109 @@ section about errors.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-capitulos/cap_grafcets_6.tex:52: Too many }'s.
+capitulos/cap_grafcets_6.tex:59: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.52 \end{figure}
+l.59 \end{figure}
                  
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-capitulos/cap_grafcets_6.tex:52: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:59: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.52 \end{figure}
+l.59 \end{figure}
                  
 Things are pretty mixed up, but I think the worst is over.
 
-capitulos/cap_grafcets_6.tex:52: Too many }'s.
+capitulos/cap_grafcets_6.tex:59: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.52 \end{figure}
+l.59 \end{figure}
                  
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-capitulos/cap_grafcets_6.tex:52: LaTeX Error: \begin{document} ended by \end{figure}.
+capitulos/cap_grafcets_6.tex:59: LaTeX Error: \begin{document} ended by \end{figure}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.52 \end{figure}
+l.59 \end{figure}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-capitulos/cap_grafcets_6.tex:52: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:59: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.52 \end{figure}
+l.59 \end{figure}
                  
 Things are pretty mixed up, but I think the worst is over.
 
 
-LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 20 undefined on input line 57.
+capitulos/cap_grafcets_6.tex:64: Package caption Error: \caption outside float.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.64 	\caption
+              {Grafcet de Mantenimiento}
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+capitulos/cap_grafcets_6.tex:65: Too many }'s.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.65 \end{figure}
+                 
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+capitulos/cap_grafcets_6.tex:65: Extra \endgroup.
+\color@endgroup ->\endgraf \@endpefalse \endgroup 
+                                                  
+l.65 \end{figure}
+                 
+Things are pretty mixed up, but I think the worst is over.
+
+capitulos/cap_grafcets_6.tex:65: Too many }'s.
+\color@endbox ->\color@endgroup \egroup 
+                                        
+l.65 \end{figure}
+                 
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+capitulos/cap_grafcets_6.tex:65: LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.65 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+capitulos/cap_grafcets_6.tex:65: Extra \endgroup.
+\end  ...end#1\endcsname \@checkend {#1}\endgroup 
+                                                  \UseHook {env/#1/after}\if...
+l.65 \end{figure}
+                 
+Things are pretty mixed up, but I think the worst is over.
+
+
+LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 20 undefined on input line 71.
 
 (grafcets/12_Alarma_Cinta_fin.tex
 Missing character: There is no ; in font nullfont!
@@ -1685,28 +1701,30 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )
-<<<<<<< Updated upstream
-Overfull \hbox (77.76518pt too wide) in paragraph at lines 64--68
-=======
-Overfull \hbox (77.76518pt too wide) in paragraph at lines 46--49
->>>>>>> Stashed changes
+Overfull \hbox (77.76518pt too wide) in paragraph at lines 81--86
  [][] 
  []
 
 
-LaTeX Warning: Hyper reference `graf:Gripper' on page 20 undefined on input line 71.
+LaTeX Warning: Hyper reference `graf:Gripper' on page 20 undefined on input line 89.
 
 
-LaTeX Warning: Hyper reference `sec:map5_sop' on page 20 undefined on input line 71.
+LaTeX Warning: Hyper reference `sec:map5_sop' on page 20 undefined on input line 89.
 
 
-capitulos/cap_grafcets_6.tex:80: Package caption Error: \caption outside float.
+
+
+LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 95.
+
+[20]
+
+capitulos/cap_grafcets_6.tex:98: Package caption Error: \caption outside float.
 
 See the caption package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.80 	\caption
+l.98 	\caption
               {Grafcet de la Alarma de la Cinta Final}
 If you do not understand this error, please take a closer look
 at the documentation of the `caption' package, especially the
@@ -1714,72 +1732,124 @@ section about errors.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-capitulos/cap_grafcets_6.tex:81: Too many }'s.
+capitulos/cap_grafcets_6.tex:99: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.81 \end{figure}
+l.99 \end{figure}
                  
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-
-
-
-LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 81.
-
-[20]
-capitulos/cap_grafcets_6.tex:81: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:99: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.81 \end{figure}
+l.99 \end{figure}
                  
 Things are pretty mixed up, but I think the worst is over.
 
-capitulos/cap_grafcets_6.tex:81: Too many }'s.
+capitulos/cap_grafcets_6.tex:99: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.81 \end{figure}
+l.99 \end{figure}
                  
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-capitulos/cap_grafcets_6.tex:81: LaTeX Error: \begin{document} ended by \end{figure}.
+capitulos/cap_grafcets_6.tex:99: LaTeX Error: \begin{document} ended by \end{figure}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.81 \end{figure}
+l.99 \end{figure}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-capitulos/cap_grafcets_6.tex:81: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:99: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.81 \end{figure}
+l.99 \end{figure}
                  
 Things are pretty mixed up, but I think the worst is over.
 
 
-LaTeX Warning: Hyper reference `graf:vaciado_1' on page 21 undefined on input line 87.
+capitulos/cap_grafcets_6.tex:104: Package caption Error: \caption outside float.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 	\caption
+               {Grafcet de la Alarma de la Cinta Final}
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+capitulos/cap_grafcets_6.tex:105: Too many }'s.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.105 \end{figure}
+                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+capitulos/cap_grafcets_6.tex:105: Extra \endgroup.
+\color@endgroup ->\endgraf \@endpefalse \endgroup 
+                                                  
+l.105 \end{figure}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+capitulos/cap_grafcets_6.tex:105: Too many }'s.
+\color@endbox ->\color@endgroup \egroup 
+                                        
+l.105 \end{figure}
+                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
 
 
-LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 21 undefined on input line 87.
+capitulos/cap_grafcets_6.tex:105: LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.105 \end{figure}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+capitulos/cap_grafcets_6.tex:105: Extra \endgroup.
+\end  ...end#1\endcsname \@checkend {#1}\endgroup 
+                                                  \UseHook {env/#1/after}\if...
+l.105 \end{figure}
+                  
+Things are pretty mixed up, but I think the worst is over.
 
 
-LaTeX Warning: Hyper reference `fig:maq1' on page 21 undefined on input line 91.
+LaTeX Warning: Hyper reference `graf:vaciado_1' on page 21 undefined on input line 112.
 
 
-LaTeX Warning: Hyper reference `fig:maq2' on page 21 undefined on input line 95.
+LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 21 undefined on input line 112.
 
 
-LaTeX Warning: Hyper reference `fig:maq3' on page 21 undefined on input line 99.
+LaTeX Warning: Hyper reference `fig:maq1' on page 21 undefined on input line 116.
 
 
-LaTeX Warning: Hyper reference `fig:maq4' on page 21 undefined on input line 103.
+LaTeX Warning: Hyper reference `fig:maq2' on page 21 undefined on input line 120.
+
+
+LaTeX Warning: Hyper reference `fig:maq3' on page 21 undefined on input line 124.
+
+
+LaTeX Warning: Hyper reference `fig:maq4' on page 21 undefined on input line 128.
 
 (grafcets/grafcet_02.tex
 Missing character: There is no ; in font nullfont!
@@ -1791,25 +1861,24 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )
 
-LaTeX Warning: Hyper reference `graf:Gripper' on page 21 undefined on input line 118.
 
-
-LaTeX Warning: Hyper reference `sec:map5_sop' on page 21 undefined on input line 118.
-
-
-
-
-LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 122.
+LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 146.
 
 [21]
 
-capitulos/cap_grafcets_6.tex:127: Package caption Error: \caption outside float.
+LaTeX Warning: Hyper reference `graf:Gripper' on page 22 undefined on input line 147.
+
+
+LaTeX Warning: Hyper reference `sec:map5_sop' on page 22 undefined on input line 147.
+
+
+capitulos/cap_grafcets_6.tex:156: Package caption Error: \caption outside float.
 
 See the caption package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127 	\caption
+l.156 	\caption
                {Grafcet de vaciado 1}
 If you do not understand this error, please take a closer look
 at the documentation of the `caption' package, especially the
@@ -1817,90 +1886,150 @@ section about errors.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-capitulos/cap_grafcets_6.tex:128: Too many }'s.
+capitulos/cap_grafcets_6.tex:157: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.128 \end{figure}
+l.157 \end{figure}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-capitulos/cap_grafcets_6.tex:128: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:157: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.128 \end{figure}
+l.157 \end{figure}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-capitulos/cap_grafcets_6.tex:128: Too many }'s.
+capitulos/cap_grafcets_6.tex:157: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.128 \end{figure}
+l.157 \end{figure}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-capitulos/cap_grafcets_6.tex:128: LaTeX Error: \begin{document} ended by \end{figure}.
+capitulos/cap_grafcets_6.tex:157: LaTeX Error: \begin{document} ended by \end{figure}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128 \end{figure}
+l.157 \end{figure}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-capitulos/cap_grafcets_6.tex:128: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:157: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.128 \end{figure}
+l.157 \end{figure}
                   
 Things are pretty mixed up, but I think the worst is over.
 
 
-LaTeX Warning: Hyper reference `graf:vaciado_2' on page 22 undefined on input line 133.
-
-
-LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 22 undefined on input line 133.
-
-
-LaTeX Warning: Hyper reference `fig:maq5' on page 22 undefined on input line 137.
-
-
-LaTeX Warning: Hyper reference `fig:maq5_vac_6_sop' on page 22 undefined on input line 141.
-
-
-LaTeX Warning: Hyper reference `graf:maq7_emb' on page 22 undefined on input line 145.
-
-
-LaTeX Warning: Hyper reference `graf:maq6_emb' on page 22 undefined on input line 146.
-
-(grafcets/grafcet_03.tex
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-))
-
-<<<<<<< Updated upstream
-LaTeX Warning: Hyper reference `graf:Gripper' on page 22 undefined on input line 159.
-=======
-[20]
->>>>>>> Stashed changes
-
-
-LaTeX Warning: Hyper reference `sec:map5_sop' on page 22 undefined on input line 159.
-
-
-capitulos/cap_grafcets_6.tex:165: Package caption Error: \caption outside float.
+capitulos/cap_grafcets_6.tex:162: Package caption Error: \caption outside float.
 
 See the caption package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.165 	\caption
+l.162 	\caption
+               {Grafcet de vaciado 1}
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+capitulos/cap_grafcets_6.tex:163: Too many }'s.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.163 \end{figure}
+                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+capitulos/cap_grafcets_6.tex:163: Extra \endgroup.
+\color@endgroup ->\endgraf \@endpefalse \endgroup 
+                                                  
+l.163 \end{figure}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+capitulos/cap_grafcets_6.tex:163: Too many }'s.
+\color@endbox ->\color@endgroup \egroup 
+                                        
+l.163 \end{figure}
+                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+capitulos/cap_grafcets_6.tex:163: LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.163 \end{figure}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+capitulos/cap_grafcets_6.tex:163: Extra \endgroup.
+\end  ...end#1\endcsname \@checkend {#1}\endgroup 
+                                                  \UseHook {env/#1/after}\if...
+l.163 \end{figure}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+
+LaTeX Warning: Hyper reference `graf:vaciado_2' on page 22 undefined on input line 169.
+
+
+LaTeX Warning: Hyper reference `graf:principal_vaciado' on page 22 undefined on input line 169.
+
+
+LaTeX Warning: Hyper reference `fig:maq5' on page 22 undefined on input line 173.
+
+
+LaTeX Warning: Hyper reference `fig:maq5_vac_6_sop' on page 22 undefined on input line 177.
+
+
+
+
+LaTeX Warning: Reference `LastPage' on page 22 undefined on input line 181.
+
+[22]
+
+LaTeX Warning: Hyper reference `graf:maq7_emb' on page 23 undefined on input line 181.
+
+
+LaTeX Warning: Hyper reference `graf:maq6_emb' on page 23 undefined on input line 182.
+
+(grafcets/grafcet_03.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+)
+
+LaTeX Warning: Hyper reference `graf:Gripper' on page 23 undefined on input line 199.
+
+
+LaTeX Warning: Hyper reference `sec:map5_sop' on page 23 undefined on input line 199.
+
+
+capitulos/cap_grafcets_6.tex:205: Package caption Error: \caption outside float.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.205 	\caption
                {Grafcet de vaciado 2}
 If you do not understand this error, please take a closer look
 at the documentation of the `caption' package, especially the
@@ -1908,57 +2037,109 @@ section about errors.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-capitulos/cap_grafcets_6.tex:166: Too many }'s.
+capitulos/cap_grafcets_6.tex:206: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.166 \end{figure}
+l.206 \end{figure}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-
-
-
-LaTeX Warning: Reference `LastPage' on page 22 undefined on input line 166.
-
-[22]
-capitulos/cap_grafcets_6.tex:166: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:206: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.166 \end{figure}
+l.206 \end{figure}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-capitulos/cap_grafcets_6.tex:166: Too many }'s.
+capitulos/cap_grafcets_6.tex:206: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.166 \end{figure}
+l.206 \end{figure}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-capitulos/cap_grafcets_6.tex:166: LaTeX Error: \begin{document} ended by \end{figure}.
+capitulos/cap_grafcets_6.tex:206: LaTeX Error: \begin{document} ended by \end{figure}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.166 \end{figure}
+l.206 \end{figure}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-capitulos/cap_grafcets_6.tex:166: Extra \endgroup.
+capitulos/cap_grafcets_6.tex:206: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.166 \end{figure}
+l.206 \end{figure}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+
+capitulos/cap_grafcets_6.tex:210: Package caption Error: \caption outside float.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.210 	\caption
+               {Grafcet de vaciado 2}
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+capitulos/cap_grafcets_6.tex:211: Too many }'s.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.211 \end{figure}
+                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+capitulos/cap_grafcets_6.tex:211: Extra \endgroup.
+\color@endgroup ->\endgraf \@endpefalse \endgroup 
+                                                  
+l.211 \end{figure}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+capitulos/cap_grafcets_6.tex:211: Too many }'s.
+\color@endbox ->\color@endgroup \egroup 
+                                        
+l.211 \end{figure}
+                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+capitulos/cap_grafcets_6.tex:211: LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 \end{figure}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+capitulos/cap_grafcets_6.tex:211: Extra \endgroup.
+\end  ...end#1\endcsname \@checkend {#1}\endgroup 
+                                                  \UseHook {env/#1/after}\if...
+l.211 \end{figure}
                   
 Things are pretty mixed up, but I think the worst is over.
 
 ) (capitulos/cap_HMI.tex
-<./Figuras/HMI1.png, id=224, 847.36575pt x 488.42474pt>
+<./Figuras/HMI1.png, id=223, 847.36575pt x 488.42474pt>
 File: ./Figuras/HMI1.png Graphic file (type png)
 <use ./Figuras/HMI1.png>
 Package pdftex.def Info: ./Figuras/HMI1.png  used on input line 13.
@@ -1966,52 +2147,57 @@ Package pdftex.def Info: ./Figuras/HMI1.png  used on input line 13.
 
 
 
-LaTeX Warning: Reference `LastPage' on page 23 undefined on input line 32.
+LaTeX Warning: Reference `LastPage' on page 23 undefined on input line 18.
 
-[23 <./Figuras/HMI1.png>]
-<./Figuras/HMI2.png, id=234, 841.34325pt x 479.99326pt>
+[23]
+
+
+LaTeX Warning: Reference `LastPage' on page 24 undefined on input line 56.
+
+[24 <./Figuras/HMI1.png>]
+<./Figuras/HMI2.png, id=238, 841.34325pt x 479.99326pt>
 File: ./Figuras/HMI2.png Graphic file (type png)
 <use ./Figuras/HMI2.png>
 Package pdftex.def Info: ./Figuras/HMI2.png  used on input line 61.
 (pdftex.def)             Requested size: 364.19667pt x 207.77733pt.
-
-
-
-LaTeX Warning: Reference `LastPage' on page 24 undefined on input line 73.
-
-[24 <./Figuras/HMI2.png>]
-<./Figuras/HMI3.png, id=242, 840.13875pt x 476.982pt>
+<./Figuras/HMI3.png, id=239, 840.13875pt x 476.982pt>
 File: ./Figuras/HMI3.png Graphic file (type png)
 <use ./Figuras/HMI3.png>
 Package pdftex.def Info: ./Figuras/HMI3.png  used on input line 84.
 (pdftex.def)             Requested size: 364.19667pt x 206.77223pt.
-<./Figuras/HMI_AL.png, id=243, 835.32076pt x 483.60675pt>
+
+
+
+LaTeX Warning: Reference `LastPage' on page 25 undefined on input line 89.
+
+[25 <./Figuras/HMI2.png>]
+<./Figuras/HMI_AL.png, id=248, 835.32076pt x 483.60675pt>
 File: ./Figuras/HMI_AL.png Graphic file (type png)
 <use ./Figuras/HMI_AL.png>
 Package pdftex.def Info: ./Figuras/HMI_AL.png  used on input line 105.
 (pdftex.def)             Requested size: 364.19667pt x 210.84688pt.
+) (capitulos/cap_resultados.tex
 
 
+LaTeX Warning: Reference `LastPage' on page 26 undefined on input line 7.
 
-LaTeX Warning: Reference `LastPage' on page 25 undefined on input line 110.
+[26 <./Figuras/HMI3.png> <./Figuras/HMI_AL.png>]
 
-[25 <./Figuras/HMI3.png>]) (capitulos/cap_resultados.tex
-
-LaTeX Warning: Hyper reference `label' on page 26 undefined on input line 15.
+LaTeX Warning: Hyper reference `label' on page 27 undefined on input line 15.
 
 ) (capitulos/cap_anexos.tex
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 4.
  (anexos/0_Principal.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 26 undefined on input line 9.
-
-[26 <./Figuras/HMI_AL.png>]
-
-
-LaTeX Warning: Reference `LastPage' on page 27 undefined on input line 81.
+LaTeX Warning: Reference `LastPage' on page 27 undefined on input line 41.
 
 [27]
+
+
+LaTeX Warning: Reference `LastPage' on page 28 undefined on input line 113.
+
+[28]
 Overfull \hbox (98.12996pt too wide) in paragraph at lines 116--117
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2029,19 +2215,19 @@ Overfull \hbox (42.04315pt too wide) in paragraph at lines 118--119
 
 
 
-LaTeX Warning: Reference `LastPage' on page 28 undefined on input line 155.
+LaTeX Warning: Reference `LastPage' on page 29 undefined on input line 186.
 
-[28]) (anexos/1_MAQ1_VAC_SOP.txt
-
-
-LaTeX Warning: Reference `LastPage' on page 29 undefined on input line 24.
-
-[29]
+[29]) (anexos/1_MAQ1_VAC_SOP.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 30 undefined on input line 99.
+LaTeX Warning: Reference `LastPage' on page 30 undefined on input line 55.
 
 [30]
+
+
+LaTeX Warning: Reference `LastPage' on page 31 undefined on input line 129.
+
+[31]
 Overfull \hbox (98.12996pt too wide) in paragraph at lines 135--136
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
@@ -2049,14 +2235,14 @@ Overfull \hbox (98.12996pt too wide) in paragraph at lines 135--136
 ) (anexos/1_MAQ1_EMB.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 31 undefined on input line 1.
-
-[31]
-
-
-LaTeX Warning: Reference `LastPage' on page 32 undefined on input line 73.
+LaTeX Warning: Reference `LastPage' on page 32 undefined on input line 31.
 
 [32]
+
+
+LaTeX Warning: Reference `LastPage' on page 33 undefined on input line 105.
+
+[33]
 Overfull \hbox (11.45035pt too wide) in paragraph at lines 136--137
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
@@ -2066,27 +2252,22 @@ Overfull \hbox (144.01917pt too wide) in paragraph at lines 137--138
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+) (anexos/2_MAQ2.txt
 
 
-
-LaTeX Warning: Reference `LastPage' on page 33 undefined on input line 146.
-
-[33]) (anexos/2_MAQ2.txt
-
-
-LaTeX Warning: Reference `LastPage' on page 34 undefined on input line 45.
+LaTeX Warning: Reference `LastPage' on page 34 undefined on input line 3.
 
 [34]
+
+
+LaTeX Warning: Reference `LastPage' on page 35 undefined on input line 77.
+
+[35]
 Overfull \hbox (210.30357pt too wide) in paragraph at lines 118--119
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page 35 undefined on input line 119.
-
-[35]
 Overfull \hbox (11.45035pt too wide) in paragraph at lines 129--130
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2101,17 +2282,22 @@ Overfull \hbox (67.53716pt too wide) in paragraph at lines 140--141
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (anexos/2_MAQ2_EMB.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 36 undefined on input line 6.
 
-[36]
+LaTeX Warning: Reference `LastPage' on page 36 undefined on input line 154.
+
+[36]) (anexos/2_MAQ2_EMB.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 37 undefined on input line 80.
+LaTeX Warning: Reference `LastPage' on page 37 undefined on input line 39.
 
 [37]
+
+
+LaTeX Warning: Reference `LastPage' on page 38 undefined on input line 112.
+
+[38]
 Overfull \hbox (511.13281pt too wide) in paragraph at lines 118--119
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2131,40 +2317,35 @@ Overfull \hbox (67.53716pt too wide) in paragraph at lines 140--141
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+) (anexos/3_MAQ3.txt
 
 
-
-LaTeX Warning: Reference `LastPage' on page 38 undefined on input line 154.
-
-[38]) (anexos/3_MAQ3.txt
-
-
-LaTeX Warning: Reference `LastPage' on page 39 undefined on input line 44.
+LaTeX Warning: Reference `LastPage' on page 39 undefined on input line 2.
 
 [39]
+
+
+LaTeX Warning: Reference `LastPage' on page 40 undefined on input line 76.
+
+[40]
 Overfull \hbox (47.14195pt too wide) in paragraph at lines 106--107
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page 40 undefined on input line 118.
-
-[40]
 Overfull \hbox (169.51317pt too wide) in paragraph at lines 127--128
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (anexos/4_MAQ4.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 41 undefined on input line 26.
 
-[41]
+LaTeX Warning: Reference `LastPage' on page 41 undefined on input line 150.
+
+[41]) (anexos/4_MAQ4.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 42 undefined on input line 100.
+LaTeX Warning: Reference `LastPage' on page 42 undefined on input line 58.
 
 [42]
 Overfull \hbox (47.14195pt too wide) in paragraph at lines 108--109
@@ -2181,20 +2362,20 @@ Overfull \hbox (57.33955pt too wide) in paragraph at lines 129--133
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (anexos/5_MAQ5_VAC_6_SOP.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 43 undefined on input line 8.
 
-[43]
+LaTeX Warning: Reference `LastPage' on page 43 undefined on input line 133.
+
+[43]) (anexos/5_MAQ5_VAC_6_SOP.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 44 undefined on input line 82.
+LaTeX Warning: Reference `LastPage' on page 44 undefined on input line 40.
 
 [44]
 
 
-LaTeX Warning: Reference `LastPage' on page 45 undefined on input line 156.
+LaTeX Warning: Reference `LastPage' on page 45 undefined on input line 114.
 
 [45]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 187--188
@@ -2202,6 +2383,11 @@ Overfull \hbox (6.35155pt too wide) in paragraph at lines 187--188
  []
 
 
+
+
+LaTeX Warning: Reference `LastPage' on page 46 undefined on input line 188.
+
+[46]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 188--189
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2231,27 +2417,22 @@ Overfull \hbox (6.35155pt too wide) in paragraph at lines 193--194
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-)
+) (anexos/7_MAQ5_SOP.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 46 undefined on input line 28.
-
-[46] (anexos/7_MAQ5_SOP.txt
-
-
-LaTeX Warning: Reference `LastPage' on page 47 undefined on input line 70.
+LaTeX Warning: Reference `LastPage' on page 47 undefined on input line 30.
 
 [47]
+
+
+LaTeX Warning: Reference `LastPage' on page 48 undefined on input line 104.
+
+[48]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 143--144
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page 48 undefined on input line 144.
-
-[48]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 144--145
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2266,40 +2447,40 @@ Overfull \hbox (42.04315pt too wide) in paragraph at lines 147--148
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (anexos/8_MAQ5_EMB.txt
+)
 
 
-LaTeX Warning: Reference `LastPage' on page 49 undefined on input line 31.
+LaTeX Warning: Reference `LastPage' on page 49 undefined on input line 28.
 
-[49]
+[49] (anexos/8_MAQ5_EMB.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 50 undefined on input line 107.
+LaTeX Warning: Reference `LastPage' on page 50 undefined on input line 67.
 
 [50]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 115--116
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (anexos/9_MAQ7_EMB.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 51 undefined on input line 24.
 
-[51]
+LaTeX Warning: Reference `LastPage' on page 51 undefined on input line 139.
 
-
-LaTeX Warning: Reference `LastPage' on page 52 undefined on input line 98.
-
-[52]) (anexos/10_MAQ8_EMB.txt
+[51]) (anexos/9_MAQ7_EMB.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 53 undefined on input line 11.
+LaTeX Warning: Reference `LastPage' on page 52 undefined on input line 58.
 
-[53]
+[52]
 
 
-LaTeX Warning: Reference `LastPage' on page 54 undefined on input line 85.
+LaTeX Warning: Reference `LastPage' on page 53 undefined on input line 132.
+
+[53]) (anexos/10_MAQ8_EMB.txt
+
+
+LaTeX Warning: Reference `LastPage' on page 54 undefined on input line 45.
 
 [54]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 109--110
@@ -2307,16 +2488,16 @@ Overfull \hbox (6.35155pt too wide) in paragraph at lines 109--110
  []
 
 
+
+
+LaTeX Warning: Reference `LastPage' on page 55 undefined on input line 119.
+
+[55]
 Overfull \hbox (52.24075pt too wide) in paragraph at lines 141--142
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page 55 undefined on input line 159.
-
-[55]
 Overfull \hbox (62.43835pt too wide) in paragraph at lines 159--160
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2326,22 +2507,22 @@ Overfull \hbox (47.14195pt too wide) in paragraph at lines 161--162
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (anexos/11_Mant.txt
+)
 
 
-LaTeX Warning: Reference `LastPage' on page 56 undefined on input line 33.
+LaTeX Warning: Reference `LastPage' on page 56 undefined on input line 39.
 
-[56]
+[56] (anexos/11_Mant.txt
+
+
+LaTeX Warning: Reference `LastPage' on page 57 undefined on input line 72.
+
+[57]
 Overfull \hbox (6.35155pt too wide) in paragraph at lines 96--97
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-
-
-LaTeX Warning: Reference `LastPage' on page 57 undefined on input line 107.
-
-[57]
 Overfull \hbox (93.03116pt too wide) in paragraph at lines 127--128
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2352,6 +2533,11 @@ Overfull \hbox (220.50117pt too wide) in paragraph at lines 128--129
  []
 
 
+
+
+LaTeX Warning: Reference `LastPage' on page 58 undefined on input line 144.
+
+[58]
 Overfull \hbox (42.04315pt too wide) in paragraph at lines 159--160
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -2359,22 +2545,17 @@ Overfull \hbox (42.04315pt too wide) in paragraph at lines 159--160
 ) (anexos/12_VaciadoGen.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 58 undefined on input line 11.
+LaTeX Warning: Reference `LastPage' on page 59 undefined on input line 49.
 
-[58]
+[59]
 Overfull \hbox (429.552pt too wide) in paragraph at lines 70--73
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+) (anexos/13_VaciadoTipo1.txt
 
 
-
-LaTeX Warning: Reference `LastPage' on page 59 undefined on input line 85.
-
-[59]) (anexos/13_VaciadoTipo1.txt
-
-
-LaTeX Warning: Reference `LastPage' on page 60 undefined on input line 62.
+LaTeX Warning: Reference `LastPage' on page 60 undefined on input line 25.
 
 [60]
 Overfull \hbox (103.22876pt too wide) in paragraph at lines 69--70
@@ -2394,24 +2575,24 @@ Overfull \hbox (62.43835pt too wide) in paragraph at lines 77--78
 ) (anexos/14_VaciadoTipo2.txt
 
 
-LaTeX Warning: Reference `LastPage' on page 61 undefined on input line 40.
+LaTeX Warning: Reference `LastPage' on page 61 undefined on input line 3.
 
-[61]) (anexos/15_Manual.txt
+[61]
 
 
-LaTeX Warning: Reference `LastPage' on page 62 undefined on input line 13.
+LaTeX Warning: Reference `LastPage' on page 62 undefined on input line 77.
 
-[62]
+[62]) (anexos/15_Manual.txt
+
+
+LaTeX Warning: Reference `LastPage' on page 63 undefined on input line 50.
+
+[63]
 Overfull \hbox (1.25275pt too wide) in paragraph at lines 67--68
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-
-
-LaTeX Warning: Reference `LastPage' on page 63 undefined on input line 88.
-
-[63]))
+))
 
 
 LaTeX Warning: Reference `LastPage' on page 64 undefined on input line 112.
@@ -2426,7 +2607,6 @@ L3 programming layer <2025-09-02>
 
 
 LaTeX Warning: There were undefined references.
-<<<<<<< Updated upstream
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
@@ -2447,43 +2627,22 @@ Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                Informe
 (biblatex)                and rerun LaTeX afterwards.
 
-=======
-
-Package rerunfilecheck Info: File `Informe.out' has not changed.
-(rerunfilecheck)             Checksum: B2B0325334952B9999FB978FC5D3B17B;2906.
->>>>>>> Stashed changes
 Package logreq Info: Writing requests to 'Informe.run.xml'.
 \openout1 = `Informe.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< Updated upstream
- 57710 strings out of 468080
- 1298824 string characters out of 5424799
- 2331706 words of memory out of 5000000
- 82757 multiletter control sequences out of 15000+600000
+ 57713 strings out of 468080
+ 1298934 string characters out of 5424799
+ 2330706 words of memory out of 5000000
+ 82758 multiletter control sequences out of 15000+600000
  647761 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,13n,90p,1264b,2841s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Informe.pdf (67 pages, 3649689 bytes).
+Output written on Informe.pdf (67 pages, 3650075 bytes).
 PDF statistics:
  4143 PDF objects out of 4296 (max. 8388607)
  2757 named destinations out of 2984 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
- 54055 strings out of 468080
- 1246912 string characters out of 5424799
- 2227954 words of memory out of 5000000
- 81839 multiletter control sequences out of 15000+600000
- 648361 words of font info for 85 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 89i,12n,90p,1264b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Informe.pdf (24 pages, 2007611 bytes).
-PDF statistics:
- 818 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
- 192 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> Stashed changes
 

@@ -1,5 +1,4 @@
 \babel@toc {spanish}{}\relax 
-<<<<<<< Updated upstream
 \contentsline {figure}{\numberline {1}{\ignorespaces Estructura de la Línea 1}}{2}{figure.caption.5}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Estructura de la Línea 2}}{2}{figure.caption.6}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Estructura de la Línea 3}}{3}{figure.caption.7}%
@@ -27,32 +26,9 @@
 \contentsline {figure}{\numberline {25}{\ignorespaces Grafcet de la Máquina 7 embalaje}}{18}{figure.caption.29}%
 \contentsline {figure}{\numberline {26}{\ignorespaces Grafcet de mantenimiento}}{19}{figure.caption.30}%
 \contentsline {figure}{\numberline {27}{\ignorespaces Grafcet de vaciado general}}{20}{figure.caption.31}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Grafcet de vaciado tipo 1}}{21}{figure.caption.32}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Grafcet de vaciado tipo 2}}{22}{figure.caption.33}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Maquina 2 de la planta}}{23}{figure.caption.34}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Maquina 2 de la planta}}{24}{figure.caption.35}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Maquina 2 de la planta}}{25}{figure.caption.36}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Grafcet de vaciado tipo 1}}{22}{figure.caption.32}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Grafcet de vaciado tipo 2}}{23}{figure.caption.33}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Maquina 2 de la planta}}{24}{figure.caption.34}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Maquina 2 de la planta}}{25}{figure.caption.35}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Maquina 2 de la planta}}{26}{figure.caption.36}%
 \contentsline {figure}{\numberline {33}{\ignorespaces Maquina 2 de la planta}}{26}{figure.caption.37}%
-=======
-\contentsline {figure}{\numberline {1}{\ignorespaces Grafcet Principal}}{2}{figure.caption.5}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Grafcet del botón de Paro}}{2}{figure.caption.6}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Máquina 1 de la planta}}{3}{figure.caption.7}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Grafcet de la Máquina 1}}{4}{figure.caption.8}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Máquina 2 de la planta}}{5}{figure.caption.9}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Grafcet de la Máquina 2}}{6}{figure.caption.10}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Máquina 3 de la planta}}{7}{figure.caption.11}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Grafcet de la Máquina 3}}{8}{figure.caption.12}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Máquina 4 de la planta}}{9}{figure.caption.13}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Grafcet de la Máquina 4}}{10}{figure.caption.14}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Máquina 5 de la línea de soportes}}{11}{figure.caption.15}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Grafcet de la Máquina 5 Soportes}}{12}{figure.caption.16}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Máquina 5 de la línea de soportes}}{13}{figure.caption.17}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Grafcet de la Máquina 5 de vacunas y 6 de soportes}}{14}{figure.caption.18}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Grafcet de la Máquina 5 Embalaje}}{15}{figure.caption.19}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Grafcet de la Máquina 6 Embalaje}}{16}{figure.caption.20}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Grafcet de la Máquina 7 embalaje}}{17}{figure.caption.21}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Grafcet de Mantenimiento}}{18}{figure.caption.22}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Grafcet de la Alarma de la Cinta Final}}{19}{figure.caption.23}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Grafcet de vaciado 1}}{20}{figure.caption.24}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Grafcet de vaciado 2}}{21}{figure.caption.25}%
->>>>>>> Stashed changes
