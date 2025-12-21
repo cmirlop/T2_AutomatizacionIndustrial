@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+  \ttfamily
+
+  %---------------------------
+  % Columna izquierda
+  %---------------------------
+  \etapaInicial{60e}
+
+  % 100 -> 101  (transición de alarmas)
+  \etapa{61e}{60e}{SETA};
+  \primeraAccion{61e}{X61e-A1}{EMERGENCIA}
+  \etapa{62e}{61e}{\NOT{SETA}$*$Reset};
+  \primeraAccion{62e}{X62e-A1}{Activar\_Vaciado}
+  \etapa{63e}{62e}{Fin\_Vaciado};
+  \primeraAccion{63e}{X63e-A1}{Activar\_Mantenimiento}
+  \retornoInicio[4.2cm]{63e}{60e}{Mantenimiento\_fin}
+  
+
+  
+
+
+\end{tikzpicture}

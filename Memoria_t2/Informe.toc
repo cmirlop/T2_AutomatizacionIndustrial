@@ -21,37 +21,37 @@
 \contentsline {subsection}{\numberline {3.9}Grafcet Máquina 5 embalaje}{16}{subsection.3.9}%
 \contentsline {subsection}{\numberline {3.10}Grafcet máquina 6 embalaje}{16}{subsection.3.10}%
 \contentsline {subsection}{\numberline {3.11}Grafcet Máquina 7 embalaje}{17}{subsection.3.11}%
-\contentsline {subsection}{\numberline {3.12}Grafcet mantenimiento}{18}{subsection.3.12}%
-\contentsline {subsection}{\numberline {3.13}Grafcet de Mantenimiento}{19}{subsection.3.13}%
-\contentsline {subsection}{\numberline {3.14}Grafcet vaciado general}{20}{subsection.3.14}%
-\contentsline {subsection}{\numberline {3.15}Grafcet Principal de Vaciado}{20}{subsection.3.15}%
-\contentsline {subsection}{\numberline {3.16}Grafcet vaciado tipo 1}{21}{subsection.3.16}%
-\contentsline {subsubsection}{\numberline {3.16.1}Grafcet Vaciado 1}{21}{subsubsection.3.16.1}%
-\contentsline {subsection}{\numberline {3.17}Grafcet vaciado tipo 2}{22}{subsection.3.17}%
-\contentsline {subsubsection}{\numberline {3.17.1}Grafcet Vaciado 2}{22}{subsubsection.3.17.1}%
-\contentsline {section}{\numberline {4}HMI}{23}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Modelo utilizado y conexión con el PLC}{23}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Pantalla principal}{23}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Pantalla máquinas}{25}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Pantalla configuracion}{25}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Usuarios}{26}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Registro de alarmas}{26}{subsection.4.6}%
-\contentsline {section}{\numberline {5}Resultados}{27}{section.5}%
-\contentsline {section}{\numberline {6}Anexos}{27}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Anexo 1: Grafcet\_0\_Principal.scl}{27}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Anexo 2: Grafcet\_10.scl}{30}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Anexo 3: Grafcet\_10\_1.scl}{32}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Anexo 4: Grafcet\_20.scl}{34}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Anexo 5: Grafcet\_20\_1.scl}{37}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Anexo 6: Grafcet\_30.scl}{39}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Anexo 7: Grafcet\_40.scl}{42}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Anexo 8: Grafcet\_50.scl}{44}{subsection.6.8}%
-\contentsline {subsection}{\numberline {6.9}Anexo 9: Grafcet\_70.scl}{47}{subsection.6.9}%
-\contentsline {subsection}{\numberline {6.10}Anexo 10: Grafcet\_80.scl}{50}{subsection.6.10}%
-\contentsline {subsection}{\numberline {6.11}Anexo 11: Grafcet\_90.scl}{52}{subsection.6.11}%
-\contentsline {subsection}{\numberline {6.12}Anexo 12: Grafcet\_100.scl}{54}{subsection.6.12}%
-\contentsline {subsection}{\numberline {6.13}Anexo 13: Grafcet\_110.scl}{57}{subsection.6.13}%
-\contentsline {subsection}{\numberline {6.14}Anexo 14: Grafcet\_120.scl}{59}{subsection.6.14}%
-\contentsline {subsection}{\numberline {6.15}Anexo 15: Grafcet\_125.scl}{60}{subsection.6.15}%
-\contentsline {subsection}{\numberline {6.16}Anexo 16: Grafcet\_130.scl}{61}{subsection.6.16}%
-\contentsline {subsection}{\numberline {6.17}Anexo 17: Grafcet\_145.scl}{63}{subsection.6.17}%
+\contentsline {subsection}{\numberline {3.12}Grafcet de Mantenimiento}{18}{subsection.3.12}%
+\contentsline {subsection}{\numberline {3.13}Grafcet Principal de Vaciado}{19}{subsection.3.13}%
+\contentsline {subsection}{\numberline {3.14}Grafcet vaciado tipo 1}{20}{subsection.3.14}%
+\contentsline {subsubsection}{\numberline {3.14.1}Grafcet Vaciado 1}{20}{subsubsection.3.14.1}%
+\contentsline {subsection}{\numberline {3.15}Grafcet vaciado tipo 2}{21}{subsection.3.15}%
+\contentsline {subsubsection}{\numberline {3.15.1}Grafcet Vaciado 2}{21}{subsubsection.3.15.1}%
+\contentsline {subsection}{\numberline {3.16}Gestión de las alaras}{22}{subsection.3.16}%
+\contentsline {subsection}{\numberline {3.17}Gestión de la seta de emergéncia}{23}{subsection.3.17}%
+\contentsline {section}{\numberline {4}HMI}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Modelo utilizado y conexión con el PLC}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Pantalla principal}{25}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Pantalla máquinas}{26}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Pantalla configuración}{26}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Usuarios}{27}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Registro de alarmas}{27}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Resultados}{28}{section.5}%
+\contentsline {section}{\numberline {6}Anexos}{28}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Anexo 1: Grafcet\_0\_Principal.scl}{28}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Anexo 2: Grafcet\_10.scl}{31}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Anexo 3: Grafcet\_10\_1.scl}{33}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Anexo 4: Grafcet\_20.scl}{35}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Anexo 5: Grafcet\_20\_1.scl}{38}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Anexo 6: Grafcet\_30.scl}{40}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Anexo 7: Grafcet\_40.scl}{43}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Anexo 8: Grafcet\_50.scl}{45}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}Anexo 9: Grafcet\_70.scl}{48}{subsection.6.9}%
+\contentsline {subsection}{\numberline {6.10}Anexo 10: Grafcet\_80.scl}{51}{subsection.6.10}%
+\contentsline {subsection}{\numberline {6.11}Anexo 11: Grafcet\_90.scl}{53}{subsection.6.11}%
+\contentsline {subsection}{\numberline {6.12}Anexo 12: Grafcet\_100.scl}{55}{subsection.6.12}%
+\contentsline {subsection}{\numberline {6.13}Anexo 13: Grafcet\_110.scl}{58}{subsection.6.13}%
+\contentsline {subsection}{\numberline {6.14}Anexo 14: Grafcet\_120.scl}{60}{subsection.6.14}%
+\contentsline {subsection}{\numberline {6.15}Anexo 15: Grafcet\_125.scl}{61}{subsection.6.15}%
+\contentsline {subsection}{\numberline {6.16}Anexo 16: Grafcet\_130.scl}{62}{subsection.6.16}%
+\contentsline {subsection}{\numberline {6.17}Anexo 17: Grafcet\_145.scl}{64}{subsection.6.17}%

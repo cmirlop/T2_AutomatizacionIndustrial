@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+  \ttfamily
+
+  %---------------------------
+  % Columna izquierda
+  %---------------------------
+  \etapaInicial{60e}
+
+  % 100 -> 101  (transición de alarmas)
+  \etapa{61e}{60e}{EMERGENCIA};
+  \forzado{61e}{X61e-A1}{G60\{$INIT$\}}
+  \etapa{62e}{61e}{\underline{1}};
+  \forzado{62e}{X62e-A1}{G60\{$*$\}}
+  \otraAccion{X62e-A1}{X62e-A2}{Act\_Mantenimiento}
+	\condicionada{X62e-A2}{Reset}
+  \retornoInicio[4.2cm]{62e}{60e}{Mantenimiento\_fin}
+  
+
+  
+
+
+\end{tikzpicture}

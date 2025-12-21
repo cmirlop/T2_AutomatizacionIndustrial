@@ -1,20 +1,21 @@
 \section{HMI}
-\label{sec:introduccion}
+\label{sec:HMI}
 
 \subsection{Modelo utilizado y conexión con el PLC}
-Para la realización del proyecto se ha escogido un HMI TP1500 Comfort pro de 15" 
-conectada via profinet al PLC, para poder tener acceso a las variables
+Para la realización del proyecto se ha escogido un HMI TP1500 Comfort pro de 15"
+conectada vía Profinet al PLC, para poder tener acceso a las variables.
 
 \subsection{Pantalla principal}
+\label{subsec:pantalla_principal}
 En la siguiente figura podemos observar la pantalla principal, donde podemos observar distintos elementos.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{./Figuras/HMI1.png}
+ 
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.8\linewidth]{./Figuras/HMI1.png}
 	\medskip
-	\label{fig:maq2}
-	\caption{Maquina 2 de la planta}
-\end{figure}
+	\caption{Pantalla principal del HMI}
+	\label{fig:HMI_principal}
+ \end{figure}
 
 Respecto a los botones tenemos:
 \begin{itemize}
@@ -26,10 +27,9 @@ Respecto a los botones tenemos:
     \item Rearme : Este botón solo se encuentra en el HMI, y lo que hace es
     que cuando está la máquina en alarma, si vemos que con mover un poco la pieza 
     la máquina puede seguir, apretaremos este botón sin necesidad de apretar el ''RESET''.
-    \item Configuración : Para apretar este botón nos pedirá credenciales, ha este apartado solo 
-    se puede acceder si tenemos permisos de administrador, donde nos da acceso a la pantalla que hablaremos 
-    más adelante (ref).
-    \item Alarma : Este bóton abre la pantalla del registro de alarmas que veremos más adelante (ref).
+    \item Configuración: Para pulsar este botón se pedirán credenciales; este apartado solo 
+    está disponible para administradores y da acceso a la pantalla de configuración (véase \autoref{fig:HMI_config}).
+    \item Alarma: Este botón abre la pantalla del registro de alarmas (véase \autoref{fig:HMI_alarmas}).
 \end{itemize}
 
 Aparte de los botones, en la parte superior derecha vemos que hay un contador de embalajes completados
@@ -43,31 +43,30 @@ que forman el proceso completo. Las luces tienen los siguientes estados:
     \item Rojo : Máquina en alarma.
     \item Rojo parpadeante amarillo : Máquina en emergencia.
 \end{itemize}
-A parte de los colores, si apretamos sobre cualquier parte de la máquina nos llevara a una ventana
-donde podremos ver sobre esa máquina que actuador esta en funcionamiento en ese momento, cual esta parado,
-o el contador de piezas que ha descartado.
-
-
+Aparte de los colores, si pulsamos sobre cualquier parte de la máquina nos llevará a una ventana
+donde podremos ver qué actuador está en funcionamiento en ese momento, cuál está parado,
+o el contador de piezas descartadas.
 
 \subsection{Pantalla máquinas}
-En la siguiente figura .... podemos ver como es una pantalla cuando sobre la principal pulsamos sobre una
+\label{subsec:pantalla_maquinas}
+En la siguiente figura (\ref{fig:HMI_maquinas}) podemos ver como es una pantalla cuando sobre la principal pulsamos sobre una
 máquina, vemos que podemos ver dos máquinas, unas luces encima de los actuadores que nos indican si
 están funcionando o no, y un contador donde se puede ver el numero de piezas descartadas en esa máquina.
 
 Vemos que también hay unos botones con los nombres de los actuadores, esto es porque si tenemos el modo
 manual activado, estos botones se harán visibles y podremos accionar los actuadores desde aquí.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{./Figuras/HMI2.png}
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.8\linewidth]{./Figuras/HMI2.png}
 	\medskip
-	\label{fig:maq2}
-	\caption{Maquina 2 de la planta}
-\end{figure}
+	\caption{Pantalla de detalle de una máquina}
+	\label{fig:HMI_maquinas}
+ \end{figure}
 
-
-\subsection{Pantalla configuracion}
-En la siguiente figura ... podemos ver la pantalla de configuración a la cual solo se puede acceder a través
-de credenciales de administrador que hablaremos más adelante (ref). Vemos que hay una columna central donde
+\subsection{Pantalla configuración}
+\label{subsec:pantalla_configuracion}
+En la siguiente figura (\ref{fig:HMI_config}) podemos ver la pantalla de configuración a la cual solo se puede acceder a través
+de credenciales de administrador. Vemos que hay una columna central donde
 podemos ver:
 \begin{itemize}
     \item Un campo de entrada, donde pondremos el número de vacunas por cajas que queremos
@@ -79,15 +78,13 @@ podemos ver:
 También disponemos de un botón de cerrar sesión, por si ya hemos configurado la máquina y probado, 
 y ya el próximo que la toque es un trabajador normal.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{./Figuras/HMI3.png}
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.8\linewidth]{./Figuras/HMI3.png}
 	\medskip
-	\label{fig:maq2}
-	\caption{Maquina 2 de la planta}
-\end{figure}
-
-
+	\caption{Pantalla de configuración}
+	\label{fig:HMI_config}
+ \end{figure}
 
 \subsection{Usuarios}
 Respecto a los usuarios, el HMI dispone de dos grupos:
@@ -97,16 +94,16 @@ Respecto a los usuarios, el HMI dispone de dos grupos:
     a los valores de los contadores de piezas
 \end{itemize}
 
-
 \subsection{Registro de alarmas}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{./Figuras/HMI_AL.png}
+\label{subsec:registro_alarmas}
+ 
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.8\linewidth]{./Figuras/HMI_AL.png}
 	\medskip
-	\label{fig:maq2}
-	\caption{Maquina 2 de la planta}
-\end{figure}
+	\caption{Registro de alarmas}
+	\label{fig:HMI_alarmas}
+ \end{figure}
 
 
 
