@@ -21,7 +21,7 @@ Activamos las 3 cintas, cuando se produce un flanco de bajada en el sensor que h
 antes del clamper ponemos un temporizador de 1 segundo para que la pieza entre dentro del clamper.
 Activamos el clamper, esto lo que nos hace es colocar la pieza en el sitio, para que el 
 robot al colocar la vacuna sobre el soporte, este no falle. Una vez tenemos la pieza
-colocada avisamos al robot de las vácunas que hay un soporte en el sitio, este aviso lo recibimos en el 
+colocada avisamos al robot de las vacunas que hay un soporte en el sitio, este aviso lo recibimos en el 
 grafcet que hablaremos más adelante (\hyperref[graf:maq5]{Grafcet Máquina 5 soporte}), y que nos colocará la pieza en su sitio. Una vez nos diga la 
 otra máquina que tenemos la vacuna en el soporte, nos esperaremos a que la siguiente máquina nos indique 
 que esté libre para poder levantar el clamper y activar las cintas.
@@ -59,7 +59,7 @@ El funcionamineto que describe el grafcet (\hyperref[graf:Empaquetado]{Grafcet M
 las 3 cintas hasta que se produzca un flanco de bajada del sensor que hay antes del clamper
 , cuando se produce el flanco nos esperamos 1 segundo, y activamos el clamper para que la pieza se quede 
 colocada correctamente, y nos ponemos a la espera de que en la línea de vacunas nos avisen que tenemos un soporte
-en el sitio, o en la línea de soportes, tengamos un embalaje en posición. A partir de ahi bajamos el robot durante 2
+en el sitio, o en la línea de soportes, tengamos un embalaje en posición. A partir de ahí bajamos el robot durante 2
 segundos, activamos el gripper, y con el gripper activado, subimos el robot para después desplazarlo en horizontal
 y bajarlo, aquí ya soltaremos el gripper y devolveremos el robot a su posición de reposo.
 

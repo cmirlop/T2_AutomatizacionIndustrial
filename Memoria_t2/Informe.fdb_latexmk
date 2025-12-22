@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber Informe"] 1766346583.50608 "Informe.bcf" "Informe.bbl" "Informe" 1766419777.75524 0
-  "Informe.bcf" 1766419777 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
+["biber Informe"] 1766346583.50608 "Informe.bcf" "Informe.bbl" "Informe" 1766421267.41196 0
+  "Informe.bcf" 1766421266 133546 9d6b34bf703ebe4ac3fa633f5d5a9c32 "pdflatex"
   (generated)
   "Informe.bbl"
   "Informe.blg"
   (rewritten before read)
-["pdflatex"] 1766419770.30239 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766419777.75609 0
+["pdflatex"] 1766421259.80664 "c:/Users/Usuario/Desktop/T2_AutomatizacionIndustrial/Memoria_t2/Informe.tex" "Informe.pdf" "Informe" 1766421267.41265 0
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765640236 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1762450105 34112 6077470a731733ee0e995aa9c01a906c ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0900.pk" 1760431305 22504 a5dd8a55bad19e6d843a98e120614012 ""
@@ -320,13 +320,13 @@
   "Figuras/maq5_VAC_6_SOP.png" 1766256947 437275 54556fd8793c93933d2007d776c1405e ""
   "Figuras/maq6_EMB.png" 1766256947 154595 c438f1e0f998c1131ba2430e652e74bd ""
   "Figuras/maq7_EMB.png" 1766256947 281128 30a3d25e07c5170dfcd03fc7dbbde622 ""
-  "Informe.aux" 1766419777 22135 9dc3a9632fb59533d316f427df7b0448 "pdflatex"
+  "Informe.aux" 1766421266 22135 9dc3a9632fb59533d316f427df7b0448 "pdflatex"
   "Informe.bbl" 1766346585 486 76d65a242ec496c9b4361af646ff12cb "biber Informe"
-  "Informe.lof" 1766419777 4153 95b7abb9ed7b8b677366967269eb095a "pdflatex"
-  "Informe.out" 1766419777 9001 0d190f94c7e950c1ed0fa3ff498f8a5f "pdflatex"
-  "Informe.run.xml" 1766419777 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
+  "Informe.lof" 1766421266 4153 95b7abb9ed7b8b677366967269eb095a "pdflatex"
+  "Informe.out" 1766421266 9001 0d190f94c7e950c1ed0fa3ff498f8a5f "pdflatex"
+  "Informe.run.xml" 1766421266 2399 a132eb9689667ce247da9ee0c78849bd "pdflatex"
   "Informe.tex" 1766346642 4382 f1e50da65ae20fa5b11f518d9f430c94 ""
-  "Informe.toc" 1766419777 4855 0badd6f374d055670ea58ab99803142e "pdflatex"
+  "Informe.toc" 1766421266 4855 0badd6f374d055670ea58ab99803142e "pdflatex"
   "anexos/0_Principal.txt" 1766264011 6320 be23332791739c980c3ca86a78548808 ""
   "anexos/10_MAQ8_EMB.txt" 1766264011 5418 28f76ba177da4c2b7fd4e5bb96289aee ""
   "anexos/11_Mant.txt" 1766264011 4881 0ae088fffef449729c709c85ec1aa330 ""
@@ -349,8 +349,8 @@
   "capitulos/cap_anexos.tex" 1766309356 2773 71d38b358d3002bc25d15b9c80cb0e22 ""
   "capitulos/cap_estructura_tia.tex" 1766309356 2592 7912f478f9495a31ce7e659ff7958833 ""
   "capitulos/cap_grafcets_1.tex" 1766347144 2120 4431b7fb86974803009454fc6006dbe2 ""
-  "capitulos/cap_grafcets_2.tex" 1766347280 3216 eea67b045079f94c5b1d2926c6144038 ""
-  "capitulos/cap_grafcets_3.tex" 1766346745 2254 bdc0f1d14a621dc6471b0c5344ee7711 ""
+  "capitulos/cap_grafcets_2.tex" 1766421106 3223 84027190325ed3647af43740d17b5e09 ""
+  "capitulos/cap_grafcets_3.tex" 1766421259 2251 51ecffe5120c261949e90b01954090b9 ""
   "capitulos/cap_grafcets_4.tex" 1766347383 3205 9199108981fc600b5411aee3daab6958 ""
   "capitulos/cap_grafcets_5.tex" 1766346757 1141 7f3c4492f5d4c5d6f142b6664c1c9760 ""
   "capitulos/cap_grafcets_6.tex" 1766348901 6273 789e4f6be46bf5e9363b875fa00a4091 ""

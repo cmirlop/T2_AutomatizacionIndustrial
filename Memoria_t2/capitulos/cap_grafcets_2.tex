@@ -23,13 +23,13 @@ Como vemos en la siguiente figura (\hyperref[fig:maq1]{Máquina 1}), esta máqui
 
 Con estos elementos conformamos el siguiente grafcet (\hyperref[graf:cinta_1]{Grafcet Máquina 1}), el cual su funcionamiento es 
 generar un objeto enviarlo al final de la cinta, y si la siguiente máquina esta libre
-entregarselo.
+entregárselo.
 
 
 
 Las alarmas que tenemos en está máquina que la detendrían son:
 \begin{itemize}
-	\item Si cuando el objeto esta de camino al sensor del final de la cinta, se pone otro objeto al principio de la cinta.
+	\item Si cuando el objeto está de camino al sensor del final de la cinta, se pone otro objeto al principio de la cinta.
 	\item Si el objeto desde que se ha generado hasta el final de la cinta tarda más de 8 segundos.
 \end{itemize}
 
@@ -64,24 +64,24 @@ Como vemos en el grafcet (\hyperref[graf:Identificador_Tipo]{Grafcet Máquina 2}
 3 caminos:
 \begin{itemize}
 	\item Determinamos si la pieza es del tipo A bueno, que nos esperamos a que 
-	la siguiente máquina esta disponible.
+	la siguiente máquina esté disponible.
 	\item Determinamos si la pieza es del tipo A malo, que seguimos a la espera de
 	que la siguiente máquina siga disponible, pero le avisaremos de que la pieza 
-	que esta de camino es mala .
+	que está de camino es mala .
 	\item Determinamos si es del tipo B, que lo que hacemos es descartarla con
 	un movimiento lateral del transfer.
 \end{itemize}
 
-Respecto a los 3 sensores en la máquina de embalaje, esta hecho por la siguiente razón:
+Respecto a los 3 sensores en la máquina de embalaje, está hecho por la siguiente razón:
 \begin{itemize}
 	\item Si se detectan los 3 sensores al final del transfer, es el tipo A bueno.
-	\item Si al final de la cinta solo se detectan los dos sensores de abajo 
+	\item Si al final de la cinta sólo se detectan los dos sensores de abajo 
 	es el tipo A malo.
 	\item Si solo se detectan los dos sensores finales, que están uno encima del otro
 	determinamos que es tipo B y se debe de descartar.
 \end{itemize}
 
-En esta máquina solo se trata una alarma, que es que tardemos más de 5 segundos en recibir la pieza de la
+En esta máquina sólo se trata una alarma, que es que tardemos más de 5 segundos en recibir la pieza de la
 máquina anterior.
 
 \begin{figure}[H]
