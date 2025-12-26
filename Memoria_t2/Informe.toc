@@ -1,5 +1,5 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{Resumen}{1}{section*.4}%
+\contentsline {section}{Resumen}{1}{section*.3}%
 \contentsline {section}{\numberline {1}Metodolgía}{1}{section.1}%
 \contentsline {section}{\numberline {2}Estructura TIA Portal}{1}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Línea 1}{1}{subsection.2.1}%
@@ -13,13 +13,13 @@
 \contentsline {subsection}{\numberline {3.1}Grafcet Principal}{5}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Grafcet Paro}{5}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Grafcet Máquina 1}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Grafcet máquina 2}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Grafcet máquina 3}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.4}Grafcet Máquina 2}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Grafcet Máquina 3}{9}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Grafcet Máquina 4}{10}{subsection.3.6}%
 \contentsline {subsection}{\numberline {3.7}Grafcet Máquina 5 soporte}{12}{subsection.3.7}%
 \contentsline {subsection}{\numberline {3.8}Grafcet máquina 5 vacuna y 6 soporte }{13}{subsection.3.8}%
 \contentsline {subsection}{\numberline {3.9}Grafcet Máquina 5 embalaje}{16}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Grafcet máquina 6 embalaje}{16}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.10}Grafcet Máquina 6 embalaje}{16}{subsection.3.10}%
 \contentsline {subsection}{\numberline {3.11}Grafcet Máquina 7 embalaje}{17}{subsection.3.11}%
 \contentsline {subsection}{\numberline {3.12}Grafcet de Mantenimiento}{18}{subsection.3.12}%
 \contentsline {subsection}{\numberline {3.13}Grafcet Principal de Vaciado}{19}{subsection.3.13}%
@@ -27,8 +27,8 @@
 \contentsline {subsubsection}{\numberline {3.14.1}Grafcet Vaciado 1}{20}{subsubsection.3.14.1}%
 \contentsline {subsection}{\numberline {3.15}Grafcet vaciado tipo 2}{21}{subsection.3.15}%
 \contentsline {subsubsection}{\numberline {3.15.1}Grafcet Vaciado 2}{21}{subsubsection.3.15.1}%
-\contentsline {subsection}{\numberline {3.16}Gestión de las alaras}{22}{subsection.3.16}%
-\contentsline {subsection}{\numberline {3.17}Gestión de la seta de emergéncia}{23}{subsection.3.17}%
+\contentsline {subsection}{\numberline {3.16}Gestión de las alarmas}{22}{subsection.3.16}%
+\contentsline {subsection}{\numberline {3.17}Gestión de la seta de emergencia}{23}{subsection.3.17}%
 \contentsline {section}{\numberline {4}HMI}{24}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Modelo utilizado y conexión con el PLC}{24}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Pantalla principal}{25}{subsection.4.2}%
