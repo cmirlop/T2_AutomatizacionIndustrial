@@ -16,33 +16,37 @@ ya las primeras máquinas de cada objeto.
 	\caption{Grafcet Principal}
 \end{figure}
 
-% Grafcet principal
-% Grafcet principal (todo a la izquierda)
-\begin{comment}
-	\begin{flushleft}
-\(
-\begin{aligned}
-S0 &:= \mathrm{FirstScan} + (X3 * \mathrm{Paro\_Ciclo}) + (X4 * \overline{\mathrm{Modo\_Manual}}) \\
-S1 &:= X0 * \bigl((\mathrm{Marcha} + \mathrm{HMI\_Marcha}) * \overline{\mathrm{Modo\_Manual}}\bigr) \\
-S2 &:= (X1 * \mathrm{Mantenimiento\_Fin}) + (X3 * \overline{\mathrm{Paro\_Ciclo}}) \\
-S3 &:= X2 * \mathrm{Pieza\_Empaquetada} \\
-S4 &:= X0 * \mathrm{Modo\_Manual} \\
-\\
-X0 &:= S0 + X0 * (\overline{S1} * \overline{S4}) \\
-X1 &:= S1 + X1 * \overline{S2} \\
-X2 &:= S2 + X2 * \overline{S3} \\
-X3 &:= S3 + X3 * (\overline{S0} * \overline{S2}) \\
-X4 &:= S4 + X4 * \overline{S0} \\
-\\
-\mathrm{Act\_Mantenimiento} &:= X1 \\
-\mathrm{Proceso\_Activo} &:= X2 + X3 \\
-\mathrm{Modo\_Manual\_Activado} &:= X4
-\end{aligned}
-\)
-\end{flushleft}
-\end{comment}
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
 
+\newlength{\sepsGrups}
+\setlength{\sepsGrups}{2ex}
 
+% Transiciones (sin FORCE_CURRENT_E)
+$S_{0} = \mathtt{FirstScan} + X_{3}\cdot \mathtt{Paro\_Ciclo} + X_{4}\cdot \Not{\mathtt{Modo\_Manual}}$\\
+$S_{1} = X_{0}\cdot (\mathtt{Marcha}+\mathtt{HMI\_Marcha})\cdot \Not{\mathtt{Modo\_Manual}}$\\
+$S_{2} = X_{1}\cdot \mathtt{Mantenimiento\_Fin} + X_{3}\cdot \Not{\mathtt{Paro\_Ciclo}}$\\
+$S_{3} = X_{2}\cdot \mathtt{Pieza\_Empaquetada}$\\
+$S_{4} = X_{0}\cdot \mathtt{Modo\_Manual}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT_E)
+$X_{0} = S_{0} + X_{0}\cdot \Not{(S_{1}+S_{4})}$\\
+$X_{1} = S_{1} + X_{1}\cdot \Not{S_{2}}$\\
+$X_{2} = S_{2} + X_{2}\cdot \Not{S_{3}}$\\
+$X_{3} = S_{3} + X_{3}\cdot \Not{(S_{0}+S_{2})}$\\
+$X_{4} = S_{4} + X_{4}\cdot \Not{S_{0}}$\\[\sepsGrups]
+
+% Marcas
+$\mathtt{Act\_Mantenimiento} = X_{1}$\\
+$\mathtt{Proceso\_Activo} = X_{2} + X_{3}$\\
+$\mathtt{Modo\_Manual\_Activado} = X_{4}$\\[\sepsGrups]
+
+% Contadores (mismo tipo/formato del ejemplo)
+IF X0 THEN\\
+\hspace*{2em}C = 0\\
+END IF\\
+IF X3 THEN\\
+\hspace*{2em}C = C + 1\\
+END IF\\[\sepsGrups]
 
 
 \subsection{Grafcet Paro}
@@ -57,3 +61,17 @@ de emitir piezas y se queden las que están ya en la máquina.
 	\label{graf:paro}
 	\caption{Grafcet del botón de Paro}
 \end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+
+% Transiciones (sin FORCE_CURRENT_E)
+$S_{0p} = \mathtt{FirstScan} + X_{0}$\\
+$S_{1p} = X_{0}\cdot (\mathtt{STOP\_NEG} + \mathtt{HMI\_Paro})$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT_E)
+$X_{0p} = S_{0p} + X_{0p}\cdot \Not{S_{1p}}$\\
+$X_{1p} = S_{1p} + X_{1p}\cdot \Not{S_{0p}}$\\[\sepsGrups]
+
+% Marcas
+$\mathtt{Paro\_Ciclo} = X_{1p}$\\

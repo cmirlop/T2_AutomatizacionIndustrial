@@ -38,6 +38,38 @@ en recorrer toda la cinta
 	\caption{Grafcet de la Máquina 3}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{30} = \mathtt{FirstScan} + X_{31c}\cdot \Not{\mathtt{S3}} + X_{32c}\cdot \Not{\mathtt{S3}}$\\
+$S_{31} = X_{30}\cdot \mathtt{Act\_Proceso\_Bueno}$\\
+$S_{31b} = X_{31}\cdot \mathtt{S3}$\\
+$S_{31c} = X_{31b}\cdot \mathtt{SigMaqLibre}$\\
+$S_{32} = X_{30}\cdot \mathtt{Act\_Proceso\_malo}$\\
+$S_{32b} = X_{32}\cdot \mathtt{S3}$\\
+$S_{32c} = X_{32b}\cdot \mathtt{SigMaqLibre}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{30}  = S_{30}  + X_{30}\cdot \Not{(S_{31}+S_{32})}$\\
+$X_{31}  = S_{31}  + X_{31}\cdot \Not{S_{31b}}$\\
+$X_{31b} = S_{31b} + X_{31b}\cdot \Not{S_{31c}}$\\
+$X_{31c} = S_{31c} + X_{31c}\cdot \Not{S_{30}}$\\
+$X_{32}  = S_{32}  + X_{32}\cdot \Not{S_{32b}}$\\
+$X_{32b} = S_{32b} + X_{32b}\cdot \Not{S_{32c}}$\\
+$X_{32c} = S_{32c} + X_{32c}\cdot \Not{S_{30}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}          = X_{30}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC3}                = (X_{31}+X_{31c}+X_{32}+X_{32c}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta}+\mathtt{man\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_SIG\_MAQ\_Buena}= X_{31c}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_SIG\_MAQ\_Mala} = X_{32c}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+
+
+
 
 \subsection{Grafcet Máquina 4}
 Como vemos en la siguiente figura (\hyperref[fig:maq4]{Máquina 4}), esta máquina esta compuesta por:
@@ -71,3 +103,30 @@ en llegar al sensor desde que nos indican que nos activemos
 	\caption{Grafcet de la Máquina 4}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{40} = \mathtt{FirstScan} + X_{41c}\cdot \Not{\mathtt{S4}} + X_{42b}\cdot \Not{\mathtt{S4}}$\\
+$S_{41} = X_{40}\cdot \mathtt{Act\_Proceso\_Bueno}$\\
+$S_{41b} = X_{41}\cdot \mathtt{S4}$\\
+$S_{41c} = X_{41b}\cdot \mathtt{SigMaqLibre}$\\
+$S_{42} = X_{40}\cdot \mathtt{Act\_Proceso\_Malo}$\\
+$S_{42b} = X_{42}\cdot \mathtt{S4}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{40}  = S_{40}  + X_{40}\cdot \Not{(S_{41}+S_{42})}$\\
+$X_{41}  = S_{41}  + X_{41}\cdot \Not{S_{41b}}$\\
+$X_{41b} = S_{41b} + X_{41b}\cdot \Not{S_{41c}}$\\
+$X_{41c} = S_{41c} + X_{41c}\cdot \Not{S_{40}}$\\
+$X_{42}  = S_{42}  + X_{42}\cdot \Not{S_{42b}}$\\
+$X_{42b} = S_{42b} + X_{42b}\cdot \Not{S_{40}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}     = X_{40}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC4}           = (X_{41}+X_{41c}+X_{42}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta}+\mathtt{man\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_Sig\_Maq}  = X_{41c}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QTRANS}        = (X_{42b}+\mathtt{Mantenimiento\_Trans}+\mathtt{vaciado\_Trans}+\mathtt{man\_trans})\cdot \Not{\mathtt{STOP\_ACT}}$\\

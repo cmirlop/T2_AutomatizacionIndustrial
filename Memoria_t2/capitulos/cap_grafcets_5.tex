@@ -12,6 +12,30 @@ para entregársela al transfer siguiente.
 	\caption{Grafcet de la Máquina 5 Embalaje}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{80} = \mathtt{FirstScan} + X_{83}\cdot \Not{\mathtt{S5}}$\\
+$S_{81} = X_{80}\cdot \mathtt{Act\_Proceso}$\\
+$S_{82} = X_{81}\cdot \mathtt{S5}$\\
+$S_{83} = X_{82}\cdot \mathtt{SigMaqLibre}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{80} = S_{80} + X_{80}\cdot \Not{S_{81}}$\\
+$X_{81} = S_{81} + X_{81}\cdot \Not{S_{82}}$\\
+$X_{82} = S_{82} + X_{82}\cdot \Not{S_{83}}$\\
+$X_{83} = S_{83} + X_{83}\cdot \Not{S_{80}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}    = X_{80}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC3}          = (X_{81}+X_{83}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_Sig\_Maq} = X_{83}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+
+
 \subsection{Grafcet Máquina 6 embalaje}
 En esta máquina (\hyperref[graf:maq6_emb]{Máquina 6 Embalaje}) la función es desplazar el embalaje a la cinta final del proceso,
 que se detalla más adelante.
@@ -31,3 +55,29 @@ que se detalla más adelante.
 	\label{graf:maq6_emb}
 	\caption{Grafcet de la Máquina 6 Embalaje}
 \end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{90} = \mathtt{FirstScan} + X_{94}$\\
+$S_{91} = X_{90}\cdot \mathtt{Act\_Proceso}$\\
+$S_{92} = X_{91}\cdot \mathtt{SENSOR}$\\
+$S_{93} = X_{92}\cdot \mathtt{SigMaqLibre}$\\
+$S_{94} = X_{93}\cdot \Not{\mathtt{SENSOR}}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{90} = S_{90} + X_{90}\cdot \Not{S_{91}}$\\
+$X_{91} = S_{91} + X_{91}\cdot \Not{S_{92}}$\\
+$X_{92} = S_{92} + X_{92}\cdot \Not{S_{93}}$\\
+$X_{93} = S_{93} + X_{93}\cdot \Not{S_{94}}$\\
+$X_{94} = S_{94} + X_{94}\cdot \Not{S_{90}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}    = X_{90}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC3}          = (X_{91}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaicado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QTrans}       = (X_{93}+\mathtt{Mantenimiento\_Trans}+\mathtt{vaciado\_trnas})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_Sig\_Maq} = X_{94}\cdot \Not{\mathtt{STOP\_ACT}}$\\

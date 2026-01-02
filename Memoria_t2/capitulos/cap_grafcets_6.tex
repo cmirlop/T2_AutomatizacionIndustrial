@@ -17,6 +17,55 @@ Esta máquina (\hyperref[graf:maq7]{Máquina 7, embalaje}) es similar a la máqu
 	\label{graf:maq7}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% Temporizadores (formato tipo ejemplo)
+$T_{1}=PT_{1}/X_{102}$\\
+$T_{2}=PT_{2}/X_{103}$\\
+$T_{3}=PT_{3}/X_{106}$\\[\sepsGrups]
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{100} = \mathtt{FirstScan} + X_{107}$\\
+$S_{101} = X_{100}\cdot \mathtt{Act\_Proceso}$\\
+$S_{102} = X_{101}\cdot \mathtt{S5}$\\
+$S_{103} = X_{102}\cdot \mathtt{T1.Q}$\\
+$S_{104} = X_{103}\cdot \mathtt{T2.Q} + X_{105}\cdot (\mathtt{Counter.CV}<\mathtt{PiezasPalet})$\\
+$S_{105} = X_{104}\cdot \mathtt{Pieza\_Empaquetada}$\\
+$S_{106} = X_{105}\cdot (\mathtt{Counter.CV}=\mathtt{PiezasPalet})$\\
+$S_{107} = X_{106}\cdot \mathtt{T3.Q}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{100} = S_{100} + X_{100}\cdot \Not{S_{101}}$\\
+$X_{101} = S_{101} + X_{101}\cdot \Not{S_{102}}$\\
+$X_{102} = S_{102} + X_{102}\cdot \Not{S_{103}}$\\
+$X_{103} = S_{103} + X_{103}\cdot \Not{S_{104}}$\\
+$X_{104} = S_{104} + X_{104}\cdot \Not{S_{105}}$\\
+$X_{105} = S_{105} + X_{105}\cdot \Not{(S_{106}+S_{104})}$\\
+$X_{106} = S_{106} + X_{106}\cdot \Not{S_{107}}$\\
+$X_{107} = S_{107} + X_{107}\cdot \Not{S_{100}}$\\[\sepsGrups]
+
+% Contadores (tipo ejemplo, usando C como valor del contador)
+IF X100 THEN\\
+\hspace*{2em}C = 0\\
+END IF\\
+IF S105 THEN\\
+\hspace*{2em}C = C + 1\\
+END IF\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}      = X_{100}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC7}            = (X_{101}+X_{102}+X_{106}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QCLAMP}         = (X_{103}+\mathtt{Mantenimiento\_Clamper})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QCLAMP\_SUB}    = (X_{106}+\mathtt{Mantenimiento\_SubirClamp}+\mathtt{vaciado\_subclamp})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{HayPieza}       = X_{104}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Pieza\_Entregada}= X_{107}$\\
+
+
+
 \subsection{Grafcet de Mantenimiento}
 El \hyperref[graf:mantenimiento]{Grafcet de Mantenimiento}
  asegura que la máquina funciona correctamente antes de procesar
@@ -38,6 +87,46 @@ El \hyperref[graf:mantenimiento]{Grafcet de Mantenimiento}
 	\label{graf:mantenimiento}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{110} = \mathtt{FirstScan} + X_{117}$\\
+$S_{111} = X_{110}\cdot (\mathtt{Act\_Mantenimiento}+\mathtt{Act\_Mantenimiento\_Emergencia}+\mathtt{Act\_Mantenimiento\_HMI})$\\
+$S_{112} = X_{111}\cdot \Not{\mathtt{Sensores}}$\\
+$S_{113} = X_{112}\cdot \mathtt{T1.Q}$\\
+$S_{114} = X_{113}\cdot \mathtt{T2.Q}$\\
+$S_{115} = X_{114}\cdot \mathtt{T3.Q}$\\
+$S_{116} = X_{115}\cdot \mathtt{T4.Q}$\\
+$S_{117} = X_{116}\cdot \mathtt{T5.Q}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{110} = S_{110} + X_{110}\cdot \Not{S_{111}}$\\
+$X_{111} = S_{111} + X_{111}\cdot \Not{S_{112}}$\\
+$X_{112} = S_{112} + X_{112}\cdot \Not{S_{113}}$\\
+$X_{113} = S_{113} + X_{113}\cdot \Not{S_{114}}$\\
+$X_{114} = S_{114} + X_{114}\cdot \Not{S_{115}}$\\
+$X_{115} = S_{115} + X_{115}\cdot \Not{S_{116}}$\\
+$X_{116} = S_{116} + X_{116}\cdot \Not{S_{117}}$\\
+$X_{117} = S_{117} + X_{117}\cdot \Not{S_{110}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Activar\_Cintas}    = X_{112}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Activar\_Transfers} = X_{113}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{BAJAR\_ROBOTS}      = X_{114}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{SUBIR\_CLAMPERS}    = X_{114}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{GRIPPERS}          = X_{115}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{CLAMPER}           = X_{115}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{MOVER\_HOR}         = X_{116}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Fin\_Mantenimiento} = X_{117}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+
+
+
+
 \subsection{Grafcet Principal de Vaciado}
 El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}
  se activa tras desenclavar la seta de emergencia, 
@@ -54,6 +143,26 @@ El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}
 	\caption{Grafcet Principal de Vaciado}
 	\label{graf:principal_vaciado}
 \end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$s_{120} = \mathtt{FirstScan} + x_{122}$\\
+$s_{121} = x_{120}\cdot (\mathtt{Act\_Vaciado}+\mathtt{Act\_Vaciado\_HMI})$\\
+$s_{122} = x_{121}\cdot \mathtt{vac\_finalizados}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$x_{120} = s_{120} + x_{120}\cdot \Not{s_{121}}$\\
+$x_{121} = s_{121} + x_{121}\cdot \Not{s_{122}}$\\
+$x_{122} = s_{122} + x_{122}\cdot \Not{s_{120}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{act\_vaciados\_maquinas} = x_{121}$\\
+$\mathtt{Fin\_vaciado}            = x_{122}$\\
 
 \subsection{Grafcet vaciado tipo 1}
  \subsubsection{Grafcet Vaciado 1}
@@ -88,6 +197,34 @@ El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}
 	\label{graf:vaciado_1}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT_E)
+$S_{125} = \mathtt{FirstScan} + x_{126b}\cdot \Not{\mathtt{S3\_1}} + x_{127}\cdot \mathtt{Fin\_vaciado}$\\
+$S_{126} = X_{125}\cdot \mathtt{Act\_Vaciado\_Maquina} + x_{126b}\cdot \Not{\mathtt{S3}}$\\
+$S_{126a} = X_{126}\cdot \mathtt{F\_S2.Q}$\\
+$S_{126b} = \mathtt{S3}\cdot (X_{126}+x_{126a})$\\
+$S_{127} = X_{126}\cdot \mathtt{T1.Q}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT_E)
+$X_{125} = S_{125} + X_{125}\cdot \Not{S_{126}}$\\
+$X_{126} = S_{126} + X_{126}\cdot \Not{(S_{126a}+S_{127}+S_{126b})}$\\
+$x_{126a} = S_{126a} + x_{126a}\cdot \Not{S_{126b}}$\\
+$x_{126b} = S_{126b} + x_{126b}\cdot \Not{S_{125}}$\\
+$x_{127} = S_{127} + x_{127}\cdot \Not{S_{125}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{QCINTA1} = X_{126}$\\
+$\mathtt{QCINTA2} = X_{126} + x_{126a}$\\
+$\mathtt{FIN\_Vaciado\_MAq} = x_{127}$\\
+$\mathtt{QTrans} = x_{126b}$\\
+
+
+
 \subsection{Grafcet vaciado tipo 2}
  \subsubsection{Grafcet Vaciado 2}
  El \hyperref[graf:vaciado_2]{Grafcet de Vaciado 2} se activa por medio del
@@ -117,6 +254,34 @@ El \hyperref[graf:principal_vaciado]{Grafcet Principal de Vaciado}
 	\label{graf:vaciado_2}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{130} = \mathtt{FirstScan} + x_{132}\cdot \mathtt{Fin\_vaciado}$\\
+$S_{131} = x_{130}\cdot \mathtt{Act\_Vaciado\_maquina}$\\
+$s_{132} = x_{131}\cdot \mathtt{T1.Q}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$x_{130} = S_{130} + x_{130}\cdot \Not{S_{131}}$\\
+$x_{131} = S_{131} + x_{131}\cdot \Not{s_{132}}$\\
+$x_{132} = s_{132} + x_{132}\cdot \Not{S_{130}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Vaciados\_maq\_1} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_2} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_3} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_4} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_5} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_6} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_7} = x_{131}$\\
+$\mathtt{Vaciados\_maq\_8} = x_{131}$\\
+
+
+
 
 \subsection{Gestión de las alarmas}
 El \hyperref[graf:emerg2]{Grafcet de alarmas en guía GEMMA} gestiona las alarmas de cada máquina,
@@ -133,6 +298,33 @@ siguiendo la guía GEMMA para la estructura del código.
 	\caption{Grafcet de alarmas en guía GEMMA}
 	\label{graf:emerg2}
 \end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% ALARMAS
+
+% Transiciones (sin FORCE_CURRENT_E)
+$S_{10a} = X_{13a} + \mathtt{FirstScan}$\\
+$S_{11a} = X_{10a}\cdot \mathtt{Alarma}$\\
+$S_{12a} = X_{11a}\cdot \mathtt{Reset}$\\
+$S_{13a} = X_{12a} + X_{11a}\cdot \mathtt{Resume}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT_E)
+$X_{10a} = S_{10a} + X_{10a}\cdot \Not{S_{11a}}$\\
+$X_{11a} = S_{11a} + X_{11a}\cdot \Not{(S_{12a}+S_{13a})}$\\
+$X_{12a} = S_{12a} + X_{12a}\cdot \Not{S_{13a}}$\\
+$X_{13a} = S_{13a} + X_{13a}\cdot \Not{S_{10a}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{STOP\_ACT} = X_{11a}$\\
+$\mathtt{FORCE\_INIT} = X_{12a}$\\
+$\mathtt{FORCE\_CURRENT} = X_{11a}$\\
+$\mathtt{RESET\_ALARMA} = X_{13a}$\\
+
+
+
 
 \subsection{Gestión de la seta de emergencia}
 
@@ -172,3 +364,25 @@ ya se han pasado todas la verificaciones para reanudar el proceso.
 	\caption{Grafcet de la seta de emergencia en guía GEMMA}
 	\label{graf:emerg_seta}
 \end{figure}
+
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+
+\setlength{\sepsGrups}{2ex}
+
+% EMERGENCIA (manteniendo FORCE_INIT_E y FORCE_CURRENT_E)
+
+% Transiciones
+$S_{10e} = X_{12e}\cdot \mathtt{CI} + \mathtt{FirstScan}$\\
+$S_{11e} = X_{10e}\cdot \mathtt{Emergencia}$\\
+$S_{12e} = X_{11e}$\\[\sepsGrups]
+
+% Etapas
+$X_{10e} = S_{10e} + X_{10e}\cdot \Not{S_{11e}}$\\
+$X_{11e} = S_{11e} + X_{11e}\cdot \Not{S_{12e}}$\\
+$X_{12e} = S_{12e} + X_{12e}\cdot \Not{S_{10e}}$\\[\sepsGrups]
+
+% Marcas / salidas (NO se eliminan)
+$\mathtt{FORCE\_INIT\_E} = X_{11e}$\\
+$\mathtt{FORCE\_CURRENT\_E} = X_{12e}$\\

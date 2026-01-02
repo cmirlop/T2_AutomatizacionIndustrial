@@ -36,7 +36,39 @@ Aquí la alarma que tratamos es que la pieza tarde más de 15 segundos en llegar
 	\caption{Grafcet de la Máquina 5 Soportes}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
 
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{70} = \mathtt{FirstScan} + X_{76}\cdot \mathtt{T3.Q}$\\
+$S_{71} = X_{70}\cdot \mathtt{Act\_Proceso}$\\
+$S_{72} = X_{71}\cdot \mathtt{S5}$\\
+$S_{73} = X_{72}\cdot \mathtt{T1.Q}$\\
+$S_{74} = X_{73}\cdot \mathtt{T2.Q}$\\
+$S_{75} = X_{74}\cdot \mathtt{Pieza\_Empaquetada}$\\
+$S_{76} = X_{75}\cdot \mathtt{SigMaqLibre}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{70} = S_{70} + X_{70}\cdot \Not{S_{71}}$\\
+$X_{71} = S_{71} + X_{71}\cdot \Not{S_{72}}$\\
+$X_{72} = S_{72} + X_{72}\cdot \Not{S_{73}}$\\
+$X_{73} = S_{73} + X_{73}\cdot \Not{S_{74}}$\\
+$X_{74} = S_{74} + X_{74}\cdot \Not{S_{75}}$\\
+$X_{75} = S_{75} + X_{75}\cdot \Not{S_{76}}$\\
+$X_{76} = S_{76} + X_{76}\cdot \Not{S_{70}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}     = X_{70}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC5}           = (X_{71}+X_{72}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC6}           = (X_{71}+X_{72}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC7}           = (X_{71}+X_{72}+X_{73}+X_{76}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QCLAMP}        = (X_{73}+\mathtt{Mantenimiento\_Clamper})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QCLAMP\_SUB}   = (X_{76}+\mathtt{Mantenimiento\_SubirClamp}+\mathtt{vaciado\_subclamp})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_SIG\_MAQ} = X_{76}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{HayPieza}      = X_{74}\cdot \Not{\mathtt{STOP\_ACT}}$\\
 
 
 \subsection{Grafcet máquina 5 vacuna y 6 soporte }
@@ -72,3 +104,63 @@ y bajarlo, aquí ya soltaremos el gripper y devolveremos el robot a su posición
 	\label{graf:Empaquetado}
 	\caption{Grafcet de la Máquina 5 de vacunas y 6 de soportes}
 \end{figure}
+
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% Temporizadores (formato tipo ejemplo)
+$T_{1}=2s/X_{52}$\\
+$T_{2}=2s/X_{53}$\\
+$T_{3}=2s/X_{55}$\\
+$T_{4}=2s/X_{56}$\\
+$T_{5}=2s/X_{57}$\\
+$T_{6}=2s/X_{58}$\\
+$T_{7}=2s/X_{59}$\\
+$T_{8}=2s/X_{60}$\\
+$T_{9}=2s/X_{61}$\\[\sepsGrups]
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{50} = \mathtt{FirstScan} + X_{62}$\\
+$S_{51} = X_{50}\cdot \mathtt{Act\_Proceso}$\\
+$S_{52} = X_{51}\cdot \mathtt{S5}$\\
+$S_{53} = X_{52}\cdot \mathtt{T1.Q}$\\
+$S_{54} = X_{53}\cdot \mathtt{T2.Q}$\\
+$S_{55} = X_{54}\cdot \mathtt{HaySoporte}$\\
+$S_{56} = X_{55}\cdot \mathtt{T3.Q}$\\
+$S_{57} = X_{56}\cdot \mathtt{T4.Q}$\\
+$S_{58} = X_{57}\cdot \mathtt{T5.Q}$\\
+$S_{59} = X_{58}\cdot \mathtt{T6.Q}$\\
+$S_{60} = X_{59}\cdot \mathtt{T7.Q}$\\
+$S_{61} = X_{60}\cdot \mathtt{T8.Q}$\\
+$S_{62} = X_{61}\cdot \mathtt{T9.Q}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{50} = S_{50} + X_{50}\cdot \Not{S_{51}}$\\
+$X_{51} = S_{51} + X_{51}\cdot \Not{S_{52}}$\\
+$X_{52} = S_{52} + X_{52}\cdot \Not{S_{53}}$\\
+$X_{53} = S_{53} + X_{53}\cdot \Not{S_{54}}$\\
+$X_{54} = S_{54} + X_{54}\cdot \Not{S_{55}}$\\
+$X_{55} = S_{55} + X_{55}\cdot \Not{S_{56}}$\\
+$X_{56} = S_{56} + X_{56}\cdot \Not{S_{57}}$\\
+$X_{57} = S_{57} + X_{57}\cdot \Not{S_{58}}$\\
+$X_{58} = S_{58} + X_{58}\cdot \Not{S_{59}}$\\
+$X_{59} = S_{59} + X_{59}\cdot \Not{S_{60}}$\\
+$X_{60} = S_{60} + X_{60}\cdot \Not{S_{61}}$\\
+$X_{61} = S_{61} + X_{61}\cdot \Not{S_{62}}$\\
+$X_{62} = S_{62} + X_{62}\cdot \Not{S_{50}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}        = X_{50}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC5}              = (X_{51}+X_{52}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC6}              = (X_{51}+X_{52}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC7}              = (X_{51}+X_{52}+X_{53}+X_{54}+\mathtt{Mantenimiento\_Cinta}+\mathtt{vaciado\_cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QCLAMP}           = (X_{53}+X_{54}+X_{55}+X_{56}+X_{57}+\mathtt{Mantenimiento\_Clamper})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QBAJ}             = (X_{55}+X_{56}+X_{59}+X_{60}+\mathtt{Mantenimiento\_BajarGripper})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QGRIPPER}         = (X_{56}+X_{57}+X_{58}+X_{59}+\mathtt{Mantenimiento\_Gripper})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QHOR}             = (X_{58}+X_{59}+X_{60}+X_{61}+\mathtt{Mantenimiento\_MOVHOR})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{qsubclamp}        = \mathtt{vaciado\_subclamper}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{HayPieza}         = X_{54}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Pieza\_Empaquetada}= X_{62}\cdot \Not{\mathtt{STOP\_ACT}}$\\

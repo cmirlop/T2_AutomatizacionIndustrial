@@ -27,6 +27,8 @@ entregárselo.
 
 
 
+
+
 Las alarmas que tenemos en está máquina que la detendrían son:
 \begin{itemize}
 	\item Si cuando el objeto está de camino al sensor del final de la cinta, se pone otro objeto al principio de la cinta.
@@ -42,6 +44,38 @@ Las alarmas que tenemos en está máquina que la detendrían son:
 	\caption{Grafcet de la Máquina 1}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones
+$S_{10}  = \mathtt{FirstScan} + X_{15}\cdot \mathtt{trig\_PR.Q}$\\
+$S_{11}  = X_{10}\cdot \mathtt{Act\_Maquina}$\\
+$S_{11b} = X_{11}\cdot \mathtt{S\_Pres}$\\
+$S_{12}  = X_{11b}\cdot \Not{\mathtt{S\_Pres}}$\\
+$S_{13}  = X_{12}\cdot \mathtt{S1}$\\
+$S_{14}  = X_{13}\cdot \mathtt{Sig\_Maq\_Libre}$\\
+$S_{15}  = X_{14}\cdot \Not{\mathtt{S1}}$\\[\sepsGrups]
+
+% Etapas
+$X_{10}  = S_{10}  + X_{10}\cdot \Not{S_{11}}$\\
+$X_{11}  = S_{11}  + X_{11}\cdot \Not{S_{11b}}$\\
+$X_{11b} = S_{11b} + X_{11b}\cdot \Not{S_{12}}$\\
+$X_{12}  = S_{12}  + X_{12}\cdot \Not{(S_{13}+S_{14})}$\\
+$X_{13}  = S_{13}  + X_{13}\cdot \Not{S_{14}}$\\
+$X_{14}  = S_{14}  + X_{14}\cdot \Not{S_{15}}$\\
+$X_{15}  = S_{15}  + X_{15}\cdot \Not{S_{10}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}     = X_{10}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Emisor\_2}      = \mathtt{Proceso\_Activo}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Emisor}         = \mathtt{Proceso\_Activo}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC1A}           = (X_{11}+X_{11b}+\mathtt{Mantenimiento\_Cintas}+\mathtt{vaciado\_cinta}+\mathtt{man\_cintaA})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC1B}           = (X_{11b}+X_{12}+X_{14}+\mathtt{Mantenimiento\_Cintas}+\mathtt{vaciado\_cinta}+\mathtt{man\_cintaB})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_SIG\_MAQ}   = X_{14}\cdot \Not{\mathtt{STOP\_ACT}}$\\
 
 
 \subsection{Grafcet Máquina 2}
@@ -92,3 +126,39 @@ máquina anterior.
 	\caption{Grafcet de la Máquina 2}
 \end{figure}
 
+Este grafcet está descompuesto en las siguientes ecuaciones algebráicas:\\
+
+\setlength{\sepsGrups}{2ex}
+
+% PRODUCCIÓN
+
+% Transiciones (sin FORCE_CURRENT)
+$S_{20} = \mathtt{FirstScan} + X_{22b}\cdot \Not{\mathtt{SA\_Bueno}} + X_{23b}\cdot \Not{\mathtt{SA\_Malo}} + X_{24}\cdot \mathtt{T1.Q}$\\
+$S_{21} = X_{20}\cdot \mathtt{Act\_Proceso}$\\
+$S_{22} = X_{21}\cdot \mathtt{SA\_Bueno}$\\
+$S_{22b} = X_{22}\cdot \mathtt{SigMaqLibre}$\\
+$S_{23} = X_{21}\cdot \mathtt{SA\_Malo}\cdot \Not{\mathtt{SA\_Bueno}}$\\
+$S_{23b} = X_{23}\cdot \mathtt{SigMaqLibre}$\\
+$S_{24} = X_{21}\cdot \mathtt{SB}$\\[\sepsGrups]
+
+% Etapas (sin FORCE_INIT)
+$X_{20}  = S_{20}  + X_{20}\cdot \Not{S_{21}}$\\
+$X_{21}  = S_{21}  + X_{21}\cdot \Not{(S_{22}+S_{23}+S_{24})}$\\
+$X_{22}  = S_{22}  + X_{22}\cdot \Not{S_{22b}}$\\
+$X_{22b} = S_{22b} + X_{22b}\cdot \Not{S_{20}}$\\
+$X_{23}  = S_{23}  + X_{23}\cdot \Not{S_{23b}}$\\
+$X_{23b} = S_{23b} + X_{23b}\cdot \Not{S_{20}}$\\
+$X_{24}  = S_{24}  + X_{24}\cdot \Not{S_{20}}$\\[\sepsGrups]
+
+% Marcas / salidas
+$\mathtt{Maq\_Libre}          = X_{20}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QC2}                = (X_{21}+X_{22b}+X_{23b}+\mathtt{Mantenimiento\_Cintas}+\mathtt{vaciado\_cinta}+\mathtt{Man\_Cinta})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{QTRANS}             = (X_{24}+\mathtt{Mantenimiento\_Transfes}+\mathtt{vaciado\_Trans}+\mathtt{Man\_Trans})\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_SIG\_MAQ\_Buena}= X_{22b}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Act\_SIG\_MAQ\_Mala} = X_{23b}\cdot \Not{\mathtt{STOP\_ACT}}$\\
+$\mathtt{Pieza\_Rec}         = (X_{22}+X_{23}+X_{24})\cdot \Not{\mathtt{STOP\_ACT}}$\\[\sepsGrups]
+
+% Tipos
+$\mathtt{TipoAbuena} = X_{22b}$\\
+$\mathtt{TipoAMala}  = X_{23b}$\\
+$\mathtt{TipoB}      = X_{24}$\\

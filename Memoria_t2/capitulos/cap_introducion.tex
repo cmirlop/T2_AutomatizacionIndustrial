@@ -1,2 +1,68 @@
 \section{Introducción}
 \label{sec:introduccion}
+
+Se nos ha propuesto el problema de diseñar y programar un proceso de clasificación
+de vacunas, soportes y su embalaje correspondiente, dentro de este proceso aparecen
+diferentes tipos de cada uno, que deberemos de separar a 
+su propia línea de producción. Tambien debemos de hacer un control de calidad de 
+las piezas que se corresponden con el tipo elegido, y descartar las piezas que no
+cumplen con los requisitos establecidos.
+
+\subsection{Propuesta para el proceso}
+Para el proceso de clasificación, proponemos la separción en 3 líneas de producción, Por
+donde circualarán las vacunas, los soportes y los embalajes. Cada línea de producción 
+esta compuesta por los procesos necesarios para poder separar los diferentes tipos, y realizar su control
+de calidad. La idea es que una vez superado el control de calidad, las vacunas se dispondrán en su soporte,
+y una vez esta en su soporte, se procederá a su embalaje.
+
+Como se puede observar en la figura \ref{fig:proceso_general}, el proceso comienza con la llegada
+de las piezas a la línea de producción, donde se realizará una primera separación de las piezas que són del 
+tipo A, y las que son del tipo B, para despúes realizar un control de calidad de las piezas, y descartar
+las que no cumplen con los requisitos establecidos. Una vez superado el control de calidad, las piezas
+se dirigen a la siguiente estación, donde se realizará la unión de las vacunas con sus respectivos
+soportes, y una vez en su soporte, se procederá a su embalaje.
+
+\begin{figure}[H]
+     \centering
+     \includegraphics[width=0.8\linewidth]{./Figuras/General.png}
+	\medskip
+	\caption{Proceso general}
+	\label{fig:proceso_general}
+ \end{figure}
+
+
+
+
+\subsection{Propuesta para la interacción del operario}
+Para la interacción del operario con la máquina, se propone el uso de un HMI , y de un panel físico
+para acciónes criticas como el paro de emergencia, y su rearme, a parte de la marcha y el paro de la máquina.
+Como se puede observar en la figura \ref{fig:panel_fisico}, el panel físico cuenta con los botones necesarios
+para:
+\begin{itemize}
+    \item La marcha de la máquina
+    \item El paro de la máquina
+    \item El paro de emergencia
+    \item El reset del paro de emergencia o de las alarmas
+    \item Selección del modo de operación (manual/automático)
+\end{itemize}
+
+\begin{figure}[H]
+     \centering
+     \includegraphics[width=0.5\linewidth]{./Figuras/PanelFisico.png}
+    \medskip
+    \caption{Panel físico de control}
+    \label{fig:panel_fisico}
+ \end{figure}
+
+El HMI contará con diversas pantallas para el control y la monitorización de la máquina, que se explican
+en la sección \ref{sec:HMI}. Desde el HMI se podrán realizar las siguientes acciónes:
+\begin{itemize}
+    \item Poner en marcha y parar la máquina
+    \item Reanudar la máquina tras una alarma desde donde se ha producido la alarma
+    \item Acceder a la pantalla de configuración (con credenciales de administrador)
+    \item Acceder a la pantalla de registro de alarmas
+    \item Controlar los actuadores en modo manual
+    \item Visualizar los contadores de piezas producidas y descartadas
+    \item Visualizar el estado de los actuadores
+\end{itemize}
+
