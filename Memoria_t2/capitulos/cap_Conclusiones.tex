@@ -1,8 +1,15 @@
 \section{Conclusiones y Trabajo a futuro}\label{sec:conclusiones_trabajo_futuro}
 
 \subsection{Conclusiones}
+En el presente trabajo se ha abordado con éxito el diseño y la automatización de una línea de producción completa destinada a la clasificación, ensamblaje y embalaje de vacunas y soportes. La validación del sistema mediante el entorno virtual Factory IO y su programación en TIA Portal ha permitido verificar el funcionamiento coordinado de las tres líneas que componen la planta, demostrando que la lógica de control propuesta cumple con los requisitos funcionales y de seguridad establecidos.
 
+La estructura modular adoptada, basada en la división por líneas y el uso de Grafcets independientes para cada máquina, ha resultado clave para lograr una programación ordenada y escalable. Esta organización no solo facilitó la detección de errores durante la fase de diseño, sino que también simplificó la gestión de los diferentes modos de operación. En este sentido, la implementación de la Guía GEMMA ha dotado al sistema de una robustez significativa, permitiendo una gestión eficaz de las paradas de emergencia, los reinicios y la alternancia entre los modos de control manual y automático.
 
-
+Asimismo, la incorporación de una interfaz HMI (TP1500 Comfort) ha completado el proyecto proporcionando una herramienta esencial para la supervisión. El sistema SCADA desarrollado permite a los operarios interactuar de manera intuitiva con la planta, facilitando el monitoreo en tiempo real, la gestión de usuarios y el diagnóstico rápido de alarmas, elementos indispensables en cualquier entorno industrial moderno.
 
 \subsection{Trabajo a futuro}
+A pesar de los resultados satisfactorios obtenidos en la simulación, el proyecto presenta diversas oportunidades de mejora y expansión. Una de las líneas de trabajo más inmediatas sería el análisis detallado de los tiempos de ciclo de cada estación, con el objetivo de optimizar la lógica de los Grafcets y eliminar cuellos de botella para aumentar la cadencia de producción global.
+
+Por otro lado, la integración del sistema de control con niveles superiores de gestión, como sistemas MES o ERP, representaría un avance significativo hacia la Industria 4.0. Esto permitiría automatizar la gestión de pedidos y almacenar datos históricos de producción en bases de datos externas para su posterior análisis.
+
+Finalmente, el paso lógico siguiente sería trasladar la lógica validada en el gemelo digital a un entorno de hardware real. Esta implementación física requeriría un ajuste fino de la configuración de sensores y actuadores, así como la posible incorporación de algoritmos de mantenimiento predictivo que analicen el desgaste de los componentes para anticipar fallos antes de que detengan la producción.
